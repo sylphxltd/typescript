@@ -21,7 +21,6 @@
   ],
   "exclude": [
     "node_modules",
-    "dist",
-    "src/types/**/*.d.ts" // Exclude custom type declarations from compilation output
+    "dist"
   ]
 }
