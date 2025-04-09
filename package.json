@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Strict, opinionated ESLint Flat Config (@typescript-eslint, Airbnb, Unicorn, Prettier) for SylphLab projects (TS, React, Vue, RN).",
   "main": "./dist/eslint.config.js",
   "type": "module",
