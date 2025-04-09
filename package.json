@@ -55,6 +55,9 @@
     "url": "https://github.com/sylphlab/eslint-config-sylph/issues"
   },
   "homepage": "https://github.com/sylphlab/eslint-config-sylph#readme",
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@eslint/eslintrc": "^3.0.0",
     "globals": "^15.0.0"
