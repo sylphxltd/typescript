@@ -32,7 +32,10 @@
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --cache --max-warnings=0",
+    "lint:fix": "eslint . --fix --cache",
     "format": "prettier --write . --cache --ignore-unknown",
+    "check-format": "prettier --check . --cache --ignore-unknown",
+    "validate": "pnpm run check-format && pnpm run lint && pnpm run build",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "pnpm run build && changeset publish",
