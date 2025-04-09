@@ -77,6 +77,9 @@ importers:
       ts-node:
         specifier: ^10.9.0
         version: 10.9.2(@types/node@20.17.30)(typescript@5.8.3)
+      turbo:
+        specifier: latest
+        version: 2.5.0
       typescript:
         specifier: ^5.0.0
         version: 5.8.3
@@ -84,7 +87,7 @@ importers:
         specifier: ^9.4.0
         version: 9.4.3(eslint@9.24.0)
 
-  packages/base:
+  packages/eslint-config-sylph:
     dependencies:
       '@eslint/eslintrc':
         specifier: ^3.0.0
@@ -133,14 +136,14 @@ importers:
         specifier: ^7.0.0
         version: 7.18.0(eslint@9.24.0)(typescript@5.8.3)
 
-  packages/react:
+  packages/eslint-config-sylph-react:
     dependencies:
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.24.0
       '@sylphlab/eslint-config-sylph':
         specifier: workspace:*
-        version: link:../base
+        version: link:../eslint-config-sylph
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.0
         version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@9.24.0)(typescript@5.8.3))(eslint@9.24.0)(typescript@5.8.3)
@@ -191,14 +194,14 @@ importers:
         specifier: ^7.0.0
         version: 7.18.0(eslint@9.24.0)(typescript@5.8.3)
 
-  packages/rn:
+  packages/eslint-config-sylph-rn:
     dependencies:
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.24.0
       '@sylphlab/eslint-config-sylph-react':
         specifier: workspace:*
-        version: link:../react
+        version: link:../eslint-config-sylph-react
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.0
         version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@9.24.0)(typescript@5.8.3))(eslint@9.24.0)(typescript@5.8.3)
@@ -255,14 +258,14 @@ importers:
         specifier: ^7.0.0
         version: 7.18.0(eslint@9.24.0)(typescript@5.8.3)
 
-  packages/vue:
+  packages/eslint-config-sylph-vue:
     dependencies:
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.24.0
       '@sylphlab/eslint-config-sylph':
         specifier: workspace:*
-        version: link:../base
+        version: link:../eslint-config-sylph
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.0
         version: 7.18.0(@typescript-eslint/parser@7.18.0(eslint@9.24.0)(typescript@5.8.3))(eslint@9.24.0)(typescript@5.8.3)
@@ -2750,6 +2753,40 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  turbo-darwin-64@2.5.0:
+    resolution: {integrity: sha512-fP1hhI9zY8hv0idym3hAaXdPi80TLovmGmgZFocVAykFtOxF+GlfIgM/l4iLAV9ObIO4SUXPVWHeBZQQ+Hpjag==}
+    cpu: [x64]
+    os: [darwin]
+
+  turbo-darwin-arm64@2.5.0:
+    resolution: {integrity: sha512-p9sYq7kXH7qeJwIQE86cOWv/xNqvow846l6c/qWc26Ib1ci5W7V0sI5thsrP3eH+VA0d+SHalTKg5SQXgNQBWA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  turbo-linux-64@2.5.0:
+    resolution: {integrity: sha512-1iEln2GWiF3iPPPS1HQJT6ZCFXynJPd89gs9SkggH2EJsj3eRUSVMmMC8y6d7bBbhBFsiGGazwFIYrI12zs6uQ==}
+    cpu: [x64]
+    os: [linux]
+
+  turbo-linux-arm64@2.5.0:
+    resolution: {integrity: sha512-bKBcbvuQHmsX116KcxHJuAcppiiBOfivOObh2O5aXNER6mce7YDDQJy00xQQNp1DhEfcSV2uOsvb3O3nN2cbcA==}
+    cpu: [arm64]
+    os: [linux]
+
+  turbo-windows-64@2.5.0:
+    resolution: {integrity: sha512-9BCo8oQ7BO7J0K913Czbc3tw8QwLqn2nTe4E47k6aVYkM12ASTScweXPTuaPFP5iYXAT6z5Dsniw704Ixa5eGg==}
+    cpu: [x64]
+    os: [win32]
+
+  turbo-windows-arm64@2.5.0:
+    resolution: {integrity: sha512-OUHCV+ueXa3UzfZ4co/ueIHgeq9B2K48pZwIxKSm5VaLVuv8M13MhM7unukW09g++dpdrrE1w4IOVgxKZ0/exg==}
+    cpu: [arm64]
+    os: [win32]
+
+  turbo@2.5.0:
+    resolution: {integrity: sha512-PvSRruOsitjy6qdqwIIyolv99+fEn57gP6gn4zhsHTEcCYgXPhv6BAxzAjleS8XKpo+Y582vTTA9nuqYDmbRuA==}
+    hasBin: true
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -5982,6 +6019,33 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.8.1: {}
+
+  turbo-darwin-64@2.5.0:
+    optional: true
+
+  turbo-darwin-arm64@2.5.0:
+    optional: true
+
+  turbo-linux-64@2.5.0:
+    optional: true
+
+  turbo-linux-arm64@2.5.0:
+    optional: true
+
+  turbo-windows-64@2.5.0:
+    optional: true
+
+  turbo-windows-arm64@2.5.0:
+    optional: true
+
+  turbo@2.5.0:
+    optionalDependencies:
+      turbo-darwin-64: 2.5.0
+      turbo-darwin-arm64: 2.5.0
+      turbo-linux-64: 2.5.0
+      turbo-linux-arm64: 2.5.0
+      turbo-windows-64: 2.5.0
+      turbo-windows-arm64: 2.5.0
 
   type-check@0.4.0:
     dependencies:
