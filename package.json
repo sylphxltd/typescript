@@ -12,7 +12,7 @@
     "validate": "pnpm run check-format && pnpm -r validate",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm run build && changeset publish"
+    "release": "pnpm run build && pnpm install --frozen-lockfile && changeset publish"
   },
   "repository": {
     "type": "git",
