@@ -2,13 +2,13 @@
   "name": "@sylphlab/eslint-config-sylph-base",
   "version": "1.0.1",
   "description": "Base ESLint Flat Config (TS, Airbnb, Unicorn, Prettier) for SylphLab projects.",
-  "main": "./dist/src/base.js",
-  "types": "./dist/src/base.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/src/base.js",
-      "types": "./dist/src/base.d.ts"
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
     }
   },
   "files": [

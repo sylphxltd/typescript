@@ -2,13 +2,13 @@
   "name": "@sylphlab/eslint-config-sylph-react",
   "version": "1.0.1",
   "description": "React ESLint Flat Config for SylphLab projects.",
-  "main": "./dist/src/react.js",
-  "types": "./dist/src/react.d.ts",
+  "main": "./dist/src/index.js",
+  "types": "./dist/src/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
-      "import": "./dist/src/react.js",
-      "types": "./dist/src/react.d.ts"
+      "import": "./dist/src/index.js",
+      "types": "./dist/src/index.d.ts"
     }
   },
   "files": [
