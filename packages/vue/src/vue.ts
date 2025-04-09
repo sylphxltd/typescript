@@ -1,4 +1,6 @@
-// configs/eslint-config-sylph/src/vue.ts
+// configs/eslint-config-sylph/packages/vue/src/vue.ts
+// Import base config to combine
+import { baseConfig } from '@sylphlab/eslint-config-sylph-base';
 import * as eslintGlobals from 'globals';
 import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
@@ -7,7 +9,8 @@ import type { Linter } from 'eslint';
 import vuePlugin from 'eslint-plugin-vue';
 import vueParser from 'vue-eslint-parser';
 
-export const vueConfig: Linter.FlatConfig[] = [
+// Define Vue-specific parts
+const vueSpecificConfig: Linter.FlatConfig[] = [
     // Use plugin's recommended flat config
     ...(vuePlugin.configs['flat/recommended'] as any), // Force cast
 
@@ -40,4 +43,10 @@ export const vueConfig: Linter.FlatConfig[] = [
             // Add any other Vue specific overrides here
         },
     } as any, // Force cast
+];
+
+// Export the combined configuration array
+export const vueConfig: Linter.FlatConfig[] = [
+    ...baseConfig,
+    ...vueSpecificConfig,
 ];

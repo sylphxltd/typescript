@@ -13,12 +13,25 @@
     "outDir": "./dist", // Output directory for compiled JS
     // "rootDir": "./src", // Let TS infer rootDir based on includes
     "types": ["node"], // Include Node.js types
-    "lib": ["ES2022"]
+    "lib": ["ES2022"],
+    "composite": true, // Enable project references
+    "declarationMap": true, // Ensure declaration maps are generated (needed for composite)
+    "baseUrl": ".", // Needed for paths mapping
+    "paths": { // Map workspace packages to their source for local dev/build resolution
+      "@sylphlab/eslint-config-sylph-base": ["./packages/base/src/base.ts"],
+      "@sylphlab/eslint-config-sylph-react": ["./packages/react/src/react.ts"],
+      "@sylphlab/eslint-config-sylph-vue": ["./packages/vue/src/vue.ts"],
+      "@sylphlab/eslint-config-sylph-rn": ["./packages/rn/src/rn.ts"]
+    }
   },
-  "include": [
-    "src/**/*.ts", // Compile all TS files in src
-    "eslint.config.ts" // Also compile the main export file
+  "references": [
+    { "path": "./packages/base/tsconfig.build.json" },
+    { "path": "./packages/react/tsconfig.build.json" },
+    { "path": "./packages/vue/tsconfig.build.json" },
+    { "path": "./packages/rn/tsconfig.build.json" }
   ],
+  // Root include should be empty or minimal when using project references for building packages
+  "include": [],
   "exclude": [
     "node_modules",
     "dist"

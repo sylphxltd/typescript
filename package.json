@@ -1,99 +1,38 @@
 {
-  "name": "@sylphlab/eslint-config-sylph",
-  "version": "1.0.1",
-  "description": "Strict, opinionated ESLint Flat Config (@typescript-eslint, Airbnb, Unicorn, Prettier) for SylphLab projects (TS, React, Vue, RN).",
-  "main": "./dist/eslint.config.js",
-  "type": "module",
-  "exports": {
-    ".": {
-      "import": "./dist/eslint.config.js",
-      "types": "./dist/eslint.config.d.ts"
-    },
-    "./base": {
-      "import": "./dist/src/base.js",
-      "types": "./dist/src/base.d.ts"
-    },
-    "./react": {
-      "import": "./dist/src/react.js",
-      "types": "./dist/src/react.d.ts"
-    },
-    "./vue": {
-      "import": "./dist/src/vue.js",
-      "types": "./dist/src/vue.d.ts"
-    },
-    "./rn": {
-      "import": "./dist/src/rn.js",
-      "types": "./dist/src/rn.d.ts"
-    }
-  },
-  "files": [
-    "dist"
-  ],
+  "name": "eslint-config-sylph-monorepo",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Monorepo for SylphLab ESLint configurations (Base, React, Vue, RN)",
   "scripts": {
-    "build": "tsc",
-    "lint": "eslint . --cache --max-warnings=0",
-    "lint:fix": "eslint . --fix --cache",
+    "build": "tsc -b",
+    "lint": "pnpm -r lint",
+    "lint:fix": "pnpm -r lint:fix",
     "format": "prettier --write . --cache --ignore-unknown",
     "check-format": "prettier --check . --cache --ignore-unknown",
-    "validate": "pnpm run check-format && pnpm run lint && pnpm run build",
+    "validate": "pnpm run check-format && pnpm -r validate",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "pnpm run build && changeset publish",
-    "prepublishOnly": "pnpm run build"
+    "release": "pnpm run build && changeset publish"
   },
   "repository": {
     "type": "git",
     "url": "https://github.com/sylphlab/eslint-config-sylph.git"
   },
-  "keywords": [
-    "eslint",
-    "eslintconfig",
-    "flat config",
-    "typescript",
-    "typescript-eslint",
-    "airbnb",
-    "unicorn",
-    "prettier",
-    "strict",
-    "react",
-    "vue",
-    "react-native",
-    "sylphlab"
-  ],
   "author": "SylphLab <hi@sylphlab.com> (https://sylphlab.com)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/sylphlab/eslint-config-sylph/issues"
   },
   "homepage": "https://github.com/sylphlab/eslint-config-sylph#readme",
-  "publishConfig": {
-    "access": "public"
-  },
-  "dependencies": {
-    "@eslint/eslintrc": "^3.0.0",
-    "globals": "^15.0.0"
-  },
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
-    "@types/node": "^20.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^9.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-plugin-prettier": "^5.0.0",
-    "eslint-plugin-unicorn": "^52.0.0",
     "prettier": "^3.0.0",
-    "ts-node": "^10.9.0",
     "typescript": "^5.0.0",
-    "typescript-eslint": "^7.0.0",
-    "eslint-plugin-react-native": "^4.1.0",
-    "@types/eslint-plugin-jsx-a11y": "^6.6.0"
-  },
-  "peerDependencies": {
+    "eslint": "^9.0.0",
+    "ts-node": "^10.9.0",
     "@eslint/js": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^9.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
@@ -101,31 +40,15 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.1.0",
     "eslint-plugin-unicorn": "^52.0.0",
     "eslint-plugin-vue": "^9.20.0",
-    "prettier": "^3.0.0",
-    "typescript": "^5.0.0",
     "vue-eslint-parser": "^9.4.0",
-    "eslint-plugin-react-native": "^4.1.0"
-  },
-  "peerDependenciesMeta": {
-    "eslint-plugin-jsx-a11y": {
-      "optional": true
-    },
-    "eslint-plugin-react": {
-      "optional": true
-    },
-    "eslint-plugin-react-hooks": {
-      "optional": true
-    },
-    "eslint-plugin-vue": {
-      "optional": true
-    },
-    "vue-eslint-parser": {
-      "optional": true
-    },
-    "eslint-plugin-react-native": {
-      "optional": true
-    }
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0",
+    "globals": "^15.0.0",
+    "@eslint/eslintrc": "^3.0.0",
+    "@types/eslint-plugin-jsx-a11y": "^6.6.0",
+    "@types/node": "^20.0.0"
   }
 }

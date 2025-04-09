@@ -1,0 +1,69 @@
+{
+  "name": "@sylphlab/eslint-config-sylph-vue",
+  "version": "1.0.1",
+  "description": "Vue 3 ESLint Flat Config for SylphLab projects.",
+  "main": "./dist/src/vue.js",
+  "types": "./dist/src/vue.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/src/vue.js",
+      "types": "./dist/src/vue.d.ts"
+    }
+  },
+  "files": [
+    "dist/src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint . --cache --max-warnings=0",
+    "lint:fix": "eslint . --fix --cache",
+    "validate": "pnpm run lint && pnpm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sylphlab/eslint-config-sylph.git",
+    "directory": "packages/vue"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "flat config",
+    "typescript",
+    "vue",
+    "vue3",
+    "sylphlab"
+  ],
+  "author": "SylphLab <hi@sylphlab.com> (https://sylphlab.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sylphlab/eslint-config-sylph/issues"
+  },
+  "homepage": "https://github.com/sylphlab/eslint-config-sylph/tree/main/packages/vue#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@sylphlab/eslint-config-sylph-base": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^7.0.0"
+  },
+  "peerDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-unicorn": "^52.0.0",
+    "eslint-plugin-vue": "^9.20.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vue-eslint-parser": "^9.4.0"
+  }
+}

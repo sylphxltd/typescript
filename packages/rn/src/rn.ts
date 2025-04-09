@@ -6,8 +6,8 @@ import * as eslintGlobals from 'globals';
 import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
 
-// Import React config as RN builds upon it
-import { reactConfig } from './react.js'; // Assuming react.ts is compiled to react.js
+// Import React config (which includes base) to combine
+import { reactConfig } from '@sylphlab/eslint-config-sylph-react';
 
 // Framework plugins (Direct import)
 import reactNativePlugin from 'eslint-plugin-react-native';
@@ -21,7 +21,8 @@ const compat = new FlatCompat({
     baseDirectory: __dirname,
 });
 
-export const rnConfig: Linter.FlatConfig[] = [
+// Define RN-specific parts
+const rnSpecificConfig: Linter.FlatConfig[] = [
     // Include the React config first
     ...reactConfig,
 
@@ -44,4 +45,10 @@ export const rnConfig: Linter.FlatConfig[] = [
             // e.g., 'react-native/no-inline-styles': 'warn',
         },
     } as any, // Force cast
+];
+
+// Export the combined configuration array
+export const rnConfig: Linter.FlatConfig[] = [
+    ...reactConfig, // reactConfig already includes baseConfig
+    ...rnSpecificConfig,
 ];

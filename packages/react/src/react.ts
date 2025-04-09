@@ -6,8 +6,8 @@ import * as eslintGlobals from 'globals';
 import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
 
-// Import base config to extend/modify if needed, or just use FlatCompat for airbnb full
-// import { baseConfig } from './base.js'; // Assuming base.ts is compiled to base.js
+// Import base config to combine
+import { baseConfig } from '@sylphlab/eslint-config-sylph-base';
 
 // Framework plugins (Direct imports)
 import reactPlugin from 'eslint-plugin-react';
@@ -23,7 +23,8 @@ const compat = new FlatCompat({
     baseDirectory: __dirname,
 });
 
-export const reactConfig: Linter.FlatConfig[] = [
+// Define React-specific parts
+const reactSpecificConfig: Linter.FlatConfig[] = [
     // IMPORTANT: This assumes the consumer project uses 'airbnb-typescript' (full)
     // instead of 'airbnb-typescript/base' in their core setup,
     // or we include the base config here and override the airbnb part.
@@ -61,4 +62,10 @@ export const reactConfig: Linter.FlatConfig[] = [
             'jsx-a11y/anchor-is-valid': 'off', // Often handled by routers
         },
     } as any, // Force cast
+];
+
+// Export the combined configuration array
+export const reactConfig: Linter.FlatConfig[] = [
+    ...baseConfig,
+    ...reactSpecificConfig,
 ];

@@ -1,0 +1,73 @@
+{
+  "name": "@sylphlab/eslint-config-sylph-rn",
+  "version": "1.0.1",
+  "description": "React Native ESLint Flat Config for SylphLab projects.",
+  "main": "./dist/src/rn.js",
+  "types": "./dist/src/rn.d.ts",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/src/rn.js",
+      "types": "./dist/src/rn.d.ts"
+    }
+  },
+  "files": [
+    "dist/src"
+  ],
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "lint": "eslint . --cache --max-warnings=0",
+    "lint:fix": "eslint . --fix --cache",
+    "validate": "pnpm run lint && pnpm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sylphlab/eslint-config-sylph.git",
+    "directory": "packages/rn"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "flat config",
+    "typescript",
+    "react",
+    "react-native",
+    "sylphlab"
+  ],
+  "author": "SylphLab <hi@sylphlab.com> (https://sylphlab.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sylphlab/eslint-config-sylph/issues"
+  },
+  "homepage": "https://github.com/sylphlab/eslint-config-sylph/tree/main/packages/rn#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@sylphlab/eslint-config-sylph-react": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "typescript-eslint": "^7.0.0"
+  },
+  "peerDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-native": "^4.1.0",
+    "eslint-plugin-unicorn": "^52.0.0",
+    "prettier": "^3.0.0",
+    "react": ">=16.8.0",
+    "react-native": ">=0.60.0",
+    "typescript": "^5.0.0"
+  }
+}
