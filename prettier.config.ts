@@ -1,5 +1,7 @@
-// .prettierrc.js
-module.exports = {
+// prettier.config.ts
+import { type Config } from "prettier";
+
+const config: Config = {
   printWidth: 100,
   tabWidth: 2,
   useTabs: false,
@@ -11,3 +13,5 @@ module.exports = {
   arrowParens: 'always',
   endOfLine: 'lf',
 };
+
+export default config;
