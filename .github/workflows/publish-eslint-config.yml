@@ -1,0 +1,43 @@
+name: Publish ESLint Config Package
+
+on:
+  push:
+    tags:
+      - 'v*.*.*' # Trigger on version tags (e.g., v0.1.0)
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # Needed for OIDC publishing
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        # No need for submodules checkout here as this runs within the submodule repo context on tag push
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org/'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest
+
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build Package
+        run: pnpm run build
+
+      - name: Publish to npm with OIDC
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          provenance: true # Generate SLSA provenance
+          # token: ${{ secrets.NPM_TOKEN }} # OIDC doesn't need a token secret
+          access: public # Set package access level
