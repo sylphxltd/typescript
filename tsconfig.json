@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", // Target modern Node.js versions
+    "module": "NodeNext", // Use Node.js native ES modules
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "outDir": "./dist", // Output directory for compiled JS (if needed for distribution)
+    "rootDir": "./", // Specify root directory
+    "declaration": true, // Generate .d.ts files
+    "sourceMap": true, // Generate source maps
+    "types": ["node"], // Include Node.js types to resolve 'node:path', 'node:url' etc.
+    "lib": ["ES2022"] // Include necessary ES libraries
+  },
+  "include": [
+    "eslint.config.ts", // Include the main config file
+    "src/**/*.ts" // Include any source files if you plan to split the config
+  ],
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

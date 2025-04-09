@@ -1,0 +1,76 @@
+{
+  "name": "@sylphlab/eslint-config-sylph",
+  "version": "0.1.0",
+  "description": "Shared ESLint Flat Configuration for SylphLab projects",
+  "main": "eslint.config.js",
+  "type": "module",
+  "exports": {
+    ".": "./eslint.config.js",
+    "./base": "./dist/base.js",
+    "./react": "./dist/react.js",
+    "./vue": "./dist/vue.js",
+    "./rn": "./dist/rn.js"
+  },
+  "files": [
+    "dist",
+    "eslint.config.js"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "lint": "eslint . --cache --max-warnings=0",
+    "format": "prettier --write . --cache --ignore-unknown"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sylphlab/eslint-config-sylph.git"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "sylphlab",
+    "typescript",
+    "flatconfig"
+  ],
+  "author": "SylphLab <hi@sylphlab.com> (https://sylphlab.com)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/sylphlab/eslint-config-sylph/issues"
+  },
+  "homepage": "https://github.com/sylphlab/eslint-config-sylph#readme",
+  "dependencies": {
+    "@eslint/eslintrc": "^3.0.0",
+    "globals": "^15.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "eslint": "^9.0.0",
+    "prettier": "^3.0.0",
+    "ts-node": "^10.9.0",
+    "typescript": "^5.0.0"
+  },
+  "peerDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@typescript-eslint/eslint-plugin": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-unicorn": "^52.0.0",
+    "eslint-plugin-vue": "^9.20.0",
+    "prettier": "^3.0.0",
+    "typescript": "^5.0.0",
+    "vue-eslint-parser": "^9.4.0"
+  },
+  "peerDependenciesMeta": {
+    "eslint-plugin-jsx-a11y": { "optional": true },
+    "eslint-plugin-react": { "optional": true },
+    "eslint-plugin-react-hooks": { "optional": true },
+    "eslint-plugin-vue": { "optional": true },
+    "vue-eslint-parser": { "optional": true }
+  }
+}
