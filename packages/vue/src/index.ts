@@ -1,6 +1,6 @@
 // configs/eslint-config-sylph/packages/vue/src/vue.ts
 // Import base config to combine
-import { baseConfig } from '@sylphlab/eslint-config-sylph-base';
+import { baseConfig } from '@sylphlab/eslint-config-sylph';
 import * as eslintGlobals from 'globals';
 import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';

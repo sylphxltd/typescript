@@ -138,7 +138,7 @@ importers:
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.24.0
-      '@sylphlab/eslint-config-sylph-base':
+      '@sylphlab/eslint-config-sylph':
         specifier: workspace:*
         version: link:../base
       '@typescript-eslint/eslint-plugin':
@@ -260,7 +260,7 @@ importers:
       '@eslint/js':
         specifier: ^9.0.0
         version: 9.24.0
-      '@sylphlab/eslint-config-sylph-base':
+      '@sylphlab/eslint-config-sylph':
         specifier: workspace:*
         version: link:../base
       '@typescript-eslint/eslint-plugin':

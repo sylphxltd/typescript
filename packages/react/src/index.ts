@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
 
 // Import base config to combine
-import { baseConfig } from '@sylphlab/eslint-config-sylph-base';
+import { baseConfig } from '@sylphlab/eslint-config-sylph';
 
 // Framework plugins (Direct imports)
 import reactPlugin from 'eslint-plugin-react';

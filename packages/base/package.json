@@ -1,5 +1,5 @@
 {
-  "name": "@sylphlab/eslint-config-sylph-base",
+  "name": "@sylphlab/eslint-config-sylph",
   "version": "1.0.1",
   "description": "Base ESLint Flat Config (TS, Airbnb, Unicorn, Prettier) for SylphLab projects.",
   "main": "./dist/src/index.js",
