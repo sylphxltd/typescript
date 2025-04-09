@@ -6,11 +6,10 @@ import { FlatCompat } from '@eslint/eslintrc';
 import * as eslintGlobals from 'globals';
 import tseslint from 'typescript-eslint';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import prettierPlugin from 'eslint-plugin-prettier';
 import type { Linter } from 'eslint';
 
-// Workaround for missing types or CommonJS modules
-const prettierPlugin = tseslint.plugin('eslint-plugin-prettier') as any;
-// const prettierConfig = tseslint.config('eslint-config-prettier') as Linter.FlatConfig[]; // Keep prettierConfig usage commented out or remove if only using the rule
+// Prettier plugin needs to be referenced in the plugins section below
 
 // Mimic __dirname for ES modules (needed for FlatCompat)
 const __filename = fileURLToPath(import.meta.url);
@@ -28,17 +27,17 @@ export const baseConfig: Linter.FlatConfig[] = [
 
     // 2. Airbnb Base (using FlatCompat for eslintrc format)
     // Note: For React projects, you'll need 'airbnb-typescript' instead of 'airbnb-typescript/base'
-    ...compat.extends('airbnb-typescript/base'),
+    ...(compat.extends('airbnb-typescript/base') as any), // Force cast
 
     // 3. TypeScript Maximum Strictness
-    ...tseslint.configs.strictTypeChecked,
-    ...tseslint.configs.stylisticTypeChecked,
+    ...(tseslint.configs.strictTypeChecked as any), // Force cast
+    ...(tseslint.configs.stylisticTypeChecked as any), // Force cast
 
     // 4. Unicorn
-    unicornPlugin.configs['flat/recommended'],
+    ...(unicornPlugin.configs['flat/recommended'] as any), // Force cast (it's an array)
 
     // 5. Core Language Options & Rules Override
-    {
+    { // Main config object
         files: ['**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'],
         languageOptions: {
             ecmaVersion: 'latest',
@@ -57,7 +56,7 @@ export const baseConfig: Linter.FlatConfig[] = [
         plugins: {
             '@typescript-eslint': tseslint.plugin,
             unicorn: unicornPlugin,
-            prettier: prettierPlugin,
+            prettier: prettierPlugin, // Ensure plugin is referenced
         },
         rules: {
             // --- Core Rule Overrides & Additions ---
@@ -93,9 +92,9 @@ export const baseConfig: Linter.FlatConfig[] = [
             'max-params': ['error', 3],
             'prettier/prettier': 'error',
         },
-    },
+    } as any, // Force cast main config object
     // Test & Config Files Relaxations
-    {
+    { // Test & Config Files Relaxations
         files: [
             '**/*{.,_}{test,spec}.[jt]s?(x)',
             '**/__tests__/**', '**/tests/**', '**/specs/**',
@@ -113,5 +112,5 @@ export const baseConfig: Linter.FlatConfig[] = [
             'no-console': 'off',
             'unicorn/prefer-module': 'off', // Allow CJS in config files
         },
-    },
+    } as any, // Force cast relaxation object
 ];

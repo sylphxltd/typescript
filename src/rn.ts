@@ -9,8 +9,8 @@ import type { Linter } from 'eslint';
 // Import React config as RN builds upon it
 import { reactConfig } from './react.js'; // Assuming react.ts is compiled to react.js
 
-// Framework plugins
-const reactNativePlugin = tseslint.plugin('eslint-plugin-react-native') as any;
+// Framework plugins (Direct import)
+import reactNativePlugin from 'eslint-plugin-react-native';
 
 // Mimic __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -26,10 +26,10 @@ export const rnConfig: Linter.FlatConfig[] = [
     ...reactConfig,
 
     // Add React Native specific config using FlatCompat
-    ...compat.extends('plugin:react-native/all'),
+    ...(compat.extends('plugin:react-native/all') as any), // Force cast
 
     // RN specific overrides
-    {
+    { // RN specific overrides
         files: ['**/*.{js,jsx,ts,tsx}'], // Apply broadly for RN
         languageOptions: {
             globals: {
@@ -43,5 +43,5 @@ export const rnConfig: Linter.FlatConfig[] = [
             // Override RN rules if needed
             // e.g., 'react-native/no-inline-styles': 'warn',
         },
-    },
+    } as any, // Force cast
 ];

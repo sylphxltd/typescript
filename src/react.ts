@@ -9,10 +9,10 @@ import type { Linter } from 'eslint';
 // Import base config to extend/modify if needed, or just use FlatCompat for airbnb full
 // import { baseConfig } from './base.js'; // Assuming base.ts is compiled to base.js
 
-// Framework plugins (adjust imports/types as needed)
-const reactPlugin = tseslint.plugin('eslint-plugin-react') as any;
-const reactHooksPlugin = tseslint.plugin('eslint-plugin-react-hooks') as any;
-const jsxA11yPlugin = tseslint.plugin('eslint-plugin-jsx-a11y') as any;
+// Framework plugins (Direct imports)
+import reactPlugin from 'eslint-plugin-react';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import jsxA11yPlugin from 'eslint-plugin-jsx-a11y';
 
 // Mimic __dirname for ES modules
 const __filename = fileURLToPath(import.meta.url);
@@ -28,10 +28,10 @@ export const reactConfig: Linter.FlatConfig[] = [
     // instead of 'airbnb-typescript/base' in their core setup,
     // or we include the base config here and override the airbnb part.
     // Let's use FlatCompat to extend the full airbnb config here.
-    ...compat.extends('airbnb-typescript'), // Use the full config including React rules
+    ...(compat.extends('airbnb-typescript') as any), // Force cast
 
     // React specific overrides and plugin configurations
-    {
+    { // React specific overrides
         files: ['**/*.{jsx,tsx}'],
         languageOptions: {
             parserOptions: {
@@ -39,7 +39,6 @@ export const reactConfig: Linter.FlatConfig[] = [
             },
             globals: {
                 ...eslintGlobals.browser, // React usually runs in browser
-                // ...eslintGlobals.serviceworker // Add if needed
             },
         },
         plugins: {
@@ -52,18 +51,14 @@ export const reactConfig: Linter.FlatConfig[] = [
         },
         rules: {
             // Apply React recommended rules (many are covered by Airbnb full)
-            // ...reactPlugin.configs.recommended.rules, // Adjust for flat config if needed
-            // ...reactHooksPlugin.configs.recommended.rules,
-            // ...jsxA11yPlugin.configs.recommended.rules,
+            // Note: Plugin recommended configs might need manual merging or specific rule inclusion in flat config
+            // Example: ...(reactPlugin.configs.recommended.rules as any),
 
             // Specific overrides for React/TS
             'react/jsx-filename-extension': ['error', { extensions: ['.jsx', '.tsx'] }],
             'react/prop-types': 'off', // Not needed with TypeScript
             'react/react-in-jsx-scope': 'off', // Not needed with new JSX transform
             'jsx-a11y/anchor-is-valid': 'off', // Often handled by routers
-
-            // Ensure TS parser is used for TSX files (usually inherited)
-            // '@typescript-eslint/parser': // Ensure this is set correctly if needed
         },
-    },
+    } as any, // Force cast
 ];

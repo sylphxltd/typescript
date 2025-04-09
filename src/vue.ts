@@ -3,16 +3,16 @@ import * as eslintGlobals from 'globals';
 import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
 
-// Framework plugins (adjust imports/types as needed)
-const vuePlugin = tseslint.plugin('eslint-plugin-vue') as any;
-const vueParser = tseslint.parser('vue-eslint-parser') as any;
+// Framework plugins (Direct imports)
+import vuePlugin from 'eslint-plugin-vue';
+import vueParser from 'vue-eslint-parser';
 
 export const vueConfig: Linter.FlatConfig[] = [
     // Use plugin's recommended flat config
-    ...(vuePlugin.configs['flat/recommended'] as Linter.FlatConfig[]), // Assert type
+    ...(vuePlugin.configs['flat/recommended'] as any), // Force cast
 
     // Vue specific overrides and plugin configurations
-    {
+    { // Vue specific overrides
         files: ['**/*.vue'],
         languageOptions: {
             parser: vueParser, // Use vue-eslint-parser
@@ -39,5 +39,5 @@ export const vueConfig: Linter.FlatConfig[] = [
             // Ensure TS rules apply correctly within <script setup lang="ts">
             // Add any other Vue specific overrides here
         },
-    },
+    } as any, // Force cast
 ];
