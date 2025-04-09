@@ -1,7 +1,7 @@
 {
   "name": "@sylphlab/eslint-config-sylph",
   "version": "1.0.0",
-  "description": "Shared ESLint Flat Configuration for SylphLab projects",
+  "description": "Strict, opinionated ESLint Flat Config (@typescript-eslint, Airbnb, Unicorn, Prettier) for SylphLab projects (TS, React, Vue, RN).",
   "main": "./dist/eslint.config.js",
   "type": "module",
   "exports": {
@@ -45,9 +45,17 @@
   "keywords": [
     "eslint",
     "eslintconfig",
-    "sylphlab",
+    "flat config",
     "typescript",
-    "flatconfig"
+    "typescript-eslint",
+    "airbnb",
+    "unicorn",
+    "prettier",
+    "strict",
+    "react",
+    "vue",
+    "react-native",
+    "sylphlab"
   ],
   "author": "SylphLab <hi@sylphlab.com> (https://sylphlab.com)",
   "license": "MIT",
