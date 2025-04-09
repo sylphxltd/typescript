@@ -1,7 +1,10 @@
 name: Release ESLint Config Package
 
 on:
-  workflow_dispatch: # Allow manual trigger ONLY for now
+  push:
+    branches:
+      - main # Trigger on push to main branch
+  workflow_dispatch: # Allow manual trigger
 jobs:
   release:
     name: Release

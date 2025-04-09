@@ -11,7 +11,7 @@
     "declarationMap": true, // Optional: Generate sourcemaps for .d.ts files
     "sourceMap": true, // Generate .js.map files
     "outDir": "./dist", // Output directory for compiled JS
-    "rootDir": "./src", // Specify root directory of source files
+    // "rootDir": "./src", // Let TS infer rootDir based on includes
     "types": ["node"], // Include Node.js types
     "lib": ["ES2022"]
   },
