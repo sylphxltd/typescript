@@ -1,138 +1,96 @@
-# SylphLab ESLint Configurations
+# SylphLab TypeScript Ecosystem: Configurations & Guidelines
 
-Monorepo for shared ESLint Flat Configurations for SylphLab projects (TypeScript, React, Vue, React Native).
+[![CI Status](https://github.com/sylphlab/typescript/actions/workflows/ci-release.yml/badge.svg)](https://github.com/sylphlab/typescript/actions/workflows/ci-release.yml)
+[![npm version](https://img.shields.io/npm/v/@sylphlab/eslint-config-sylph?label=%40sylphlab%2Feslint-config-sylph)](https://www.npmjs.com/package/@sylphlab/eslint-config-sylph)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-This repository contains strict, opinionated ESLint configurations based on Airbnb, TypeScript ESLint, Unicorn, and Prettier best practices, formatted for ESLint's modern Flat Config system (`eslint.config.ts`).
+Welcome to the central hub for SylphLab's TypeScript development standards! This monorepo, managed with **Turborepo** and **pnpm workspaces**, houses our meticulously crafted ESLint configurations, shared `tsconfig` bases, Prettier setup, and comprehensive development guidelines.
 
-## Philosophy
+**Why This Project Exists:**
 
-*   **Flat Config (`.ts`):** Modern, type-safe configuration format.
-*   **Extreme Strictness:** Most rules enforced as errors to catch potential issues early.
-*   **High Quality:** Leverages established best practices from Airbnb, TypeScript Strict, and Unicorn.
-*   **AI Readability:** Enforces explicit typing and high consistency, making code easier for both humans and AI assistants to understand and modify.
-*   **Bug Prevention:** Maximizes static analysis capabilities to prevent common errors and enforce type safety rigorously.
-*   **FP Leaning:** Encourages immutability and cleaner code patterns via rules from Airbnb and Unicorn.
-*   **File Naming:** Enforced consistency (PascalCase Components, kebab-case others).
-*   **Formatting:** Delegated entirely to Prettier for objective style consistency.
+We believe in building high-quality, maintainable, and efficient software. This repository serves multiple purposes:
 
-## Packages
+1.  **Internal Standard:** Provides a single source of truth for SylphLab's TypeScript practices, ensuring consistency across all our projects.
+2.  **Open Source Contribution:** Offers the wider community a set of strict, modern, and opinionated configurations based on industry best practices.
+3.  **Technical Showcase:** Demonstrates SylphLab's commitment to quality engineering, modern tooling, and clear documentation.
 
-This monorepo contains the following packages:
+## Core Philosophy
 
-*   `@sylphlab/eslint-config-sylph-base`: Core configuration for all TypeScript projects.
-*   `@sylphlab/eslint-config-sylph-react`: Extends `base` with React-specific rules (JSX, Hooks, a11y).
-*   `@sylphlab/eslint-config-sylph-vue`: Extends `base` with Vue 3-specific rules.
-*   `@sylphlab/eslint-config-sylph-rn`: Extends `react` with React Native-specific rules.
+Our approach is built upon these pillars:
 
-## Installation
+*   **Extreme Strictness:** We enforce most linting rules as errors to catch issues at the earliest possible stage. Quality is non-negotiable.
+*   **Modern Tooling:** Leveraging ESLint Flat Config (`eslint.config.ts`), TypeScript 5+, pnpm, Turborepo, and modern JS features (`"type": "module"`).
+*   **Best Practices:** Incorporating standards from Airbnb, TypeScript Strict, Unicorn, Prettier, and framework-specific recommendations (React, Vue, React Native).
+*   **Developer & AI Ergonomics:** Prioritizing explicit typing, clear naming, and consistent formatting makes code easier for both humans and AI assistants to understand, refactor, and maintain.
+*   **Automation:** Utilizing automated formatting (Prettier), Git hooks (Husky), CI/CD (GitHub Actions), and dependency management (Dependabot) to streamline development.
+*   **Performance & Bug Prevention:** Maximizing static analysis and encouraging efficient patterns to build robust and performant applications.
 
-Choose the package(s) relevant to your project.
+## Packages within this Monorepo
 
-**1. Install ESLint & TypeScript (Required for all):**
-```bash
-# Using pnpm (recommended)
-pnpm add -D eslint typescript
+*   **ESLint Configurations (`packages/eslint-config-*`)**
+    *   `@sylphlab/eslint-config-sylph`: Foundational config for all TS projects.
+    *   `@sylphlab/eslint-config-sylph-react`: Extends base with React/JSX/Hooks/A11y rules.
+    *   `@sylphlab/eslint-config-sylph-vue`: Extends base with Vue 3 rules.
+    *   `@sylphlab/eslint-config-sylph-rn`: Extends React config with React Native rules.
+*   **TypeScript Configuration (`packages/typescript-config`)** *(Planned)*
+    *   Reusable `tsconfig.base.json` files for different environments (Node, DOM, etc.).
+*   **Prettier Configuration (`packages/prettier-config`)** *(Planned)*
+    *   A shared Prettier configuration package.
+*   **Examples (`examples/*`)** *(Planned)*
+    *   Simple projects demonstrating the usage of the configurations.
 
-# Using npm
-npm install --save-dev eslint typescript
+## Documentation (`docs/`)
 
-# Using yarn
-yarn add --dev eslint typescript
-```
+This repository also contains comprehensive documentation covering:
 
-**2. Install Desired Config Package(s):**
+*   **Best Practices:** Core principles, project structure.
+*   **Style Guide:** ESLint, Prettier, Git hooks, quality metrics.
+*   **Tooling:** Project setup, `tsconfig`, Dependabot, CI/CD, Docker.
+*   **TypeScript Specifics:** Testing (Vitest), documentation (VitePress, TypeDoc).
 
-*   **For Base TypeScript Projects:**
+Explore the [`docs/typescript/index.md`](./docs/typescript/index.md) for a detailed breakdown.
+
+## Getting Started
+
+1.  **Clone the repository (if contributing):**
     ```bash
-    pnpm add -D @sylphlab/eslint-config-sylph-base
+    git clone https://github.com/sylphlab/typescript.git
+    cd typescript
     ```
-*   **For React Projects:**
+2.  **Install dependencies:**
     ```bash
-    pnpm add -D @sylphlab/eslint-config-sylph-react
+    pnpm install
     ```
-*   **For Vue 3 Projects:**
-    ```bash
-    pnpm add -D @sylphlab/eslint-config-sylph-vue
-    ```
-*   **For React Native Projects:**
-    ```bash
-    pnpm add -D @sylphlab/eslint-config-sylph-rn
-    ```
+3.  **Explore Packages:** Navigate to individual packages in the `packages/` directory. Each package has its own README detailing specific installation and usage instructions (e.g., [`packages/eslint-config-sylph/README.md`](./packages/eslint-config-sylph/README.md)).
+4.  **Run Commands:** Use `turbo run <script>` from the root (e.g., `turbo run build`, `turbo run lint`).
 
-**3. Install Peer Dependencies:**
+## Using the ESLint Configurations in Your Project
 
-Each config package requires peer dependencies (ESLint plugins, parsers, etc.). Modern package managers (like pnpm v7+) will attempt to automatically install peer *packages* (like `@sylphlab/eslint-config-sylph-base` when you install `@sylphlab/eslint-config-sylph-react`), but they **will not** install other tool peers like `eslint-plugin-react`.
+Refer to the README file of the specific configuration package you need (e.g., `@sylphlab/eslint-config-sylph-react`) for detailed installation and setup instructions. The general process involves:
 
-*   **Recommended Method (Easiest):** Use `install-peerdeps` for the *most specific* package you need. It will install the package itself, its direct peers, and the peers of its dependencies (like `-base`).
-    ```bash
-    # Example for React (Installs -react, -base, and all required plugins/tools)
-    npx install-peerdeps --dev @sylphlab/eslint-config-sylph-react -p pnpm
+1.  Installing `eslint` and `typescript`.
+2.  Installing the desired `@sylphlab/eslint-config-sylph-*` package.
+3.  Using `npx install-peerdeps --dev @sylphlab/eslint-config-sylph-<your-choice> -p pnpm` to install all required peer dependencies.
+4.  Creating an `eslint.config.js` (or `.ts`) in your project root and importing the configuration.
 
-    # Example for Base only
-    npx install-peerdeps --dev @sylphlab/eslint-config-sylph-base -p pnpm
-    ```
-
-*   **Manual Method:** Check the `peerDependencies` listed in the `package.json` file of *each* relevant package (`-base` and your chosen framework package) and install them manually using `pnpm add -D ...`.
-
-## Usage (`eslint.config.ts`)
-
-Create an `eslint.config.ts` file in your project root and import the configuration array from the package you installed.
-
-**1. Base Configuration:**
-```typescript
-// eslint.config.ts
-import baseConfig from '@sylphlab/eslint-config-sylph-base';
+Example (`eslint.config.js` for a React project):
+```javascript
+import sylphReactConfig from '@sylphlab/eslint-config-sylph-react';
 
 export default [
-  ...baseConfig,
-  // Add project-specific overrides
+  ...sylphReactConfig,
+  // Your project-specific overrides
   {
-      languageOptions: { parserOptions: { /* project: './tsconfig.json' */ } },
-      // rules: { 'no-console': 'warn' }
+    languageOptions: { parserOptions: { project: './tsconfig.json' } },
+    rules: { 'no-console': 'warn' }
   }
 ];
 ```
 
-**2. React Configuration:**
-```typescript
-// eslint.config.ts
-import reactConfig from '@sylphlab/eslint-config-sylph-react'; // Exports combined base + react
-
-export default [
-  ...reactConfig,
-  // Add project-specific overrides
-];
-```
-
-**3. Vue 3 Configuration:**
-```typescript
-// eslint.config.ts
-import vueConfig from '@sylphlab/eslint-config-sylph-vue'; // Exports combined base + vue
-
-export default [
-  ...vueConfig,
-  // Add project-specific overrides
-];
-```
-
-**4. React Native Configuration:**
-```typescript
-// eslint.config.ts
-import rnConfig from '@sylphlab/eslint-config-sylph-rn'; // Exports combined base + react + rn
-
-export default [
-  ...rnConfig,
-  // Add project-specific overrides
-];
-```
-*(Note: The exact export structure assumes each framework package exports a combined array including its base dependencies. This needs to be implemented in the source files.)*
-
-## Important Notes
-
-*   Ensure you have a correctly configured `tsconfig.json` in your project root (or specify the path in your `eslint.config.ts`).
-*   Ensure you have a `.prettierrc.js` (or similar) for formatting consistency.
-*   You might need `ts-node` installed if running ESLint directly with the `.ts` config file.
-
 ## Contributing
 
-This monorepo is currently managed as a submodule within the [SylphLab Playbook](https://github.com/sylphlab/Playbook). Please refer to the main repository or the specific config package repository (once separated/renamed) for contribution guidelines.
+Contributions are welcome! Please refer to the contribution guidelines (TODO: Create CONTRIBUTING.md) for details on reporting issues, proposing changes, and submitting pull requests. Ensure adherence to the established code style and quality standards.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
