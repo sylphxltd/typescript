@@ -2,23 +2,38 @@
   "name": "@sylphlab/eslint-config-sylph",
   "version": "0.1.0",
   "description": "Shared ESLint Flat Configuration for SylphLab projects",
-  "main": "eslint.config.js",
+  "main": "./dist/eslint.config.js",
   "type": "module",
   "exports": {
-    ".": "./eslint.config.js",
-    "./base": "./dist/base.js",
-    "./react": "./dist/react.js",
-    "./vue": "./dist/vue.js",
-    "./rn": "./dist/rn.js"
+    ".": {
+      "import": "./dist/eslint.config.js",
+      "types": "./dist/eslint.config.d.ts"
+    },
+    "./base": {
+      "import": "./dist/src/base.js",
+      "types": "./dist/src/base.d.ts"
+    },
+    "./react": {
+      "import": "./dist/src/react.js",
+      "types": "./dist/src/react.d.ts"
+    },
+    "./vue": {
+      "import": "./dist/src/vue.js",
+      "types": "./dist/src/vue.d.ts"
+    },
+    "./rn": {
+      "import": "./dist/src/rn.js",
+      "types": "./dist/src/rn.d.ts"
+    }
   },
   "files": [
-    "dist",
-    "eslint.config.js"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",
     "lint": "eslint . --cache --max-warnings=0",
-    "format": "prettier --write . --cache --ignore-unknown"
+    "format": "prettier --write . --cache --ignore-unknown",
+    "prepublishOnly": "pnpm run build"
   },
   "repository": {
     "type": "git",

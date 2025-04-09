@@ -7,19 +7,21 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-    "outDir": "./dist", // Output directory for compiled JS (if needed for distribution)
-    "rootDir": "./", // Specify root directory
     "declaration": true, // Generate .d.ts files
-    "sourceMap": true, // Generate source maps
-    "types": ["node"], // Include Node.js types to resolve 'node:path', 'node:url' etc.
-    "lib": ["ES2022"] // Include necessary ES libraries
+    "declarationMap": true, // Optional: Generate sourcemaps for .d.ts files
+    "sourceMap": true, // Generate .js.map files
+    "outDir": "./dist", // Output directory for compiled JS
+    "rootDir": "./src", // Specify root directory of source files
+    "types": ["node"], // Include Node.js types
+    "lib": ["ES2022"]
   },
   "include": [
-    "eslint.config.ts", // Include the main config file
-    "src/**/*.ts" // Include any source files if you plan to split the config
+    "src/**/*.ts", // Compile all TS files in src
+    "eslint.config.ts" // Also compile the main export file
   ],
   "exclude": [
     "node_modules",
-    "dist"
+    "dist",
+    "src/types/**/*.d.ts" // Exclude custom type declarations from compilation output
   ]
 }
