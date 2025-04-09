@@ -1,5 +1,24 @@
 # @sylphlab/eslint-config-sylph-react
 
+## 3.0.0
+
+### Major Changes
+
+- 972e0c9: feat: Refactor package structure, migrate docs, and adopt Turborepo
+
+  Major restructuring of the monorepo:
+
+  - Renamed packages to full names (e.g., `base` -> `eslint-config-sylph`).
+  - Migrated TypeScript guidelines from the main Playbook repo into the `docs/` directory here.
+  - Introduced Turborepo for monorepo management.
+  - Updated all package READMEs with detailed philosophy and usage.
+  - Updated root README to reflect new structure and purpose.
+
+### Patch Changes
+
+- Updated dependencies [972e0c9]
+  - @sylphlab/eslint-config-sylph@3.0.0
+
 ## 2.0.0
 
 ### Major Changes
