@@ -4,6 +4,9 @@ on:
   push:
     tags:
       - 'v*.*.*' # Trigger on version tags (e.g., v0.1.0)
+  create: # Also trigger on tag creation event
+    tags:
+      - 'v*.*.*'
   workflow_dispatch: # Allow manual trigger
 
 jobs:
@@ -39,5 +42,5 @@ jobs:
         uses: JS-DevTools/npm-publish@v3
         with:
           provenance: true # Generate SLSA provenance
-          # token: ${{ secrets.NPM_TOKEN }} # OIDC doesn't need a token secret
+          token: ${{ secrets.NPM_TOKEN }} # Provide token explicitly
           access: public # Set package access level
