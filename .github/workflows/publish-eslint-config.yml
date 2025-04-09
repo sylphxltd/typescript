@@ -26,9 +26,9 @@ jobs:
           fetch-depth: 0
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4 # Keep action version pinned
         with:
-          node-version: '20'
+          node-version: 'lts/*' # Use latest LTS Node.js version
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
