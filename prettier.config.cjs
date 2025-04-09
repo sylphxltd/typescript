@@ -1,7 +1,10 @@
-// prettier.config.ts
-import { type Config } from "prettier";
+// prettier.config.cjs
 
-const config: Config = {
+/**
+ * @see https://prettier.io/docs/configuration
+ * @type {import("prettier").Config}
+ */
+const config = {
   printWidth: 100,
   tabWidth: 2,
   useTabs: false,
@@ -14,4 +17,4 @@ const config: Config = {
   endOfLine: 'lf',
 };
 
-export default config;
+module.exports = config;

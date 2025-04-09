@@ -1,5 +1,9 @@
 name: Release ESLint Config Package
 
+permissions: # Add top-level permissions for changeset action
+  contents: write
+  pull-requests: write
+
 on:
   push:
     branches:
