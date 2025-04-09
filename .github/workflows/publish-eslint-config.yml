@@ -1,31 +1,27 @@
-name: Publish ESLint Config Package
+name: Release ESLint Config Package
 
 on:
-  push:
-    tags:
-      - 'v*.*.*' # Trigger on version tags (e.g., v0.1.0)
-  create: # Also trigger on tag creation event
-    tags:
-      - 'v*.*.*'
-  workflow_dispatch: # Allow manual trigger
-
+  workflow_dispatch: # Allow manual trigger ONLY for now
 jobs:
-  publish:
+  release:
+    name: Release
     runs-on: ubuntu-latest
     permissions:
-      contents: read
+      contents: write # Needed to create release commit/PR
+      pull-requests: write # Needed to create release PR
       id-token: write # Needed for OIDC publishing
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout Repo
         uses: actions/checkout@v4
-        # No need for submodules checkout here as this runs within the submodule repo context on tag push
+        with:
+          # Fetch depth 0 is required for changeset version to correctly determine changed packages
+          fetch-depth: 0
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
-          registry-url: 'https://registry.npmjs.org/'
 
       - name: Setup pnpm
         uses: pnpm/action-setup@v3
@@ -35,12 +31,17 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 
-      - name: Build Package
-        run: pnpm run build
-
-      - name: Publish to npm with OIDC
-        uses: JS-DevTools/npm-publish@v3
+      - name: Create Release Pull Request or Publish to npm
+        id: changesets
+        uses: changesets/action@v1
         with:
-          provenance: true # Generate SLSA provenance
-          token: ${{ secrets.NPM_TOKEN }} # Provide token explicitly
-          access: public # Set package access level
+          # This expects you to have a script called 'release' in your package.json
+          # which runs 'changeset publish'. We defined 'release' as 'pnpm run build && changeset publish'.
+          publish: pnpm run release
+          # Optional: Use 'createGithubReleases: true' to create GitHub releases
+          # Optional: Use 'commit: "chore: update versions"' to commit directly instead of PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Still needed for the publish command within 'release' script
+          # Use NPM_CONFIG_PROVENANCE=true for OIDC/provenance if not using JS-DevTools/npm-publish
+          # NPM_CONFIG_PROVENANCE: "true"
