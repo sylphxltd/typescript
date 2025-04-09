@@ -62,4 +62,4 @@ export default [
 ];
 ```
 
-See the [main monorepo README](https://github.com/sylphlab/typescript#readme) for more details on the overall philosophy and available configurations.
+See the [main monorepo README](../../README.md) for more details on the overall philosophy and available configurations.

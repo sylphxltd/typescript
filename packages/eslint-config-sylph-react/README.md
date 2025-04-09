@@ -1,10 +1,10 @@
 # ESLint Config Sylph - React (@sylphlab/eslint-config-sylph-react)
 
-This package provides the ESLint Flat Config rules specifically tailored for SylphLab React and Next.js projects. It extends the foundational [`@sylphlab/eslint-config-sylph`](https://github.com/sylphlab/typescript/tree/main/packages/eslint-config-sylph) base configuration with specific rules for React best practices, JSX accessibility (A11y), and React Hooks conventions.
+This package provides the ESLint Flat Config rules specifically tailored for SylphLab React and Next.js projects. It extends the foundational [`@sylphlab/eslint-config-sylph`](../base/README.md) base configuration with specific rules for React best practices, JSX accessibility (A11y), and React Hooks conventions.
 
 ## Core Philosophy & Design Principles
 
-This configuration builds upon the [base philosophy](https://github.com/sylphlab/typescript/tree/main/packages/eslint-config-sylph#core-philosophy--design-principles) with a focus on robust React development:
+This configuration builds upon the [base philosophy](../base/README.md#core-philosophy--design-principles) with a focus on robust React development:
 
 *   **React Best Practices:** Enforces rules from `eslint-plugin-react` to promote common patterns, prevent anti-patterns, and ensure consistency in component definition and JSX usage.
 *   **Hooks Rules:** Integrates `eslint-plugin-react-hooks` to enforce the Rules of Hooks (`react-hooks/rules-of-hooks`) and check for exhaustive dependencies (`react-hooks/exhaustive-deps`), preventing common bugs related to hook usage.
@@ -68,4 +68,4 @@ export default [
 ];
 ```
 
-See the [main monorepo README](https://github.com/sylphlab/typescript#readme) for more details on the overall philosophy and available configurations.
+See the [main monorepo README](../../README.md) for more details on the overall philosophy and available configurations.

@@ -1,10 +1,10 @@
 # ESLint Config Sylph - Vue (@sylphlab/eslint-config-sylph-vue)
 
-This package provides the ESLint Flat Config rules specifically tailored for SylphLab Vue 3 projects (using TypeScript). It extends the foundational [`@sylphlab/eslint-config-sylph`](https://github.com/sylphlab/typescript/tree/main/packages/eslint-config-sylph) base configuration with specific rules recommended for Vue 3 development.
+This package provides the ESLint Flat Config rules specifically tailored for SylphLab Vue 3 projects (using TypeScript). It extends the foundational [`@sylphlab/eslint-config-sylph`](../base/README.md) base configuration with specific rules recommended for Vue 3 development.
 
 ## Core Philosophy & Design Principles
 
-This configuration builds upon the [base philosophy](https://github.com/sylphlab/typescript/tree/main/packages/eslint-config-sylph#core-philosophy--design-principles) with a focus on robust Vue 3 development:
+This configuration builds upon the [base philosophy](../base/README.md#core-philosophy--design-principles) with a focus on robust Vue 3 development:
 
 *   **Vue 3 Best Practices:** Enforces rules from `eslint-plugin-vue`'s recommended set (`plugin:vue/vue3-recommended`) to promote common patterns, prevent anti-patterns, and ensure consistency in Vue component definition, template syntax, and script setup usage.
 *   **TypeScript Integration:** Assumes usage of TypeScript within Vue components (`<script setup lang="ts">`) and leverages the base configuration's TypeScript rules.
@@ -68,4 +68,4 @@ export default [
 ];
 ```
 
-See the [main monorepo README](https://github.com/sylphlab/typescript#readme) for more details on the overall philosophy and available configurations.
+See the [main monorepo README](../../README.md) for more details on the overall philosophy and available configurations.

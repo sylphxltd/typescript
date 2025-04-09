@@ -1,10 +1,10 @@
 # ESLint Config Sylph - React Native (@sylphlab/eslint-config-sylph-rn)
 
-This package provides the ESLint Flat Config rules specifically tailored for SylphLab React Native projects. It extends the [`@sylphlab/eslint-config-sylph-react`](https://github.com/sylphlab/typescript/tree/main/packages/eslint-config-sylph-react) configuration (which itself extends the base config) with specific rules recommended for React Native development via `eslint-plugin-react-native`.
+This package provides the ESLint Flat Config rules specifically tailored for SylphLab React Native projects. It extends the [`@sylphlab/eslint-config-sylph-react`](../react/README.md) configuration (which itself extends the base config) with specific rules recommended for React Native development via `eslint-plugin-react-native`.
 
 ## Core Philosophy & Design Principles
 
-This configuration builds upon the [React config philosophy](https://github.com/sylphlab/typescript/tree/main/packages/eslint-config-sylph-react#core-philosophy--design-principles) with a focus on robust React Native development:
+This configuration builds upon the [React config philosophy](../react/README.md#core-philosophy--design-principles) with a focus on robust React Native development:
 
 *   **React Native Best Practices:** Enforces rules from `eslint-plugin-react-native` to promote common patterns specific to the React Native environment, such as avoiding inline styles (`react-native/no-inline-styles`), using platform-specific file extensions correctly (`react-native/split-platform-components`), and managing StyleSheet usage (`react-native/no-unused-styles`).
 *   **Platform Awareness:** Helps catch potential issues related to platform differences and encourages platform-agnostic or correctly separated code.
@@ -66,4 +66,4 @@ export default [
 ];
 ```
 
-See the [main monorepo README](https://github.com/sylphlab/typescript#readme) for more details on the overall philosophy and available configurations.
+See the [main monorepo README](../../README.md) for more details on the overall philosophy and available configurations.
