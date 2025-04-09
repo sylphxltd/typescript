@@ -7,13 +7,34 @@ This package provides a strict, opinionated ESLint configuration based on Airbnb
 ## Philosophy
 
 *   **Flat Config (`.ts`):** Modern, type-safe configuration format.
-*   **Extreme Strictness:** Most rules enforced as errors.
-*   **High Quality:** Based on Airbnb, TypeScript Strict, and Unicorn.
-*   **AI Readability:** Enforces explicit typing and high consistency.
-*   **Bug Prevention:** Maximizes static analysis.
-*   **FP Leaning:** Encourages immutability.
-*   **File Naming:** Enforced (PascalCase Components, kebab-case others).
-*   **Formatting:** Delegated entirely to Prettier.
+*   **Extreme Strictness:** Most rules enforced as errors to catch potential issues early.
+*   **High Quality:** Leverages established best practices from Airbnb, TypeScript Strict, and Unicorn.
+*   **AI Readability:** Enforces explicit typing and high consistency, making code easier for both humans and AI assistants to understand and modify.
+*   **Bug Prevention:** Maximizes static analysis capabilities to prevent common errors and enforce type safety rigorously.
+*   **FP Leaning:** Encourages immutability and cleaner code patterns via rules from Airbnb and Unicorn.
+*   **File Naming:** Enforced consistency (PascalCase Components, kebab-case others).
+*   **Formatting:** Delegated entirely to Prettier for objective style consistency.
+
+## Core Rules & Rationale
+
+This configuration builds upon several well-regarded rule sets and adds specific overrides to align with SylphLab's principles:
+
+*   **`eslint:recommended`**: Foundational rules catching common JavaScript errors.
+*   **`airbnb-typescript/base` (or `airbnb-typescript` for React/RN)**: Enforces a widely adopted, high-quality style guide, promoting consistency and readability.
+*   **`typescript-eslint/strict-type-checked` & `stylistic-type-checked`**: Maximizes TypeScript's type safety benefits, requiring explicit types and catching potential type errors at compile time. This is crucial for robust applications and effective AI collaboration.
+*   **`unicorn/recommended`**: Adds rules focused on modern JavaScript features, code cleanup, and preventing obscure bugs. Key rules include:
+    *   `unicorn/filename-case`: Ensures consistent file naming.
+    *   `unicorn/prefer-module`: Encourages ES Modules (with exceptions for config files).
+    *   `unicorn/no-null`: Promotes using `undefined` consistently.
+*   **Prettier Integration (`eslint-plugin-prettier`, `eslint-config-prettier`)**: Ensures all formatting is handled by Prettier, avoiding conflicts with ESLint style rules. The `prettier/prettier` rule runs Prettier as an ESLint rule.
+*   **Specific SylphLab Overrides (Examples from `baseConfig`):**
+    *   `@typescript-eslint/explicit-function-return-type` & `explicit-module-boundary-types`: Require explicit return types for functions and module exports, improving code clarity and preventing unexpected `any` types.
+    *   `import/prefer-default-export`: Disabled, allowing named exports for better tree-shaking and refactoring.
+    *   `import/no-extraneous-dependencies`: Strictly controlled to prevent importing dev dependencies into production code.
+    *   `no-console` & `no-debugger`: Disallowed in committed code to maintain clean production builds.
+    *   `complexity`, `max-lines`, `max-lines-per-function`, `max-depth`, `max-params`: Enforce cognitive limits to keep code understandable and maintainable. Functions and files should be small and focused.
+
+This combination aims for code that is not only correct and consistent but also highly maintainable, readable (by humans and AI), and less prone to common errors.
 
 ## Installation
 
