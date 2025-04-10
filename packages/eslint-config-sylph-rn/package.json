@@ -3,22 +3,22 @@
   "version": "4.0.3",
   "description": "React Native ESLint Flat Config for SylphLab projects.",
   "main": "./dist/index.js",
-  "types": "./dist/src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/src/index.d.ts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
       "require": {
-        "types": "./dist/src/index.d.ts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.cjs"
       }
     }
   },
   "files": [
-    "dist/src"
+    "dist"
   ],
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
