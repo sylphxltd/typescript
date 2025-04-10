@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "Base ESLint Flat Config (TS, Airbnb, Unicorn, Prettier) for SylphLab projects.",
   "main": "./dist/index.js",
   "types": "./dist/src/index.d.ts",
@@ -57,14 +57,14 @@
     "globals": "^15.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.0.0",
+    "@types/node": "^22.0.0",
     "typescript": "^5.0.0",
     "typescript-eslint": "^7.0.0"
   },
   "peerDependencies": {
     "@eslint/js": "^9.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
+    "@typescript-eslint/parser": "^7.0.0 || ^8.0.0",
     "eslint": "^9.0.0",
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.0.0",
