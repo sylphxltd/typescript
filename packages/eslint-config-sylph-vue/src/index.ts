@@ -1,52 +1,113 @@
-// configs/eslint-config-sylph/packages/vue/src/vue.ts
-// Import base config to combine
-import { sylph } from '@sylphlab/eslint-config-sylph';
-import * as eslintGlobals from 'globals';
+import globals from 'globals';
 import tseslint from 'typescript-eslint';
-import type { Linter } from 'eslint';
-
-// Framework plugins (Direct imports)
 import vuePlugin from 'eslint-plugin-vue';
 import vueParser from 'vue-eslint-parser';
+import { sylph as sylphBaseConfig } from '@sylphlab/eslint-config-sylph'; // Import the base config array
+import type { Linter } from 'eslint';
 
-// Define Vue-specific parts
-const vueSpecificConfig: Linter.Config[] = [
-    // Use plugin's recommended flat config
-    ...(vuePlugin.configs['flat/recommended'] as any), // Force cast
+// Define type alias for FlatConfig for better readability
+type Config = Linter.Config; // Use Linter.Config instead of deprecated Linter.FlatConfig
 
-    // Vue specific overrides and plugin configurations
-    { // Vue specific overrides
-        files: ['**/*.vue'],
+/**
+ * Sylph ESLint Configuration for Vue 3 Projects (Flat Config)
+ *
+ * Extends the base @sylphlab/eslint-config-sylph configuration with
+ * rules specific to Vue 3 and TypeScript integration.
+ */
+export const vue = [
+    // 1. Inherit Base Configuration
+    // Includes core JS, TS, Unicorn, Import, Functional, Security, Sonar, Promise, RegExp, Prettier rules
+    ...sylphBaseConfig,
+
+    // 2. Vue 3 Specific Configuration (using eslint-plugin-vue's flat configs)
+    // Includes parser, plugin, and recommended rules for Vue 3
+    ...(vuePlugin.configs['flat/recommended'] as Config[]),
+
+    // 3. Overrides and Additional Configurations for Vue + TS
+    {
+        files: ['**/*.vue'], // Target only .vue files for specific overrides
         languageOptions: {
-            parser: vueParser, // Use vue-eslint-parser
+            // Parser is set by vuePlugin.configs['flat/recommended'] to vue-eslint-parser
             parserOptions: {
-                parser: tseslint.parser, // Specify TS parser for <script lang="ts">
-                project: './tsconfig.json', // Consumers might need to override
-                tsconfigRootDir: process.cwd(),
-                extraFileExtensions: ['.vue'], // Important for TS in Vue
+                // Specify the parser for <script lang="ts"> blocks
+                parser: tseslint.parser,
+                // Consumers MUST configure 'project' path for type-aware linting in .vue files
+                // project: ['./tsconfig.vue.json', './tsconfig.json'], // Example paths
+                // tsconfigRootDir: import.meta.dirname, // Usually relative to eslint.config.ts
+                extraFileExtensions: ['.vue'], // Ensure .vue files are included
                 sourceType: 'module',
             },
             globals: {
-                ...eslintGlobals.browser, // Vue usually runs in browser
+                ...globals.browser, // Vue apps typically run in the browser
+                // Add Vue 3 specific globals if needed (e.g., defineProps, defineEmits are usually auto-recognized)
             },
         },
-        plugins: {
-            // vue plugin is already included via configs['flat/recommended']
-            // '@typescript-eslint': tseslint.plugin, // Ensure TS plugin is available if needed for overrides
-        },
         rules: {
-            // --- Vue Specific Rule Overrides ---
-            // Example: Relax rule for module boundaries in .vue files if needed
+            // --- Vue Rule Overrides ---
+            // Prioritize script setup and composition API
+            'vue/component-api-style': ['error', ['script-setup', 'composition']],
+            'vue/prefer-import-from-vue': 'error',
+            'vue/no-v-html': 'warn', // Warn against potential XSS
+            'vue/require-default-prop': 'off', // Less critical with TS
+            'vue/multi-word-component-names': ['warn', { // Warn, allow exceptions for root/layout components
+                'ignores': ['App', 'Index', 'Layout', 'Default', 'Error']
+            }],
+            'vue/padding-line-between-blocks': ['error', 'always'],
+            'vue/define-macros-order': ['error', { // Enforce consistent macro order
+                order: ['defineOptions', 'defineProps', 'defineEmits', 'defineSlots'],
+            }],
+            'vue/block-lang': ['error', { // Enforce lang="ts" for script blocks
+                script: { lang: 'ts' },
+            }],
+            'vue/component-name-in-template-casing': ['error', 'PascalCase', {
+                registeredComponentsOnly: false, // Check all components
+                ignores: [],
+            }],
+            'vue/custom-event-name-casing': ['error', 'camelCase'],
+            'vue/no-required-prop-with-default': ['error', { autofix: true }],
+            'vue/prefer-true-attribute-shorthand': 'error',
+            'vue/v-on-event-hyphenation': ['error', 'never'], // Use @click instead of @click-event
+
+            // --- TypeScript Rule Adjustments for Vue ---
+            // Allow defineProps, defineEmits etc. to be unused (they are compiled away)
+            '@typescript-eslint/no-unused-vars': ['error', {
+                argsIgnorePattern: '^_',
+                varsIgnorePattern: '^_',
+                ignoreRestSiblings: true,
+                vars: 'all',
+                args: 'after-used',
+                // Allow specific identifiers used by Vue's compiler macros
+                caughtErrors: 'all',
+            }],
+            // Relax module boundary types in .vue files if needed, but prefer explicit types
             // '@typescript-eslint/explicit-module-boundary-types': 'warn',
 
-            // Ensure TS rules apply correctly within <script setup lang="ts">
-            // Add any other Vue specific overrides here
+            // --- Unicorn Rule Adjustments for Vue ---
+            // Allow PascalCase for .vue component filenames
+            'unicorn/filename-case': ['error', {
+                cases: { pascalCase: true, kebabCase: true },
+                ignore: [
+                    /^\.?.*rc\.[cm]?js$/,
+                    /^[a-zA-Z]+(?:[-.][a-zA-Z]+)*\.config\.[cm]?[jt]s$/,
+                    /^[a-zA-Z]+(?:[-.][a-zA-Z]+)*\.setup\.[cm]?[jt]s$/,
+                    /\.d\.ts$/,
+                    'vite-env.d.ts',
+                    /^\.env(?:\.\w+)?$/,
+                    // Keep common non-component names kebab-case
+                    'index\.[jt]sx?$',
+                    'main\.[jt]sx?$',
+                    'app\.[jt]sx?$',
+                    'router\.[jt]sx?$',
+                    'store\.[jt]sx?$',
+                ],
+            }],
+            // Allow 'Props' and 'Ref' abbreviations common in Vue
+            'unicorn/prevent-abbreviations': ['error', {
+                allowList: { Props: true, Ref: true }
+            }],
         },
-    } as any, // Force cast
-];
+    },
+] satisfies Config[];
 
-// Export the combined configuration array
-export const vue: Linter.Config[] = [
-    ...sylph,
-    ...vueSpecificConfig,
-];
+// Export the config directly
+export default vue;

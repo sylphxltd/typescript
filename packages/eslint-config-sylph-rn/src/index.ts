@@ -1,54 +1,51 @@
-// configs/eslint-config-sylph/src/rn.ts
-import path from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { FlatCompat } from '@eslint/eslintrc';
-import * as eslintGlobals from 'globals';
-import tseslint from 'typescript-eslint';
+import reactNativePlugin from 'eslint-plugin-react-native';
+import { react as reactBaseConfig } from '@sylphlab/eslint-config-sylph-react'; // Import the React config array
 import type { Linter } from 'eslint';
 
-// Import React config (which includes base) to combine
-import { react } from '@sylphlab/eslint-config-sylph-react';
+// Define type alias for FlatConfig for better readability
+type Config = Linter.Config; // Use Linter.Config instead of deprecated Linter.FlatConfig
 
-// Framework plugins (Direct import)
-import reactNativePlugin from 'eslint-plugin-react-native';
+/**
+ * Sylph ESLint Configuration for React Native Projects (Flat Config)
+ *
+ * Extends the @sylphlab/eslint-config-sylph-react configuration with
+ * rules specific to React Native.
+ */
+export const rn = [
+    // 1. Inherit React Configuration (which includes the base config)
+    ...reactBaseConfig,
 
-// Mimic __dirname for ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-// Initialize FlatCompat
-const compat = new FlatCompat({
-    baseDirectory: __dirname,
-});
-
-// Define RN-specific parts
-const rnSpecificConfig: Linter.Config[] = [
-    // Include the React config first
-    ...react,
-
-    // Add React Native specific config using FlatCompat
-    ...(compat.extends('plugin:react-native/all') as any), // Force cast
-
-    // RN specific overrides
-    { // RN specific overrides
-        files: ['**/*.{js,jsx,ts,tsx}'], // Apply broadly for RN
-        languageOptions: {
-            globals: {
-                // RN globals are likely handled by 'plugin:react-native/all'
-            },
-        },
+    // 2. React Native Specific Configuration
+    {
+        files: ['**/*.{js,jsx,ts,tsx}'], // Apply RN rules broadly
         plugins: {
             'react-native': reactNativePlugin,
         },
-        rules: {
-            // Override RN rules if needed
-            // e.g., 'react-native/no-inline-styles': 'warn',
+        languageOptions: {
+            globals: {
+                // React Native specific globals (if any not covered by plugin)
+                // e.g., __DEV__: 'readonly',
+            },
         },
-    } as any, // Force cast
-];
+        rules: {
+            // --- React Native Plugin Recommended Rules ---
+            // Manually include rules from the plugin's recommended set
+            ...reactNativePlugin.configs.all.rules, // Start with 'all' and override below
 
-// Export the combined configuration array
-export const rn: Linter.Config[] = [
-    ...react, // reactConfig already includes baseConfig
-    ...rnSpecificConfig,
-];
+            // --- Rule Overrides & Additions for React Native ---
+            'react-native/no-unused-styles': 'error',
+            'react-native/split-platform-components': 'warn', // Warn, don't error yet
+            'react-native/no-inline-styles': 'warn', // Warn, allow for quick prototyping
+            'react-native/no-color-literals': 'warn', // Warn, encourage theme usage
+            'react-native/no-raw-text': ['error', { skip: ['CustomTextComponent'] }], // Enforce text components, allow exceptions
+            'react-native/sort-styles': 'off', // Let Prettier handle style sorting if desired via plugins
+
+            // --- Adjust base/react rules for RN context ---
+            // Example: Relax console usage slightly more in RN dev?
+            // 'no-console': ['warn', { allow: ['warn', 'error', 'info', 'debug'] }],
+        },
+    },
+] satisfies Config[];
+
+// Export the config directly
+export default rn;
