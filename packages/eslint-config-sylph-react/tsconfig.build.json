@@ -12,7 +12,7 @@
     "composite": true // Enable project references
   },
   "references": [ // React depends on base
-    { "path": "../base/tsconfig.build.json" }
+    { "path": "../eslint-config-sylph/tsconfig.build.json" }
   ],
   "include": ["src/**/*.ts", "src/**/*.d.ts"],
   "exclude": ["node_modules", "dist"]

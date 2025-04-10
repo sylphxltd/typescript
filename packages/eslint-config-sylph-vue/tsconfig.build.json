@@ -11,7 +11,7 @@
     "composite": true // Enable project references
   },
   "references": [ // Vue depends on base
-    { "path": "../base/tsconfig.build.json" }
+    { "path": "../eslint-config-sylph/tsconfig.build.json" }
   ],
   "include": ["src/**/*.ts", "src/**/*.d.ts"], // Explicitly include .d.ts for stubs
   "exclude": ["node_modules", "dist"]
