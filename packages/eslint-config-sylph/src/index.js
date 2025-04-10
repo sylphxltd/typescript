@@ -10,11 +10,6 @@ import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
 import globals from 'globals';
-import type { Linter } from 'eslint';
-
-// Define type alias for Config for better readability
-type Config = Linter.Config; // Use Linter.Config instead of deprecated Linter.FlatConfig
-
 /**
  * Sylph ESLint Configuration (Flat Config)
  *
@@ -36,15 +31,12 @@ type Config = Linter.Config; // Use Linter.Config instead of deprecated Linter.F
 export const sylph = [
     // 1. Core ESLint Recommended Rules
     eslintJs.configs.recommended,
-
     // 2. TypeScript Strict & Stylistic Rules
     // Uses the parser to enable linting based on type information.
     ...tseslint.configs.strictTypeChecked,
     ...tseslint.configs.stylisticTypeChecked,
-
     // 3. Unicorn Rules (Modernization, Consistency, Bug Prevention)
     unicornPlugin.configs['flat/recommended'],
-
     // 4. Import Rules (Order, Structure, Resolution)
     {
         plugins: { import: importPlugin },
@@ -67,18 +59,18 @@ export const sylph = [
             'import/no-unresolved': 'error', // Ensure imports resolve correctly
             'import/prefer-default-export': 'off', // Allow named exports
             'import/no-extraneous-dependencies': ['error', {
-                devDependencies: [
-                    '**/__tests__/**', '**/tests/**', '**/specs/**', '**/*{.,_}{test,spec}.[jt]s?(x)',
-                    '**/*.config.[jt]s?(x)', '**/test-utils.[jt]s?(x)',
-                    'vite.config.[jt]s', 'vitest.config.[jt]s', 'eslint.config.[jt]s',
-                    'jest.setup.[jt]s', 'vitest.setup.[jt]s',
-                    '**/.*rc.[jt]s', // Config files like .eslintrc.js
-                    '**/scripts/**', // Build/utility scripts
-                ],
-                optionalDependencies: false,
-                peerDependencies: false, // Check peerDeps in consuming projects, not here
-            }],
-            'import/order': [ // Enforce consistent import order
+                    devDependencies: [
+                        '**/__tests__/**', '**/tests/**', '**/specs/**', '**/*{.,_}{test,spec}.[jt]s?(x)',
+                        '**/*.config.[jt]s?(x)', '**/test-utils.[jt]s?(x)',
+                        'vite.config.[jt]s', 'vitest.config.[jt]s', 'eslint.config.[jt]s',
+                        'jest.setup.[jt]s', 'vitest.setup.[jt]s',
+                        '**/.*rc.[jt]s', // Config files like .eslintrc.js
+                        '**/scripts/**', // Build/utility scripts
+                    ],
+                    optionalDependencies: false,
+                    peerDependencies: false, // Check peerDeps in consuming projects, not here
+                }],
+            'import/order': [
                 'error',
                 {
                     groups: [
@@ -104,7 +96,6 @@ export const sylph = [
             'import/first': 'error', // Ensure all imports are at the top
         },
     },
-
     // 5. Functional Programming Style Rules
     {
         plugins: { functional: functionalPlugin },
@@ -120,28 +111,22 @@ export const sylph = [
             // 'functional/prefer-immutable-types': 'warn', // Removed - can be overly verbose/strict
         },
     },
-
     // 6. Security Rules
     securityPlugin.configs.recommended,
-
     // 7. SonarJS Rules (Bug Detection, Code Smells)
     sonarjsPlugin.configs.recommended,
-
     // 8. Promise Rules (Best Practices)
     promisePlugin.configs['flat/recommended'],
-
     // 9. RegExp Rules (Optimization, Security)
     regexpPlugin.configs['flat/recommended'],
-
     // 10. Prettier Integration (MUST be last to override other style rules)
     prettierConfig, // Disables ESLint rules that conflict with Prettier
-    { // Runs Prettier as an ESLint rule
+    {
         plugins: { prettier: prettierPlugin },
         rules: {
             'prettier/prettier': 'error',
         },
     },
-
     // 11. Global Configuration & Overrides
     {
         files: ['**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'],
@@ -175,9 +160,8 @@ export const sylph = [
             '@typescript-eslint/consistent-type-imports': ['error', { prefer: 'type-imports', fixStyle: 'inline-type-imports' }],
             '@typescript-eslint/consistent-type-exports': ['error', { fixMixedExportsWithInlineTypeSpecifier: true }],
             // '@typescript-eslint/no-unused-vars': ['error', ...], // Note: This rule was previously duplicated and removed here. The definition at line 169 is kept.
-
             // --- Unicorn Rule Overrides ---
-            'unicorn/filename-case': [ // Enforce kebab-case or PascalCase
+            'unicorn/filename-case': [
                 'error',
                 {
                     cases: { pascalCase: true, kebabCase: true },
@@ -199,25 +183,24 @@ export const sylph = [
                 },
             ],
             'unicorn/prevent-abbreviations': ['error', {
-                replacements: {
-                    props: false, // Allow 'props'
-                    ref: false, // Allow 'ref'
-                    args: false, // Allow 'args'
-                    params: false, // Allow 'params'
-                    env: false, // Allow 'env'
-                    dev: false, // Allow 'dev'
-                    prod: false, // Allow 'prod'
-                    config: false, // Allow 'config'
-                    src: false, // Allow 'src'
-                    dist: false, // Allow 'dist'
-                    pkg: false, // Allow 'pkg'
-                },
-                // allowList: { Props: true, Ref: true } // Removed: Framework-specific, moved to react/vue configs
-            }],
+                    replacements: {
+                        props: false, // Allow 'props'
+                        ref: false, // Allow 'ref'
+                        args: false, // Allow 'args'
+                        params: false, // Allow 'params'
+                        env: false, // Allow 'env'
+                        dev: false, // Allow 'dev'
+                        prod: false, // Allow 'prod'
+                        config: false, // Allow 'config'
+                        src: false, // Allow 'src'
+                        dist: false, // Allow 'dist'
+                        pkg: false, // Allow 'pkg'
+                    },
+                    // allowList: { Props: true, Ref: true } // Removed: Framework-specific, moved to react/vue configs
+                }],
             'unicorn/prefer-top-level-await': 'off', // Often not feasible/desirable
             'unicorn/no-null': 'off', // null is idiomatic in JS/TS
             'unicorn/no-useless-undefined': ['error', { checkArguments: false }], // Allow undefined in function args
-
             // --- General Code Quality & Consistency ---
             'no-console': ['warn', { allow: ['warn', 'error', 'info'] }], // Allow warn/error/info
             'no-debugger': 'error',
@@ -232,14 +215,14 @@ export const sylph = [
             'no-nested-ternary': 'error', // Use unicorn/no-nested-ternary instead
             'unicorn/no-nested-ternary': 'error',
             'no-param-reassign': ['error', { props: false }], // Allow reassigning properties of params
-            'no-restricted-syntax': [ // Disallow problematic syntax
+            'no-restricted-syntax': [
                 'error',
                 'ForInStatement',
                 'LabeledStatement',
                 'WithStatement',
                 // 'error', { selector: 'TSEnumDeclaration', message: "Don't declare enums" } // Optional: Disallow enums
             ],
-            'padding-line-between-statements': [ // Enforce padding lines
+            'padding-line-between-statements': [
                 'error',
                 { blankLine: 'always', prev: '*', next: 'return' },
                 { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
@@ -253,7 +236,6 @@ export const sylph = [
             '@typescript-eslint/prefer-nullish-coalescing': ['error', { ignorePrimitives: { string: true, number: true, boolean: true } }], // Allow `||` for primitives
         },
     },
-
     // 12. Test & Config File Relaxations
     {
         files: [
@@ -283,7 +265,6 @@ export const sylph = [
             'unicorn/prefer-module': 'off', // Allow CJS in config files if necessary
         },
     },
-
     // 13. Ignore Patterns (Globally)
     {
         ignores: [
@@ -307,7 +288,7 @@ export const sylph = [
             '*.log',
         ],
     },
-] satisfies Config[];
-
+];
 // Export the config directly for use in eslint.config.js
 export default sylph;
+//# sourceMappingURL=index.js.map

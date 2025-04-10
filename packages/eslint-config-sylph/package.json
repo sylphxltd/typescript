@@ -24,7 +24,8 @@
     "build": "tsc -p tsconfig.build.json",
     "lint": "eslint . --cache --max-warnings=0",
     "lint:fix": "eslint . --fix --cache",
-    "validate": "pnpm run lint && pnpm run build"
+    "validate": "pnpm run lint && pnpm run build",
+    "clean": "rimraf dist .turbo"
   },
   "repository": {
     "type": "git",
@@ -67,6 +68,7 @@
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
+    "rimraf": "^5.0.0",
     "typescript": "^5.4.5",
     "typescript-eslint": "^8.0.0-alpha.31"
   },

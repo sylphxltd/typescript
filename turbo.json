@@ -15,6 +15,9 @@
     "dev": {
       "cache": false,
       "persistent": true
+    },
+    "@sylphlab/eslint-config-sylph-react#build": {
+      "dependsOn": ["@sylphlab/eslint-config-sylph#build"]
     }
   }
 }

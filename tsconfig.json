@@ -15,13 +15,8 @@
     "lib": ["ES2022"],
     "composite": true, // Enable project references
     "declarationMap": true, // Ensure declaration maps are generated (needed for composite)
-    "baseUrl": ".", // Needed for paths mapping
-    "paths": { // Map workspace packages to their source for local dev/build resolution
-      "@sylphlab/eslint-config-sylph": ["./packages/eslint-config-sylph/src/index.ts"],
-      "@sylphlab/eslint-config-sylph-react": ["./packages/eslint-config-sylph-react/src/index.ts"],
-      "@sylphlab/eslint-config-sylph-vue": ["./packages/eslint-config-sylph-vue/src/index.ts"],
-      "@sylphlab/eslint-config-sylph-rn": ["./packages/eslint-config-sylph-rn/src/index.ts"]
-    }
+    "baseUrl": "." // Keep baseUrl if other options might need it, but remove paths
+    // "paths": { ... } // Removed: Let project references handle build resolution
   },
   "references": [
     { "path": "./packages/eslint-config-sylph/tsconfig.build.json" },
