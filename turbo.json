@@ -18,6 +18,12 @@
     },
     "@sylphlab/eslint-config-sylph-react#build": {
       "dependsOn": ["@sylphlab/eslint-config-sylph#build"]
+    },
+    "@sylphlab/eslint-config-sylph-rn#build": {
+      "dependsOn": ["@sylphlab/eslint-config-sylph-react#build"]
+    },
+    "@sylphlab/eslint-config-sylph-vue#build": {
+      "dependsOn": ["@sylphlab/eslint-config-sylph#build"]
     }
   }
 }

@@ -3,16 +3,16 @@
   "version": "3.0.3",
   "description": "Strict, opinionated ESLint Flat Config for modern TypeScript projects (v9+, TS, Unicorn, Functional, Security, Sonar, Import, Promise, Regexp, Prettier).",
   "main": "./dist/index.js",
-  "types": "./dist/src/index.d.ts",
+  "types": "./dist/index.d.ts",
   "type": "module",
   "exports": {
     ".": {
       "import": {
-        "types": "./dist/src/index.d.ts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.js"
       },
       "require": {
-        "types": "./dist/src/index.d.ts",
+        "types": "./dist/index.d.ts",
         "default": "./dist/index.cjs"
       }
     }
