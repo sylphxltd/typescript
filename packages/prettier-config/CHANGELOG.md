@@ -1,5 +1,17 @@
 # @sylphlab/prettier-config
 
+## 0.3.0
+
+### Minor Changes
+
+- f4b9877: refactor build process and support cjs
+
+### Patch Changes
+
+- Updated dependencies [f4b9877]
+  - @sylphlab/eslint-config-sylph@3.2.0
+  - @sylphlab/typescript-config@0.3.0
+
 ## 0.2.4
 
 ### Patch Changes

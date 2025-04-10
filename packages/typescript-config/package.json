@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/typescript-config",
-  "version": "0.2.4",
+  "version": "0.3.0",
   "description": "Reusable TypeScript configurations for SylphLab projects",
   "license": "MIT",
   "type": "module",
@@ -33,10 +33,7 @@
   "files": [
     "src"
   ],
-  "scripts": {
-  },
-  "devDependencies": {
-  },
-  "peerDependencies": {
-  }
+  "scripts": {},
+  "devDependencies": {},
+  "peerDependencies": {}
 }

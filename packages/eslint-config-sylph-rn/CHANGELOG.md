@@ -1,5 +1,17 @@
 # @sylphlab/eslint-config-sylph-rn
 
+## 5.0.0
+
+### Minor Changes
+
+- f4b9877: refactor build process and support cjs
+
+### Patch Changes
+
+- Updated dependencies [f4b9877]
+  - @sylphlab/eslint-config-sylph-react@5.0.0
+  - @sylphlab/typescript-config@0.3.0
+
 ## 4.0.5
 
 ### Patch Changes

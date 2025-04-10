@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph-vue",
-  "version": "4.0.4",
+  "version": "5.0.0",
   "description": "Vue 3 ESLint Flat Config for SylphLab projects.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
