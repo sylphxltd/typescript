@@ -1,5 +1,11 @@
 # @sylphlab/typescript-config
 
+## 0.3.0
+
+### Minor Changes
+
+- f4b9877: refactor build process and support cjs
+
 ## 0.2.4
 
 ### Patch Changes
