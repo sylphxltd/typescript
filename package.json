@@ -10,7 +10,8 @@
     "check-format": "prettier --check . --cache --ignore-unknown",
     "validate": "pnpm run check-format && turbo run validate",
     "changeset": "changeset",
-    "version-packages": "changeset version"
+    "version-packages": "changeset version",
+    "release": "bun run build && bun install --frozen-lockfile && changeset publish"
   },
   "repository": {
     "type": "git",
