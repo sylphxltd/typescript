@@ -64,10 +64,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@sylphlab/typescript-config": "workspace:*",
     "globals": "^16.0.0"
   },
   "devDependencies": {
+    "@sylphlab/typescript-config": "workspace:*",
     "@types/eslint-plugin-security": "^3.0.0",
     "@types/node": "^22.14.0",
     "jiti": "^2.4.2",
