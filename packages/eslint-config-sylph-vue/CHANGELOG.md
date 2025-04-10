@@ -1,5 +1,13 @@
 # @sylphlab/eslint-config-sylph-vue
 
+## 3.0.2
+
+### Patch Changes
+
+- b79aa6b: Fix module exports for ESM and CommonJS environments with proper type definitions. Added correct `exports` field configuration to all packages, ensuring TypeScript types are properly resolved when using ESM imports.
+- Updated dependencies [b79aa6b]
+  - @sylphlab/eslint-config-sylph@3.0.2
+
 ## 3.0.1
 
 ### Patch Changes
