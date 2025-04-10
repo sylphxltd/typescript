@@ -17,10 +17,10 @@
     "declarationMap": true, // Ensure declaration maps are generated (needed for composite)
     "baseUrl": ".", // Needed for paths mapping
     "paths": { // Map workspace packages to their source for local dev/build resolution
-      "@sylphlab/eslint-config-sylph": ["./packages/base/src/index.ts"], // Renamed base package path
-      "@sylphlab/eslint-config-sylph-react": ["./packages/react/src/index.ts"],
-      "@sylphlab/eslint-config-sylph-vue": ["./packages/vue/src/index.ts"],
-      "@sylphlab/eslint-config-sylph-rn": ["./packages/rn/src/index.ts"]
+      "@sylphlab/eslint-config-sylph": ["./packages/eslint-config-sylph/src/index.ts"],
+      "@sylphlab/eslint-config-sylph-react": ["./packages/eslint-config-sylph-react/src/index.ts"],
+      "@sylphlab/eslint-config-sylph-vue": ["./packages/eslint-config-sylph-vue/src/index.ts"],
+      "@sylphlab/eslint-config-sylph-rn": ["./packages/eslint-config-sylph-rn/src/index.ts"]
     }
   },
   "references": [
