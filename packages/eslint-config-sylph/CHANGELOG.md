@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.2.3
+
+### Patch Changes
+
+- 603953f: fixed missing import-x plugin
+
 ## 3.2.2
 
 ### Patch Changes
