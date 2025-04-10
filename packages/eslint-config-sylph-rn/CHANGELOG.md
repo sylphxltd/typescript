@@ -1,5 +1,13 @@
 # @sylphlab/eslint-config-sylph-rn
 
+## 4.0.3
+
+### Patch Changes
+
+- 228c606: explicitly type ESLint configuration constants and remove deprecated constructs
+- Updated dependencies [228c606]
+  - @sylphlab/eslint-config-sylph-react@4.0.3
+
 ## 4.0.2
 
 ### Patch Changes
