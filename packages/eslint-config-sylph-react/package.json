@@ -49,10 +49,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@sylphlab/eslint-config-sylph": "workspace:*",
-    "eslint-plugin-jsx-a11y": "^6.8.0",
-    "eslint-plugin-react": "^7.34.0",
-    "eslint-plugin-react-hooks": "^4.6.0"
+    "@sylphlab/eslint-config-sylph": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -68,7 +65,10 @@
     "eslint-config-airbnb-typescript": "^18.0.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.34.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-unicorn": "^52.0.0",
     "prettier": "^3.0.0",
     "react": ">=16.8.0",

@@ -21,7 +21,7 @@ const compat = new FlatCompat({
     resolvePluginsRelativeTo: __dirname, // Explicitly set this too
 });
 
-export const sylph: Linter.Config[] = [
+export const baseConfig: Linter.Config[] = [
     // 1. ESLint Recommended Base
     eslintJs.configs.recommended,
 

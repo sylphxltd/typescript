@@ -1,6 +1,6 @@
 // configs/eslint-config-sylph/packages/vue/src/vue.ts
 // Import base config to combine
-import { sylph } from '@sylphlab/eslint-config-sylph';
+import { baseConfig } from '@sylphlab/eslint-config-sylph';
 import * as eslintGlobals from 'globals';
 import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
@@ -46,7 +46,7 @@ const vueSpecificConfig: Linter.Config[] = [
 ];
 
 // Export the combined configuration array
-export const vue: Linter.FlatConfig[] = [
-    ...sylph,
+export const vueConfig: Linter.FlatConfig[] = [
+    ...baseConfig,
     ...vueSpecificConfig,
 ];

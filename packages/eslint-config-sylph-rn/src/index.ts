@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
 
 // Import React config (which includes base) to combine
-import { react } from '@sylphlab/eslint-config-sylph-react';
+import { reactConfig } from '@sylphlab/eslint-config-sylph-react';
 
 // Framework plugins (Direct import)
 import reactNativePlugin from 'eslint-plugin-react-native';
@@ -24,7 +24,7 @@ const compat = new FlatCompat({
 // Define RN-specific parts
 const rnSpecificConfig: Linter.Config[] = [
     // Include the React config first
-    ...react,
+    ...reactConfig,
 
     // Add React Native specific config using FlatCompat
     ...(compat.extends('plugin:react-native/all') as any), // Force cast
@@ -48,7 +48,7 @@ const rnSpecificConfig: Linter.Config[] = [
 ];
 
 // Export the combined configuration array
-export const reactNative: Linter.Config[] = [
-    ...react, // react config already includes base config (sylph)
+export const rnConfig: Linter.FlatConfig[] = [
+    ...reactConfig, // reactConfig already includes baseConfig
     ...rnSpecificConfig,
 ];
