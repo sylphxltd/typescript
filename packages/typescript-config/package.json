@@ -26,7 +26,8 @@
     "./dom": "./dist/dom.json",
     "./react": "./dist/react.json",
     "./vue": "./dist/vue.json",
-    "./react-native": "./dist/react-native.json"
+    "./react-native": "./dist/react-native.json",
+    "./package.json": "./package.json"
   },
   "files": [
     "dist"
