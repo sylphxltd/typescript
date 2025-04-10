@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.2.2
+
+### Patch Changes
+
+- b536f8c: fixed dependecny issue
+
 ## 3.2.1
 
 ### Patch Changes

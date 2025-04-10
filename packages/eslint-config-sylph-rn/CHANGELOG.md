@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph-rn
 
+## 5.0.2
+
+### Patch Changes
+
+- @sylphlab/eslint-config-sylph-react@5.0.2
+
 ## 5.0.1
 
 ### Patch Changes
