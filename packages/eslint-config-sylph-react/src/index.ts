@@ -24,7 +24,7 @@ const compat = new FlatCompat({
 });
 
 // Define React-specific parts
-const reactSpecificConfig: Linter.FlatConfig[] = [
+const reactSpecificConfig: Linter.Config[] = [
     // IMPORTANT: This assumes the consumer project uses 'airbnb-typescript' (full)
     // instead of 'airbnb-typescript/base' in their core setup,
     // or we include the base config here and override the airbnb part.

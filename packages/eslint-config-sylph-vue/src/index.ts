@@ -10,7 +10,7 @@ import vuePlugin from 'eslint-plugin-vue';
 import vueParser from 'vue-eslint-parser';
 
 // Define Vue-specific parts
-const vueSpecificConfig: Linter.FlatConfig[] = [
+const vueSpecificConfig: Linter.Config[] = [
     // Use plugin's recommended flat config
     ...(vuePlugin.configs['flat/recommended'] as any), // Force cast
 

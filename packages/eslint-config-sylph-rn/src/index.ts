@@ -22,7 +22,7 @@ const compat = new FlatCompat({
 });
 
 // Define RN-specific parts
-const rnSpecificConfig: Linter.FlatConfig[] = [
+const rnSpecificConfig: Linter.Config[] = [
     // Include the React config first
     ...reactConfig,
 
