@@ -27,12 +27,12 @@
     "clean": "rimraf dist .turbo"
   },
   "dependencies": {
-    "@sylphlab/eslint-config-sylph": "workspace:*",
-    "@sylphlab/typescript-config": "workspace:*",
     "prettier-plugin-organize-imports": "^4.1.0",
     "prettier-plugin-packagejson": "^2.5.10"
   },
   "devDependencies": {
+    "@sylphlab/eslint-config-sylph": "workspace:*",
+    "@sylphlab/typescript-config": "workspace:*",
     "prettier": "^3.5.3",
     "rimraf": "^6.0.1",
     "tsup": "^8.4.0",

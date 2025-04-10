@@ -50,10 +50,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@sylphlab/eslint-config-sylph": "workspace:*",
-    "@sylphlab/typescript-config": "workspace:*"
   },
   "devDependencies": {
+    "@sylphlab/eslint-config-sylph": "workspace:*",
+    "@sylphlab/typescript-config": "workspace:*",
     "@types/node": "^22.14.0",
     "jiti": "^2.4.2",
     "typescript": "^5.8.3",
