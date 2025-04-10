@@ -1,6 +1,6 @@
 # TypeScript Code Style & Quality
 
-This document details the standards for code style, linting, formatting, Git hooks, and quality metrics in TypeScript projects, aiming for maximum quality and consistency using the shared ESLint configuration packages (e.g., `@sylphlab/eslint-config-sylph-base`, `@sylphlab/eslint-config-sylph-react`).
+This document details how to set up and use the standard tools for code style, linting, formatting, and Git hooks in TypeScript projects, ensuring maximum quality and consistency through the shared ESLint configuration packages (e.g., `@sylphlab/eslint-config-sylph-base`, `@sylphlab/eslint-config-sylph-react`).
 
 ## 1. ESLint Configuration Packages
 
@@ -54,7 +54,7 @@ Choose the package(s) relevant to your project.
         ```
 
 3.  **Install Peer Dependencies:**
-    Each config package requires peer dependencies (ESLint plugins, parsers, etc.). Modern package managers (like pnpm v7+) will attempt to automatically install peer *packages* (like `@sylphlab/eslint-config-sylph-base` when you install `@sylphlab/eslint-config-sylph-react`), but they **will not** install other tool peers like `eslint-plugin-react`.
+    Each config package requires peer dependencies (ESLint plugins, parsers, etc.).
 
     *   **Recommended Method (Easiest):** Use `install-peerdeps` for the *most specific* package you need. It will install the package itself, its direct peers, and the peers of its dependencies (like `-base`).
         ```bash
@@ -203,16 +203,4 @@ Create an `eslint.config.ts` file in your project root and import the configurat
   }
   ```
 
-## 5. Code Quality Metrics & Limits
-
-These limits are enforced by the rules included in the `@sylphlab/eslint-config-sylph` package.
-
-- **Complexity Control:** Cyclomatic Complexity <= 10.
-- **Code Size Limits:**
-    - Max Lines per File: 300.
-    - Max Lines per Function: 50.
-    - Max Nesting Depth: 3 levels.
-    - Max Parameters per Function: 3.
-- **Type Safety Metrics:** Strict type checking, no `any`, no non-null assertions, explicit types required.
-
-Adhering to the shared ESLint configuration is crucial for maintaining a high-quality, consistent, and AI-friendly codebase across all SylphLab projects.
+Adhering to the shared ESLint configuration is crucial for maintaining a high-quality, consistent, and AI-friendly codebase. Specific lint rules, code quality metrics, and limits are defined and enforced by the `@sylphlab/eslint-config-sylph-*` packages themselves.

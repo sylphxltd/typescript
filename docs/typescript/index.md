@@ -19,7 +19,6 @@ Due to the comprehensive nature of these guidelines, they have been split into t
         *   Prettier Configuration
         *   Standard NPM Scripts (using `dist` output)
         *   Git Hooks (Husky + lint-staged)
-        *   Code Quality Metrics & Limits (LoC, Complexity)
 
 3.  **Tooling**
     *   [Project Setup & Configuration](../tooling/setup-config.md)
