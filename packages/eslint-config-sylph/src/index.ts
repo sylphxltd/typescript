@@ -67,9 +67,9 @@ export const sylph: Config[] = [ // Explicitly type the constant
             // --- Import Plugin Rules ---
             ...importPlugin.configs.recommended.rules,
             ...importPlugin.configs.typescript.rules, // Use rules specific to TypeScript
-            'import/no-unresolved': 'error', // Ensure imports resolve correctly
-            'import/prefer-default-export': 'off', // Allow named exports
-            'import/no-extraneous-dependencies': ['error', {
+            'import-x/no-unresolved': 'error', // Ensure imports resolve correctly
+            'import-x/prefer-default-export': 'off', // Allow named exports
+            'import-x/no-extraneous-dependencies': ['error', {
                 devDependencies: [
                     '**/__tests__/**', '**/tests/**', '**/specs/**', '**/*{.,_}{test,spec}.[jt]s?(x)',
                     '**/*.config.[jt]s?(x)', '**/test-utils.[jt]s?(x)',
@@ -81,7 +81,7 @@ export const sylph: Config[] = [ // Explicitly type the constant
                 optionalDependencies: false,
                 peerDependencies: false, // Check peerDeps in consuming projects, not here
             }],
-            'import/order': [ // Enforce consistent import order
+            'import-x/order': [ // Enforce consistent import order
                 'error',
                 {
                     groups: [
@@ -101,10 +101,10 @@ export const sylph: Config[] = [ // Explicitly type the constant
                     },
                 },
             ],
-            'import/newline-after-import': 'error', // Ensure newline after imports
-            'import/no-duplicates': 'error', // Prevent duplicate imports
-            'import/no-mutable-exports': 'error', // Prevent exporting mutable bindings
-            'import/first': 'error', // Ensure all imports are at the top
+            'import-x/newline-after-import': 'error', // Ensure newline after imports
+            'import-x/no-duplicates': 'error', // Prevent duplicate imports
+            'import-x/no-mutable-exports': 'error', // Prevent exporting mutable bindings
+            'import-x/first': 'error', // Ensure all imports are at the top
         },
     },
 
@@ -270,7 +270,7 @@ export const sylph: Config[] = [ // Explicitly type the constant
         },
         rules: {
             // Relax rules for test/config files
-            'import/no-extraneous-dependencies': 'off',
+            'import-x/no-extraneous-dependencies': 'off',
             '@typescript-eslint/no-var-requires': 'off', // Allow require in CJS config files
             '@typescript-eslint/explicit-function-return-type': 'off',
             '@typescript-eslint/explicit-module-boundary-types': 'off',
