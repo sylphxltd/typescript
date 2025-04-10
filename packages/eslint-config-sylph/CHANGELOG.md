@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.1.1
+
+### Patch Changes
+
+- f7ee5b2: update all dependencies
+
 ## 3.1.0
 
 ### Minor Changes

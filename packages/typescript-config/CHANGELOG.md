@@ -1,5 +1,11 @@
 # @sylphlab/typescript-config
 
+## 0.2.3
+
+### Patch Changes
+
+- f7ee5b2: update all dependencies
+
 ## 0.2.2
 
 ### Patch Changes
