@@ -34,7 +34,7 @@ jobs:
           node-version: 'lts/*' # Use latest LTS Node.js version
 
       - name: Setup Bun
-        uses: oven-sh/setup-bun@v1
+        uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
 
