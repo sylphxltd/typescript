@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/typescript-config",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Reusable TypeScript configurations for SylphLab projects",
   "license": "MIT",
   "type": "module",

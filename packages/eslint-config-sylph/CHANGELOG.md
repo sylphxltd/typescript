@@ -1,5 +1,13 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.2.1
+
+### Patch Changes
+
+- 214592e: fix release
+- Updated dependencies [214592e]
+  - @sylphlab/typescript-config@0.3.1
+
 ## 3.2.0
 
 ### Minor Changes
