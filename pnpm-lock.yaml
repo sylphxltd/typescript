@@ -51,8 +51,8 @@ importers:
         specifier: ^4.6.2
         version: 4.6.2(eslint@9.24.0)
       eslint-plugin-react-native:
-        specifier: ^4.1.0
-        version: 4.1.0(eslint@9.24.0)
+        specifier: ^5.0.0
+        version: 5.0.0(eslint@9.24.0)
       eslint-plugin-unicorn:
         specifier: ^52.0.0
         version: 52.0.0(eslint@9.24.0)
@@ -2667,15 +2667,6 @@ packages:
   /eslint-plugin-react-native-globals@0.1.2:
     resolution: {integrity: sha512-9aEPf1JEpiTjcFAmmyw8eiIXmcNZOqaZyHO77wgm0/dWfT/oxC1SrIq8ET38pMxHYrcB6Uew+TzUVsBeczF88g==}
 
-  /eslint-plugin-react-native@4.1.0(eslint@9.24.0):
-    resolution: {integrity: sha512-QLo7rzTBOl43FvVqDdq5Ql9IoElIuTdjrz9SKAXCvULvBoRZ44JGSkx9z4999ZusCsb4rK3gjS8gOGyeYqZv2Q==}
-    peerDependencies:
-      eslint: ^3.17.0 || ^4 || ^5 || ^6 || ^7 || ^8
-    dependencies:
-      eslint: 9.24.0
-      eslint-plugin-react-native-globals: 0.1.2
-    dev: true
-
   /eslint-plugin-react-native@5.0.0(eslint@9.24.0):
     resolution: {integrity: sha512-VyWlyCC/7FC/aONibOwLkzmyKg4j9oI8fzrk9WYNs4I8/m436JuOTAFwLvEn1CVvc7La4cPfbCyspP4OYpP52Q==}
     peerDependencies:
@@ -2683,7 +2674,6 @@ packages:
     dependencies:
       eslint: 9.24.0
       eslint-plugin-react-native-globals: 0.1.2
-    dev: false
 
   /eslint-plugin-react@7.37.5(eslint@9.24.0):
     resolution: {integrity: sha512-Qteup0SqU15kdocexFNAJMvCJEfa2xUKNV4CC1xsVMrIIqEy3SQ/rqyxCWNzfrd3/ldy6HMlD2e0JDVpDg2qIA==}
