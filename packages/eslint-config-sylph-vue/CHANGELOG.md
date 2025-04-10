@@ -1,5 +1,12 @@
 # @sylphlab/eslint-config-sylph-vue
 
+## 3.0.3
+
+### Patch Changes
+
+- Updated dependencies [f4d7485]
+  - @sylphlab/eslint-config-sylph@3.0.3
+
 ## 3.0.2
 
 ### Patch Changes
