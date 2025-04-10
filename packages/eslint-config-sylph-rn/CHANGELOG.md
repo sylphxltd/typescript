@@ -1,5 +1,13 @@
 # @sylphlab/eslint-config-sylph-rn
 
+## 4.0.5
+
+### Patch Changes
+
+- f7202f4: fixed missing types
+- Updated dependencies [f7202f4]
+  - @sylphlab/eslint-config-sylph-react@4.0.5
+
 ## 4.0.4
 
 ### Patch Changes
