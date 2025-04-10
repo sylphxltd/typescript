@@ -1,5 +1,12 @@
 # @sylphlab/prettier-config
 
+## 0.3.2
+
+### Patch Changes
+
+- Updated dependencies [b536f8c]
+  - @sylphlab/eslint-config-sylph@3.2.2
+
 ## 0.3.1
 
 ### Patch Changes
