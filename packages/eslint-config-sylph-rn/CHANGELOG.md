@@ -1,5 +1,13 @@
 # @sylphlab/eslint-config-sylph-rn
 
+## 4.0.1
+
+### Patch Changes
+
+- f7ee5b2: update all dependencies
+- Updated dependencies [f7ee5b2]
+  - @sylphlab/eslint-config-sylph-react@4.0.1
+
 ## 4.0.0
 
 ### Minor Changes

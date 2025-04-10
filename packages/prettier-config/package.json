@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/prettier-config",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Shared Prettier configuration for SylphLab projects",
   "license": "MIT",
   "type": "module",
