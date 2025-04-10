@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.1.3
+
+### Patch Changes
+
+- 228c606: explicitly type ESLint configuration constants and remove deprecated constructs
+
 ## 3.1.2
 
 ### Patch Changes
