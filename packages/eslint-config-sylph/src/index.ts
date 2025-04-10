@@ -150,7 +150,7 @@ export const sylph: Config[] = [ // Explicitly type the constant
             sourceType: 'module',
             parser: tseslint.parser,
             parserOptions: {
-                // project: true, // Removed default: Consumers MUST set 'project' path in their eslint.config.js for type-aware linting
+                project: true,
                 // tsconfigRootDir: import.meta.dirname, // Example if needed, but usually relative to eslint.config.js is fine
                 ecmaFeatures: { jsx: false }, // Default to false, enable in framework configs
             },
