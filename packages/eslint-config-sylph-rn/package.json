@@ -50,7 +50,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@sylphlab/eslint-config-sylph-react": "workspace:*"
+    "@sylphlab/eslint-config-sylph-react": "workspace:*",
+    "eslint-plugin-react-native": "^4.1.0"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",
@@ -70,7 +71,6 @@
     "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-react": "^7.34.0",
     "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-native": "^4.1.0",
     "eslint-plugin-unicorn": "^52.0.0",
     "prettier": "^3.0.0",
     "react": ">=16.8.0",

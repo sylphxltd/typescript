@@ -33,7 +33,7 @@
     "dist"
   ],
   "scripts": {
-    "build": "mkdir -p dist && node build.js",
+    "build": "node build.js",
     "clean": "rimraf dist",
     "lint": "eslint . --ext .js,.ts",
     "prepublishOnly": "npm run build"
