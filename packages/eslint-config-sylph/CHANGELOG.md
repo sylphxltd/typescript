@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.2.4
+
+### Patch Changes
+
+- 27fa75d: migrate to import-x
+
 ## 3.2.3
 
 ### Patch Changes
