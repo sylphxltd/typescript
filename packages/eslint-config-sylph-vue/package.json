@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph-vue",
-  "version": "5.0.2",
+  "version": "5.0.3",
   "description": "Vue 3 ESLint Flat Config for SylphLab projects.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -50,8 +50,7 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
     "@sylphlab/eslint-config-sylph": "workspace:*",
     "@sylphlab/typescript-config": "workspace:*",
