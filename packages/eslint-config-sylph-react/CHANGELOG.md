@@ -1,5 +1,15 @@
 # @sylphlab/eslint-config-sylph-react
 
+## 4.0.2
+
+### Patch Changes
+
+- 46c469f: update all devdep
+- ba1cbe1: update all perrdev
+- Updated dependencies [46c469f]
+- Updated dependencies [ba1cbe1]
+  - @sylphlab/eslint-config-sylph@3.1.2
+
 ## 4.0.1
 
 ### Patch Changes
