@@ -48,9 +48,11 @@ export const sylph: Config[] = [ // Explicitly type the constant
 
     // 4. Import Rules (Order, Structure, Resolution)
     {
-        plugins: { import: importPlugin },
+        plugins: { 
+            'import-x': importPlugin,
+        },
         settings: {
-            'import/parsers': {
+            'import-x/parsers': {
                 '@typescript-eslint/parser': ['.ts', '.tsx', '.mts', '.cts'],
             },
             'import-x/resolver-next': [
