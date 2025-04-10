@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph-vue
 
+## 5.0.3
+
+### Patch Changes
+
+- 7d06303: fix dep issue
+
 ## 5.0.2
 
 ### Patch Changes
