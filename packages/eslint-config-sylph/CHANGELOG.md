@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.1.4
+
+### Patch Changes
+
+- fed1bdd: ts parser default project type
+
 ## 3.1.3
 
 ### Patch Changes

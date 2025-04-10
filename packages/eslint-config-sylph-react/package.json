@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph-react",
-  "version": "4.0.3",
+  "version": "4.0.4",
   "description": "React ESLint Flat Config for SylphLab projects.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
