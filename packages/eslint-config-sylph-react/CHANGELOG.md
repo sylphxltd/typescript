@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph-react
 
+## 5.0.3
+
+### Patch Changes
+
+- dadf902: fix peerdev issue
+
 ## 5.0.2
 
 ### Patch Changes

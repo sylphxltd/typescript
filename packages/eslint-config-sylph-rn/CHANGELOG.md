@@ -1,5 +1,12 @@
 # @sylphlab/eslint-config-sylph-rn
 
+## 5.0.3
+
+### Patch Changes
+
+- Updated dependencies [dadf902]
+  - @sylphlab/eslint-config-sylph-react@5.0.3
+
 ## 5.0.2
 
 ### Patch Changes
