@@ -1,14 +1,15 @@
 import eslintJs from '@eslint/js';
 import tseslint from 'typescript-eslint';
+import importPlugin from 'eslint-plugin-import-x';
 import prettierConfig from 'eslint-config-prettier';
 import functionalPlugin from 'eslint-plugin-functional';
-import importPlugin from 'eslint-plugin-import';
 import prettierPlugin from 'eslint-plugin-prettier';
 import promisePlugin from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
 import sonarjsPlugin from 'eslint-plugin-sonarjs';
 import unicornPlugin from 'eslint-plugin-unicorn';
+import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript'
 import globals from 'globals';
 import type { Linter } from 'eslint';
 
@@ -52,13 +53,13 @@ export const sylph: Config[] = [ // Explicitly type the constant
             'import/parsers': {
                 '@typescript-eslint/parser': ['.ts', '.tsx', '.mts', '.cts'],
             },
-            'import/resolver': {
-                typescript: {
-                    alwaysTryTypes: true, // Always try to resolve types under `<root>@types` directory
-                    // project: './tsconfig.json', // Consumers MUST configure this in their own eslint.config.js if using rules requiring type info for imports
-                },
-                node: true,
-            },
+            'import-x/resolver-next': [
+                createTypeScriptImportResolver({
+                    alwaysTryTypes: true,
+                    bun: true, // Enable Bun support if needed
+                    // 其他配置選項...
+                }),
+            ],
         },
         rules: {
             // --- Import Plugin Rules ---

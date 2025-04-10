@@ -21,29 +21,22 @@
     "node"
   ],
   "exports": {
-    "./base": "./dist/base.json",
-    "./node": "./dist/node.json",
-    "./dom": "./dist/dom.json",
-    "./react": "./dist/react.json",
-    "./vue": "./dist/vue.json",
-    "./react-native": "./dist/react-native.json",
+    "./base": "./src/base.json",
+    "./node": "./src/node.json",
+    "./dom": "./src/dom.json",
+    "./react": "./src/react.json",
+    "./vue": "./src/vue.json",
+    "./react-native": "./src/react-native.json",
     "./package.json": "./package.json"
   },
+  "main": "./src/base.json",
   "files": [
-    "dist"
+    "src"
   ],
   "scripts": {
-    "build": "node build.js",
-    "clean": "rimraf dist",
-    "lint": "eslint . --ext .js,.ts",
-    "prepublishOnly": "npm run build"
   },
-  "dependencies": {},
   "devDependencies": {
-    "rimraf": "^6.0.1",
-    "typescript": "^5.8.3"
   },
   "peerDependencies": {
-    "typescript": ">=5.8.3"
   }
 }

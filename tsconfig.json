@@ -1,4 +1,5 @@
 {
+  "extends": "@sylphlab/typescript-config/base", // Extend from the base config
   "compilerOptions": {
     "target": "ES2022", // Target modern Node.js versions
     "module": "NodeNext", // Use Node.js native ES modules

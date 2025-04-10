@@ -1,7 +1,6 @@
-/**
- * @type {import('prettier').Config}
- */
-const config = {
+import type { Config } from 'prettier';
+
+export const config: Config = {
   printWidth: 100,
   tabWidth: 2,
   useTabs: false,
@@ -28,5 +27,3 @@ const config = {
     },
   ],
 };
-
-export default config;

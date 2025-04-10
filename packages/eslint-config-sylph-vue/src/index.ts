@@ -1,7 +1,6 @@
 import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import vuePlugin from 'eslint-plugin-vue';
-import vueParser from 'vue-eslint-parser';
 import { sylph as sylphBaseConfig } from '@sylphlab/eslint-config-sylph'; // Import the base config array
 import type { Linter } from 'eslint';
 

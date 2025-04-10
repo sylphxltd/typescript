@@ -21,7 +21,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsup",
+    "clean": "rimraf dist .turbo",
     "lint": "eslint . --cache --max-warnings=0",
     "lint:fix": "eslint . --fix --cache",
     "validate": "pnpm run lint && pnpm run build"
@@ -49,16 +50,18 @@
     "access": "public"
   },
   "dependencies": {
-    "@sylphlab/eslint-config-sylph": "workspace:*"
+    "@sylphlab/eslint-config-sylph": "workspace:*",
+    "@sylphlab/typescript-config": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^22.14.0",
+    "jiti": "^2.4.2",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1"
   },
   "peerDependencies": {
-    "@sylphlab/eslint-config-sylph": "workspace:*",
     "@eslint/js": "^9.24.0",
+    "@sylphlab/eslint-config-sylph": "workspace:*",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "eslint": "^9.24.0",

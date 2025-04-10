@@ -2,46 +2,48 @@
   "name": "@sylphlab/prettier-config",
   "version": "0.2.4",
   "description": "Shared Prettier configuration for SylphLab projects",
-  "license": "MIT",
-  "type": "module",
-  "main": "index.js",
-  "exports": {
-    ".": {
-      "import": "./index.js",
-      "require": "./index.js"
-    },
-    "./package.json": "./package.json"
-  },
-  "sideEffects": false,
-  "publishConfig": {
-    "access": "public"
-  },
   "keywords": [
+    "code-style",
+    "formatting",
+    "organize-imports",
+    "packagejson",
     "prettier",
     "prettier-config",
-    "sylphlab",
-    "formatting",
-    "code-style",
-    "standard",
     "prettier-plugin",
-    "organize-imports",
-    "packagejson"
+    "standard",
+    "sylphlab"
   ],
+  "license": "MIT",
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js"
+  },
   "files": [
-    "index.js",
-    "README.md"
+    "dist"
   ],
   "scripts": {
-    "lint": "eslint . --ext .js"
+    "build": "tsup",
+    "clean": "rimraf dist .turbo"
   },
   "dependencies": {
-    "prettier-plugin-packagejson": "^2.5.10",
-    "prettier-plugin-organize-imports": "^4.1.0"
-  },
-  "peerDependencies": {
-    "prettier": ">=3.5.3"
+    "@sylphlab/eslint-config-sylph": "workspace:*",
+    "@sylphlab/typescript-config": "workspace:*",
+    "prettier-plugin-organize-imports": "^4.1.0",
+    "prettier-plugin-packagejson": "^2.5.10"
   },
   "devDependencies": {
-    "prettier": "^3.5.3"
+    "prettier": "^3.5.3",
+    "rimraf": "^6.0.1",
+    "tsup": "^8.4.0",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.29.1"
+  },
+  "peerDependencies": {
+    "prettier": ">=3.5.3",
+    "typescript": "^5.8.3"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

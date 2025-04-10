@@ -1,0 +1,3 @@
+{
+  "extends": "@sylphlab/typescript-config/react",
+}

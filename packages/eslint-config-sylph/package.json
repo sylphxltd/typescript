@@ -21,11 +21,11 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc -p tsconfig.build.json",
+    "build": "tsup",
+    "clean": "rimraf dist .turbo",
     "lint": "eslint . --cache --max-warnings=0",
     "lint:fix": "eslint . --fix --cache",
-    "validate": "pnpm run lint && pnpm run build",
-    "clean": "rimraf dist .turbo"
+    "validate": "pnpm run lint && pnpm run build"
   },
   "repository": {
     "type": "git",
@@ -64,10 +64,13 @@
     "access": "public"
   },
   "dependencies": {
+    "@sylphlab/typescript-config": "workspace:*",
     "globals": "^16.0.0"
   },
   "devDependencies": {
+    "@types/eslint-plugin-security": "^3.0.0",
     "@types/node": "^22.14.0",
+    "jiti": "^2.4.2",
     "rimraf": "^6.0.1",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.29.1"
@@ -81,7 +84,7 @@
     "eslint-import-resolver-node": "^0.3.9",
     "eslint-import-resolver-typescript": "^4.3.2",
     "eslint-plugin-functional": "^9.0.1",
-    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-import-x": "^4.10.2",
     "eslint-plugin-prettier": "^5.2.6",
     "eslint-plugin-promise": "^7.2.1",
     "eslint-plugin-regexp": "^2.7.0",
