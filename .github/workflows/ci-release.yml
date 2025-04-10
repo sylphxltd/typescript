@@ -1,4 +1,7 @@
-name: Release ESLint Config Package
+name: CI Release
+description: |
+  This workflow is triggered on push to the main branch and creates a release pull request or publishes to npm.
+  It uses Changesets to handle versioning and changelogs.
 
 permissions: # Add top-level permissions for changeset action
   contents: write
