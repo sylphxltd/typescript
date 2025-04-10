@@ -1,5 +1,11 @@
 # @sylphlab/typescript-config
 
+## 0.3.1
+
+### Patch Changes
+
+- 214592e: fix release
+
 ## 0.3.0
 
 ### Minor Changes

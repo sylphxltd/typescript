@@ -1,5 +1,14 @@
 # @sylphlab/prettier-config
 
+## 0.3.1
+
+### Patch Changes
+
+- 214592e: fix release
+- Updated dependencies [214592e]
+  - @sylphlab/eslint-config-sylph@3.2.1
+  - @sylphlab/typescript-config@0.3.1
+
 ## 0.3.0
 
 ### Minor Changes
