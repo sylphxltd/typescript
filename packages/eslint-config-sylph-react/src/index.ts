@@ -7,7 +7,7 @@ import tseslint from 'typescript-eslint';
 import type { Linter } from 'eslint';
 
 // Import base config to combine
-import { baseConfig } from '@sylphlab/eslint-config-sylph';
+import { sylph } from '@sylphlab/eslint-config-sylph';
 
 // Framework plugins (Direct imports)
 import reactPlugin from 'eslint-plugin-react';
@@ -65,7 +65,7 @@ const reactSpecificConfig: Linter.Config[] = [
 ];
 
 // Export the combined configuration array
-export const reactConfig: Linter.FlatConfig[] = [
-    ...baseConfig,
+export const react: Linter.Config[] = [
+    ...sylph,
     ...reactSpecificConfig,
 ];
