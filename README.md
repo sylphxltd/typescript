@@ -32,10 +32,16 @@ Our approach is built upon these pillars:
     *   `@sylphlab/eslint-config-sylph-react`: Extends base with React/JSX/Hooks/A11y rules.
     *   `@sylphlab/eslint-config-sylph-vue`: Extends base with Vue 3 rules.
     *   `@sylphlab/eslint-config-sylph-rn`: Extends React config with React Native rules.
-*   **TypeScript Configuration (`packages/typescript-config`)** *(Planned)*
-    *   Reusable `tsconfig.base.json` files for different environments (Node, DOM, etc.).
-*   **Prettier Configuration (`packages/prettier-config`)** *(Planned)*
-    *   A shared Prettier configuration package.
+*   **TypeScript Configuration (`packages/typescript-config`)**
+    *   `@sylphlab/typescript-config`: Reusable TypeScript configurations for different environments:
+        *   `base`: Foundational strict TypeScript settings
+        *   `node`: Node.js environment settings
+        *   `dom`: Browser environment settings 
+        *   `react`: React project settings
+        *   `vue`: Vue project settings
+        *   `react-native`: React Native settings
+*   **Prettier Configuration (`packages/prettier-config`)**
+    *   `@sylphlab/prettier-config`: A shared Prettier configuration package with organized imports and package.json formatting.
 *   **Examples (`examples/*`)** *(Planned)*
     *   Simple projects demonstrating the usage of the configurations.
 
@@ -86,6 +92,63 @@ export default [
   }
 ];
 ```
+
+## Using the TypeScript Configuration in Your Project
+
+The `@sylphlab/typescript-config` package provides optimized TypeScript configurations for various environments and frameworks:
+
+1. **Install the package**:
+   ```bash
+   pnpm add -D typescript @sylphlab/typescript-config
+   ```
+
+2. **Create a tsconfig.json file** that extends the appropriate configuration:
+
+   **For Node.js projects**:
+   ```json
+   {
+     "extends": "@sylphlab/typescript-config/node",
+     "compilerOptions": {
+       "outDir": "dist",
+       "rootDir": "src"
+     },
+     "include": ["src/**/*"],
+     "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+   }
+   ```
+
+   **For React projects**:
+   ```json
+   {
+     "extends": "@sylphlab/typescript-config/react",
+     "compilerOptions": {
+       "outDir": "dist",
+       "rootDir": "src"
+     },
+     "include": ["src/**/*"],
+     "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+   }
+   ```
+
+For more detailed information and additional configurations (DOM, Vue, React Native), refer to the [`packages/typescript-config/README.md`](./packages/typescript-config/README.md).
+
+## Using the Prettier Configuration in Your Project
+
+The `@sylphlab/prettier-config` package provides a standardized Prettier configuration:
+
+1. **Install the package**:
+   ```bash
+   pnpm add -D prettier @sylphlab/prettier-config
+   ```
+
+2. **Reference in package.json** (recommended):
+   ```json
+   {
+     "prettier": "@sylphlab/prettier-config"
+   }
+   ```
+
+For more options and details, refer to the [`packages/prettier-config/README.md`](./packages/prettier-config/README.md).
 
 ## Contributing
 
