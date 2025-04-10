@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.0.1
+
+### Patch Changes
+
+- 083301f: update readme
+
 ## 3.0.0
 
 ### Major Changes
