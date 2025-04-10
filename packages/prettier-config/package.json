@@ -9,6 +9,17 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "prettier",
+    "prettier-config",
+    "sylphlab",
+    "formatting",
+    "code-style",
+    "standard",
+    "prettier-plugin",
+    "organize-imports",
+    "packagejson"
+  ],
   "files": [
     "index.js",
     "README.md"

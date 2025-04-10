@@ -8,6 +8,18 @@
   "publishConfig": {
     "access": "public"
   },
+  "keywords": [
+    "typescript",
+    "tsconfig",
+    "configuration",
+    "sylphlab",
+    "strict",
+    "preset",
+    "base",
+    "react",
+    "vue",
+    "node"
+  ],
   "exports": {
     "./base": "./dist/base.json",
     "./node": "./dist/node.json",
