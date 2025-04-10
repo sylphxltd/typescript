@@ -24,7 +24,7 @@ npx install-peerdeps --dev @sylphlab/eslint-config-sylph-rn -p pnpm
 # 1. Install this package, react, and base packages
 pnpm add -D @sylphlab/eslint-config-sylph-rn @sylphlab/eslint-config-sylph-react @sylphlab/eslint-config-sylph
 # 2. Install all peer dependencies listed in ALL THREE package.json files (rn's, react's, and base's)
-pnpm add -D eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-native eslint-plugin-unicorn prettier react react-native
+pnpm add -D eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-native eslint-plugin-unicorn prettier react react-native
 ```
 
 *(Ensure you have `eslint` and `typescript` installed in your project as well.)*

@@ -23,13 +23,13 @@ This package is typically installed as a peer dependency of other `@sylphlab/esl
 
 ```bash
 # Using pnpm (recommended)
-pnpm add -D @sylphlab/eslint-config-sylph eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn prettier
+pnpm add -D @sylphlab/eslint-config-sylph eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn prettier
 
 # Using npm
-npm install --save-dev @sylphlab/eslint-config-sylph eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn prettier
+npm install --save-dev @sylphlab/eslint-config-sylph eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn prettier
 
 # Using yarn
-yarn add --dev @sylphlab/eslint-config-sylph eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn prettier
+yarn add --dev @sylphlab/eslint-config-sylph eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn prettier
 ```
 *(Note: Using `npx install-peerdeps` on a framework-specific package like `@sylphlab/eslint-config-sylph-react` is the easiest way to install all necessary peers, including this base package.)*
 

@@ -25,7 +25,7 @@ npx install-peerdeps --dev @sylphlab/eslint-config-sylph-vue -p pnpm
 # 1. Install this package and the base package
 pnpm add -D @sylphlab/eslint-config-sylph-vue @sylphlab/eslint-config-sylph
 # 2. Install all peer dependencies listed in BOTH package.json files (vue's and base's)
-pnpm add -D eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-airbnb-typescript eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn eslint-plugin-vue vue-eslint-parser
+pnpm add -D eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn eslint-plugin-vue vue-eslint-parser
 ```
 
 *(Ensure you have `eslint` and `typescript` installed in your project as well.)*

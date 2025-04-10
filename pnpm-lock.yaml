@@ -32,9 +32,6 @@ importers:
       eslint:
         specifier: ^9.0.0
         version: 9.24.0
-      eslint-config-airbnb-typescript:
-        specifier: ^18.0.0
-        version: 18.0.0(@typescript-eslint/eslint-plugin@8.29.1)(@typescript-eslint/parser@8.29.1)(eslint-plugin-import@2.31.0)(eslint@9.24.0)
       eslint-config-prettier:
         specifier: ^9.0.0
         version: 9.1.0(eslint@9.24.0)
@@ -2006,6 +2003,7 @@ packages:
 
   /confusing-browser-globals@1.0.11:
     resolution: {integrity: sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==}
+    dev: false
 
   /connect@3.7.0:
     resolution: {integrity: sha512-ZqRXc+tZukToSNmh5C2iWMSoV3X1YUcPbqEM4DkEG5tNQXrQUZCNVGGv3IuicnkMtPfGf3Xtp8WCXs295iQ1pQ==}
@@ -2366,6 +2364,7 @@ packages:
       object.assign: 4.1.7
       object.entries: 1.1.9
       semver: 6.3.1
+    dev: false
 
   /eslint-config-airbnb-typescript@18.0.0(@typescript-eslint/eslint-plugin@8.29.1)(@typescript-eslint/parser@8.29.1)(eslint-plugin-import@2.31.0)(eslint@9.24.0):
     resolution: {integrity: sha512-oc+Lxzgzsu8FQyFVa4QFaVKiitTYiiW3frB9KYW5OWdPrqFc7FzxgB20hP4cHMlr+MBzGcLl3jnCOVOydL9mIg==}
@@ -2380,6 +2379,7 @@ packages:
       eslint-config-airbnb-base: 15.0.0(eslint-plugin-import@2.31.0)(eslint@9.24.0)
     transitivePeerDependencies:
       - eslint-plugin-import
+    dev: false
 
   /eslint-config-prettier@9.1.0(eslint@9.24.0):
     resolution: {integrity: sha512-NSWl5BFQWEPi1j4TjVNItzYV7dZXZ+wP6I6ZhrBGpChQhZRUaElihE9uRRkcbRnNb76UMKDF3r+WTmNcGPKsqw==}
