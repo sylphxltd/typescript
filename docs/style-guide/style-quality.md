@@ -137,29 +137,44 @@ Create an `eslint.config.ts` file in your project root and import the configurat
 
 ## 2. Prettier Configuration
 
-- Use Prettier for consistent code formatting. The shared ESLint config integrates with it.
-- **Standard Configuration** (`prettier.config.cjs`):
-  ```javascript
-  // prettier.config.cjs
-  /**
-   * @see https://prettier.io/docs/configuration
-   * @type {import("prettier").Config}
-   */
-  const config = {
-    printWidth: 100,
-    tabWidth: 2,
-    useTabs: false,
-    semi: true,
-    singleQuote: true,
-    jsxSingleQuote: false,
-    trailingComma: 'all',
-    bracketSpacing: true,
-    arrowParens: 'always',
-    endOfLine: 'lf',
-  };
+SylphLab provides a standardized Prettier configuration package that can be shared across projects.
 
-  module.exports = config;
-  ```
+### 2.1 Using the Shared Prettier Configuration
+
+1. **Install the package**:
+   ```bash
+   pnpm add -D prettier @sylphlab/prettier-config
+   ```
+
+2. **Reference in package.json** (recommended):
+   ```json
+   {
+     "prettier": "@sylphlab/prettier-config"
+   }
+   ```
+
+3. **Or with an ESM configuration file**:
+   ```javascript
+   // .prettierrc.js
+   import sylphPrettierConfig from '@sylphlab/prettier-config';
+
+   export default {
+     ...sylphPrettierConfig,
+     // Project-specific overrides if necessary
+   };
+   ```
+
+4. **Or with CommonJS**:
+   ```javascript
+   // .prettierrc.cjs
+   const sylphPrettierConfig = require('@sylphlab/prettier-config');
+
+   module.exports = {
+     ...sylphPrettierConfig,
+     // Project-specific overrides if necessary
+   };
+   ```
+
 ## 3. Standard NPM Scripts (`package.json`)
 
 - Define common tasks. The `eslint` command works automatically with `eslint.config.ts`.

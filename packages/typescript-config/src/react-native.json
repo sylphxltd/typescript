@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "SylphLab React Native Configuration",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "lib": ["ES2022"],
+    "allowSyntheticDefaultImports": true,
+    "types": ["react-native"]
+  }
+}

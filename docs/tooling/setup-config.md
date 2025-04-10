@@ -10,63 +10,86 @@ This section details the standard technology stack and configuration for TypeScr
     - **Note on Build Scripts**: pnpm enhances security by default by preventing packages from running build scripts (like `postinstall`) automatically. If you see warnings like `Ignored build scripts: [package-name]`, and you trust the package (especially common build tools like `esbuild`), run `pnpm approve-builds` to allow necessary scripts to execute.
 - **Module System**: ES Modules (set `"type": "module"` in `package.json` and use ES module syntax).
 
-## 2. Standard TypeScript Configuration (`tsconfig.json`)
+## 2. TypeScript Configuration
 
-```json
-{
-  "compilerOptions": {
-    /* Base Options */
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "ES2022",
-    "allowJs": false,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
+### Using @sylphlab/typescript-config
 
-    /* Strictness */
-    "strict": true,
-    "noImplicitAny": true,
-    "strictNullChecks": true,
-    "strictFunctionTypes": true,
-    "strictBindCallApply": true,
-    "strictPropertyInitialization": true,
-    "noImplicitThis": true,
-    "useUnknownInCatchVariables": true,
-    "alwaysStrict": true,
+SylphLab provides a reusable TypeScript configuration package with optimized settings for different environments.
 
-    /* Linter Checks (Handled by ESLint) */
-    // "noUnusedLocals": true, // Covered by ESLint '@typescript-eslint/no-unused-vars'
-    // "noUnusedParameters": true, // Covered by ESLint '@typescript-eslint/no-unused-vars'
-    // "exactOptionalPropertyTypes": true, // Consider enabling if needed, but ESLint might offer alternatives
-    // "noImplicitReturns": true, // Covered by ESLint '@typescript-eslint/explicit-function-return-type' (implicitly)
-    // "noFallthroughCasesInSwitch": true, // Covered by ESLint 'no-fallthrough'
-    "noUncheckedIndexedAccess": true, // Keep this for added safety at compile time
-    "noImplicitOverride": true, // Keep this for explicit override keyword requirement
-    "noPropertyAccessFromIndexSignature": true, // Keep this for safety
-    // Note: Code style and additional static analysis are primarily handled by ESLint.
-    // See guidelines/typescript/style_quality.md
+1. **Installation**:
 
-    /* Module Resolution */
-    "module": "NodeNext", // Use NodeNext for modern Node.js ESM support
-    "moduleResolution": "NodeNext",
-    // "baseUrl": ".", // Optional: for path aliases
-    // "paths": {}, // Optional: configure path aliases
+   ```bash
+   pnpm add -D typescript @sylphlab/typescript-config
+   ```
 
-    /* Emit */
-    "outDir": "dist", // Standard output directory
-    "srcDir": "src", // Specify source directory to prevent nesting in output
-    "declaration": true,
-    "sourceMap": true,
-    "removeComments": false, // Keep comments in declaration files
+2. **Usage**:
 
-    /* Other */
-    "forceConsistentCasingInFileNames": true
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts", "**/*.bench.ts"]
-}
-```
+   Choose the appropriate configuration based on your project type:
+
+   **Node.js Projects**:
+   ```json
+   {
+     "extends": "@sylphlab/typescript-config/node",
+     "compilerOptions": {
+       "outDir": "dist",
+       "rootDir": "src"
+     },
+     "include": ["src/**/*"],
+     "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+   }
+   ```
+
+   **Browser/DOM Projects**:
+   ```json
+   {
+     "extends": "@sylphlab/typescript-config/dom",
+     "compilerOptions": {
+       "outDir": "dist",
+       "rootDir": "src"
+     },
+     "include": ["src/**/*"],
+     "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+   }
+   ```
+
+   **React Projects**:
+   ```json
+   {
+     "extends": "@sylphlab/typescript-config/react",
+     "compilerOptions": {
+       "outDir": "dist",
+       "rootDir": "src"
+     },
+     "include": ["src/**/*"],
+     "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+   }
+   ```
+
+   **Vue Projects**:
+   ```json
+   {
+     "extends": "@sylphlab/typescript-config/vue",
+     "compilerOptions": {
+       "outDir": "dist",
+       "rootDir": "src"
+     },
+     "include": ["src/**/*"],
+     "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+   }
+   ```
+
+   **React Native Projects**:
+   ```json
+   {
+     "extends": "@sylphlab/typescript-config/react-native",
+     "compilerOptions": {
+       "outDir": "dist",
+       "rootDir": "src"
+     },
+     "include": ["src/**/*"],
+     "exclude": ["node_modules", "dist", "**/*.test.ts", "**/*.spec.ts"]
+   }
+   ```
 
 ## 3. Dependency Management & Updates (Dependabot)
 

@@ -1,0 +1,29 @@
+{
+  "name": "@sylphlab/prettier-config",
+  "version": "0.1.0",
+  "description": "Shared Prettier configuration for SylphLab projects",
+  "license": "MIT",
+  "type": "module",
+  "main": "index.js",
+  "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "index.js",
+    "README.md"
+  ],
+  "scripts": {
+    "lint": "eslint . --ext .js"
+  },
+  "dependencies": {
+    "prettier-plugin-packagejson": "^2.4.11",
+    "prettier-plugin-organize-imports": "^3.2.4"
+  },
+  "peerDependencies": {
+    "prettier": ">=3.0.0"
+  },
+  "devDependencies": {
+    "prettier": "^3.2.0"
+  }
+}
