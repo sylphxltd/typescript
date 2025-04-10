@@ -1,5 +1,12 @@
 # @sylphlab/typescript-config
 
+## 0.2.4
+
+### Patch Changes
+
+- 46c469f: update all devdep
+- ba1cbe1: update all perrdev
+
 ## 0.2.3
 
 ### Patch Changes
