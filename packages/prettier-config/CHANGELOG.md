@@ -1,5 +1,11 @@
 # @sylphlab/prettier-config
 
+## 0.2.1
+
+### Patch Changes
+
+- 083301f: update readme
+
 ## 0.2.0
 
 ### Minor Changes

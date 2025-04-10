@@ -1,5 +1,13 @@
 # @sylphlab/eslint-config-sylph-react
 
+## 3.0.1
+
+### Patch Changes
+
+- 083301f: update readme
+- Updated dependencies [083301f]
+  - @sylphlab/eslint-config-sylph@3.0.1
+
 ## 3.0.0
 
 ### Major Changes
