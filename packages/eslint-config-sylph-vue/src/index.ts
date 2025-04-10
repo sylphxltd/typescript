@@ -14,7 +14,7 @@ type Config = Linter.Config; // Use Linter.Config instead of deprecated Linter.F
  * Extends the base @sylphlab/eslint-config-sylph configuration with
  * rules specific to Vue 3 and TypeScript integration.
  */
-export const vue = [
+export const vue: Config[] = [ // Explicitly type the constant
     // 1. Inherit Base Configuration
     // Includes core JS, TS, Unicorn, Import, Functional, Security, Sonar, Promise, RegExp, Prettier rules
     ...sylphBaseConfig,
@@ -107,7 +107,7 @@ export const vue = [
             }],
         },
     },
-] satisfies Config[];
+];
 
 // Export the config directly
 export default vue;

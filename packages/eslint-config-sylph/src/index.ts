@@ -33,7 +33,7 @@ type Config = Linter.Config; // Use Linter.Config instead of deprecated Linter.F
  * - eslint-plugin-regexp
  * - eslint-plugin-prettier
  */
-export const sylph = [
+export const sylph: Config[] = [ // Explicitly type the constant
     // 1. Core ESLint Recommended Rules
     eslintJs.configs.recommended,
 
@@ -43,7 +43,7 @@ export const sylph = [
     ...tseslint.configs.stylisticTypeChecked,
 
     // 3. Unicorn Rules (Modernization, Consistency, Bug Prevention)
-    unicornPlugin.configs['flat/recommended'],
+    unicornPlugin.configs['recommended'],
 
     // 4. Import Rules (Order, Structure, Resolution)
     {
@@ -307,7 +307,7 @@ export const sylph = [
             '*.log',
         ],
     },
-] satisfies Config[];
+]; // Remove satisfies
 
 // Export the config directly for use in eslint.config.js
 export default sylph;

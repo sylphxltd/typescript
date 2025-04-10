@@ -11,7 +11,7 @@ type Config = Linter.Config; // Use Linter.Config instead of deprecated Linter.F
  * Extends the @sylphlab/eslint-config-sylph-react configuration with
  * rules specific to React Native.
  */
-export const rn = [
+export const rn: Config[] = [ // Explicitly type the constant
     // 1. Inherit React Configuration (which includes the base config)
     ...reactBaseConfig,
 
@@ -19,7 +19,7 @@ export const rn = [
     {
         files: ['**/*.{js,jsx,ts,tsx}'], // Apply RN rules broadly
         plugins: {
-            'react-native': reactNativePlugin,
+            'react-native': reactNativePlugin as any,
         },
         languageOptions: {
             globals: {
@@ -45,7 +45,7 @@ export const rn = [
             // 'no-console': ['warn', { allow: ['warn', 'error', 'info', 'debug'] }],
         },
     },
-] satisfies Config[];
+]; // Remove satisfies
 
 // Export the config directly
 export default rn;
