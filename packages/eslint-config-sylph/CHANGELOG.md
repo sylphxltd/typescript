@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.1.0
+
+### Minor Changes
+
+- 74532d1: redesign entire rules.
+
 ## 3.0.3
 
 ### Patch Changes
