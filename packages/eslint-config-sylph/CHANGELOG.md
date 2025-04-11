@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.2.5
+
+### Patch Changes
+
+- 7c8dbbd: bug fix
+
 ## 3.2.4
 
 ### Patch Changes
