@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph-vue",
-  "version": "5.0.4",
+  "version": "6.0.0",
   "description": "Vue 3 ESLint Flat Config for SylphLab projects.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -61,7 +61,7 @@
   },
   "peerDependencies": {
     "@eslint/js": "^9.24.0",
-    "@sylphlab/eslint-config-sylph": "^3.2.6",
+    "@sylphlab/eslint-config-sylph": "^3.3.0",
     "@typescript-eslint/eslint-plugin": "^8.29.1",
     "@typescript-eslint/parser": "^8.29.1",
     "eslint": "^9.24.0",
