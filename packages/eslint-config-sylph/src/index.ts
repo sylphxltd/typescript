@@ -5,7 +5,7 @@ import prettierConfig from 'eslint-config-prettier';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
 import functionalPlugin from 'eslint-plugin-functional';
 import importPlugin from 'eslint-plugin-import-x';
-import prettierPlugin from 'eslint-plugin-prettier'; // Default import seems fine here as it's used in `plugins`
+import prettierPlugin from 'eslint-plugin-prettier';
 import promisePlugin from 'eslint-plugin-promise';
 import regexpPlugin from 'eslint-plugin-regexp';
 import securityPlugin from 'eslint-plugin-security';
@@ -15,137 +15,122 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 
 /**
- * Sylph ESLint Configuration (Flat Config)
+ * Sylph ESLint Configuration (Flat Config) - AI-Focused Strict Revision
  *
- * A strict, opinionated base configuration for modern TypeScript projects.
- * Designed for: ESLint v9+, TypeScript v5+, Prettier v3+
- * Focuses on: Type Safety, Readability, Consistency, Security, Performance, Functional Style.
+ * A very strict configuration optimized for AI-assisted development, consistency, and rigor.
+ * Targets: Bun/Vitest/TSUP/Turborepo, Node 22, TypeScript 5+, ESLint 9+, Prettier 3+
+ * Emphasizes: Strict LOC/Complexity (error), Explicitness (error on any), Immutability (error),
+ *            Filename Consistency (error), Security, Bug Detection.
  *
- * Includes plugins:
- * - @typescript-eslint/eslint-plugin
- * - eslint-plugin-unicorn
- * - eslint-plugin-import-x
- * - eslint-plugin-functional
- * - eslint-plugin-security
- * - eslint-plugin-sonarjs
- * - eslint-plugin-promise
- * - eslint-plugin-regexp
- * - eslint-plugin-prettier
+ * NOTE: This strictness (especially LOC limits as errors) aims to force code splitting
+ * beneficial for AI context limits, but may require significant refactoring effort
+ * from human developers. Evaluate if this trade-off is acceptable.
+ *
+ * NOTE: eslint-plugin-functional is included for immutability/no-throw but remains
+ * highly opinionated; consider removal if FP adherence is not a strong team priority.
  */
 export const sylph = [
-  // Remove explicit : Config[] type annotation
-  // Let TypeScript infer the type
   // 1. Core ESLint Recommended Rules
   eslintJs.configs.recommended,
 
   // 2. TypeScript Strict & Stylistic Rules
-  // Uses the parser to enable linting based on type information.
   ...tseslint.configs.strictTypeChecked,
   ...tseslint.configs.stylisticTypeChecked,
 
   // 3. Unicorn Rules (Modernization, Consistency, Bug Prevention)
   unicornPlugin.configs['flat/recommended'],
 
-  // 4. Import Rules (Order, Structure, Resolution)
+  // 4. Import Rules (Order, Structure, Resolution) - Using import-x
   {
-    plugins: {
-      'import-x': importPlugin,
-    },
+    plugins: { 'import-x': importPlugin },
     settings: {
-      'import-x/parsers': {
-        '@typescript-eslint/parser': ['.ts', '.tsx', '.mts', '.cts'],
-      },
+      /* ... (same as previous version) ... */
+      'import-x/parsers': { '@typescript-eslint/parser': ['.ts', '.tsx', '.mts', '.cts'] },
       'import-x/resolver-next': [
-        createTypeScriptImportResolver({
-          alwaysTryTypes: true,
-          bun: true, // Enable Bun support if needed
-          // 其他配置選項...
-        }),
+        createTypeScriptImportResolver({ alwaysTryTypes: true, bun: true }),
       ],
+      'import-x/resolver': { typescript: true, node: true },
     },
     rules: {
-      // --- Import Plugin Rules ---
-      ...importPlugin.configs.recommended.rules,
-      ...importPlugin.configs.typescript.rules, // Use rules specific to TypeScript
-      'import-x/no-unresolved': 'error', // Ensure imports resolve correctly
-      'import-x/prefer-default-export': 'off', // Allow named exports
+      /* ... (same import-x rules as previous version) ... */ 'import-x/no-unresolved': 'error',
+      'import-x/prefer-default-export': 'off',
       'import-x/no-extraneous-dependencies': [
         'error',
         {
           devDependencies: [
-            '**/__tests__/**',
+            /* ... extensive list ... */ '**/__tests__/**',
             '**/tests/**',
             '**/specs/**',
             '**/*{.,_}{test,spec}.[jt]s?(x)',
-            '**/*.config.[jt]s?(x)',
-            '**/test-utils.[jt]s?(x)',
-            'vite.config.[jt]s',
-            'vitest.config.[jt]s',
-            'eslint.config.[jt]s',
-            'jest.setup.[jt]s',
-            'vitest.setup.[jt]s',
-            '**/.*rc.[jt]s', // Config files like .eslintrc.js
-            '**/scripts/**', // Build/utility scripts
+            '**/*.config.{js,cjs,mjs,ts,cts,mts}',
+            '**/*.setup.{js,cjs,mjs,ts,cts,mts}',
+            '**/test-utils/**',
+            'vite.config.*',
+            'vitest.config.*',
+            'eslint.config.*',
+            'prettier.config.*',
+            '**/.*rc.{js,cjs}',
+            '**/scripts/**',
           ],
           optionalDependencies: false,
-          peerDependencies: false, // Check peerDeps in consuming projects, not here
+          peerDependencies: false,
         },
       ],
       'import-x/order': [
-        // Enforce consistent import order
         'error',
         {
           groups: [
-            'builtin', // Node.js built-in modules
-            'external', // npm packages
-            'internal', // Aliased internal modules (if configured)
-            'parent', // Relative imports from parent directories
-            'sibling', // Relative imports from sibling directories
-            'index', // Index file of the current directory
-            'object', // Imports of object types (e.g., `import type { ... } from ...`)
-            'type', // Type imports (`import type ... from ...`)
+            'builtin',
+            'external',
+            'internal',
+            'parent',
+            'sibling',
+            'index',
+            'object',
+            'type',
           ],
-          'newlines-between': 'always', // Enforce newlines between groups
-          alphabetize: {
-            order: 'asc', // Sort imports alphabetically within groups
-            caseInsensitive: true,
-          },
+          'newlines-between': 'always',
+          alphabetize: { order: 'asc', caseInsensitive: true },
+          warnOnUnassignedImports: true,
         },
       ],
-      'import-x/newline-after-import': 'error', // Ensure newline after imports
-      'import-x/no-duplicates': 'error', // Prevent duplicate imports
-      'import-x/no-mutable-exports': 'error', // Prevent exporting mutable bindings
-      'import-x/first': 'error', // Ensure all imports are at the top
+      'import-x/newline-after-import': 'error',
+      'import-x/no-duplicates': 'error',
+      'import-x/no-mutable-exports': 'error',
+      'import-x/first': 'error',
     },
   },
 
-  // 5. Functional Programming Style Rules
+  // 5. Functional Programming Style Rules (Strict Immutability/No-Throw Focus)
   {
     plugins: { functional: functionalPlugin },
     rules: {
       ...functionalPlugin.configs.recommended.rules,
-      // Removed stylistic rules from functional plugin - too opinionated / potential Prettier conflicts
-      // Example overrides (adjust as needed):
-      'functional/no-mixed-types': 'off', // Can be overly strict sometimes
-      'functional/functional-parameters': 'off', // Disable forcing readonly parameters for now
-      'functional/no-conditional-statements': 'off', // Allow if/switch
-      'functional/no-expression-statements': 'off', // Allow expression statements
-      'functional/no-throw-statements': 'error', // Prefer Result types or error handling functions
-      // 'functional/prefer-immutable-types': 'warn', // Removed - can be overly verbose/strict
+      'functional/no-mixed-types': 'off',
+      'functional/functional-parameters': 'off',
+      'functional/no-conditional-statements': 'off',
+      'functional/no-expression-statements': 'off',
+      'functional/no-try-statements': 'warn', // Keep warn, `try` is sometimes necessary boundary
+      'functional/no-throw-statements': 'error', // CRITICAL: Force explicit error handling
+      'functional/prefer-property-signatures': 'off',
+      'functional/immutable-data': [
+        'error',
+        { ignoreClasses: true, ignoreIdentifierPattern: '^mutable|draft' },
+      ], // CRITICAL: Force immutability
     },
   },
   {
-    files: ['prettier.config.cjs', '**/*.config.cjs'], // 指向你嘅 CJS 配置文件
-    rules: {
-      'functional/immutable-data': 'off', // 喺呢啲文件停用規則
-    },
+    files: ['prettier.config.cjs', '**/*.config.{js,cjs}', 'eslint.config.js'],
+    rules: { 'functional/immutable-data': 'off' },
   },
 
   // 6. Security Rules
   securityPlugin.configs.recommended,
 
   // 7. SonarJS Rules (Bug Detection, Code Smells)
-  sonarjsPlugin.configs.recommended,
+  sonarjsPlugin.configs.recommended, // Keep recommended, provides good value
+  // Consider making complexity an error directly if forcing AI compliance
+  // { rules: { 'sonarjs/cognitive-complexity': ['error', 15] } } // Can be added separately
 
   // 8. Promise Rules (Best Practices)
   promisePlugin.configs['flat/recommended'],
@@ -153,48 +138,37 @@ export const sylph = [
   // 9. RegExp Rules (Optimization, Security)
   regexpPlugin.configs['flat/recommended'],
 
-  // 10. Prettier Integration (MUST be last to override other style rules)
-  prettierConfig, // Disables ESLint rules that conflict with Prettier
-  {
-    // Runs Prettier as an ESLint rule
-    plugins: { prettier: prettierPlugin },
-    rules: {
-      'prettier/prettier': 'error',
-    },
-  },
+  // 10. Prettier Integration (Last style config)
+  prettierConfig,
+  { plugins: { prettier: prettierPlugin }, rules: { 'prettier/prettier': 'error' } },
 
-  // 11. Global Configuration & Overrides
+  // 11. Global Configuration & Overrides (AI-Focused Strictness)
   {
     files: ['**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}'],
     languageOptions: {
-      ecmaVersion: 'latest',
+      /* ... (same as previous, ensure project:true) ... */ ecmaVersion: 'latest',
       sourceType: 'module',
-      parser: tseslint.parser, // Remove incorrect assertion
+      parser: tseslint.parser,
       parserOptions: {
         project: true,
-        // tsconfigRootDir: import.meta.dirname, // Example if needed, but usually relative to eslint.config.js is fine
-        ecmaFeatures: { jsx: false }, // Default to false, enable in framework configs
+        // Allow .cjs files to be properly recognized
+        extraFileExtensions: ['.cjs'],
+        /* tsconfigRootDir: import.meta.dirname */ ecmaFeatures: { jsx: false },
       },
-      globals: {
-        // ...globals.browser, // Removed: Base config should be env-agnostic. Add in framework configs.
-        ...globals.node, // Keep Node.js globals as they are common in tooling/scripts
-        ...globals.es2021, // Or latest appropriate ES version globals
-      },
+      globals: { ...globals.node, ...globals.es2022 /* Bun: 'readonly' */ },
     },
-    linterOptions: {
-      reportUnusedDisableDirectives: 'error',
-    },
+    linterOptions: { reportUnusedDisableDirectives: 'error' },
     rules: {
-      // --- Core ESLint/TypeScript Rule Overrides & Additions ---
-      'no-unused-vars': 'off', // Use @typescript-eslint/no-unused-vars instead
+      // --- Core ESLint/TypeScript (Strict) ---
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
       '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
       '@typescript-eslint/explicit-module-boundary-types': ['error'],
-      '@typescript-eslint/no-explicit-any': ['warn', { ignoreRestArgs: true }], // Warn, don't error on 'any' yet
-      '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true }], // Require handling promises
+      '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }], // CRITICAL: No 'any' allowed easily
+      '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true }],
       '@typescript-eslint/no-misused-promises': 'error',
       '@typescript-eslint/consistent-type-imports': [
         'error',
@@ -204,113 +178,108 @@ export const sylph = [
         'error',
         { fixMixedExportsWithInlineTypeSpecifier: true },
       ],
-      // '@typescript-eslint/no-unused-vars': ['error', ...], // Note: This rule was previously duplicated and removed here. The definition at line 169 is kept.
 
-      // --- Unicorn Rule Overrides ---
-      // 'unicorn/filename-case': [ // Enforce kebab-case or PascalCase
-      //     'error',
-      //     {
-      //         cases: { pascalCase: true, kebabCase: true },
-      //         ignore: [
-      //             // Common config/setup files
-      //             /^\.?.*rc\.[cm]?js$/, // .eslintrc.js, .prettierrc.cjs, etc.
-      //             /^[a-zA-Z]+(?:[-.][a-zA-Z]+)*\.config\.[cm]?[jt]s$/, // vite.config.ts, postcss.config.js
-      //             /^[a-zA-Z]+(?:[-.][a-zA-Z]+)*\.setup\.[cm]?[jt]s$/, // vitest.setup.ts
-      //             // Type definition files
-      //             /\.d\.ts$/,
-      //             // Specific framework/entry files (adjust as needed)
-      //             // 'App\.vue$', // Removed: Framework-specific
-      //             // 'main\.[jt]sx?$', // Removed: Often framework entry points
-      //             // 'index\.[jt]sx?$', // Removed: Often framework entry points
-      //             'vite-env.d.ts', // Keep common build tool types
-      //             // Environment files
-      //             /^\.env(?:\.\w+)?$/,
-      //         ],
-      //     },
-      // ],
-      // 'unicorn/prevent-abbreviations': ['error', {
-      //     replacements: {
-      //         props: false, // Allow 'props'
-      //         ref: false, // Allow 'ref'
-      //         args: false, // Allow 'args'
-      //         params: false, // Allow 'params'
-      //         env: false, // Allow 'env'
-      //         dev: false, // Allow 'dev'
-      //         prod: false, // Allow 'prod'
-      //         config: false, // Allow 'config'
-      //         src: false, // Allow 'src'
-      //         dist: false, // Allow 'dist'
-      //         pkg: false, // Allow 'pkg'
-      //     },
-      //     // allowList: { Props: true, Ref: true } // Removed: Framework-specific, moved to react/vue configs
-      // }],
-      // 'unicorn/prefer-top-level-await': 'off', // Often not feasible/desirable
-      // 'unicorn/no-null': 'off', // null is idiomatic in JS/TS
-      // 'unicorn/no-useless-undefined': ['error', { checkArguments: false }], // Allow undefined in function args
-
-      // --- General Code Quality & Consistency ---
-      'no-console': ['warn', { allow: ['warn', 'error', 'info'] }], // Allow warn/error/info
-      'no-debugger': 'error',
-      eqeqeq: ['error', 'always', { null: 'ignore' }], // Allow == null check
-      curly: ['error', 'all'],
-      complexity: ['error', { max: 12 }], // Slightly increased complexity limit
-      'max-lines': ['warn', { max: 500, skipBlankLines: true, skipComments: true }], // Warn at 500 lines
-      'max-lines-per-function': ['warn', { max: 80, skipBlankLines: true, skipComments: true }], // Warn at 80 lines/func
-      'max-depth': ['error', 4],
-      'max-params': ['error', 4], // Allow up to 4 params
-      'no-lonely-if': 'error',
-      'no-nested-ternary': 'error', // Use unicorn/no-nested-ternary instead
-      // 'unicorn/no-nested-ternary': 'error',
-      'no-param-reassign': ['error', { props: false }], // Allow reassigning properties of params
-      'no-restricted-syntax': [
-        // Disallow problematic syntax
+      // --- Unicorn Rules (Strict Consistency) ---
+      'unicorn/filename-case': [
         'error',
-        'ForInStatement',
-        'LabeledStatement',
-        'WithStatement',
-        // 'error', { selector: 'TSEnumDeclaration', message: "Don't declare enums" } // Optional: Disallow enums
+        {
+          cases: { kebabCase: true, pascalCase: true },
+          ignore: [
+            // Using valid regex patterns that avoid security issues
+            /^.+rc\.[cm]?js$/,
+            /^.+\.config\.[a-z]+$/,
+            /^.+\.setup\.[a-z]+$/,
+            /\.d\.ts$/,
+            'bun.lockb',
+            'turbo.json',
+            'vite-env.d.ts',
+            /^\.env$/,
+            /^\.env\..+$/,
+            'README.md',
+            'CHANGELOG.md',
+            'LICENSE',
+          ],
+        },
       ],
-      'padding-line-between-statements': [
-        // Enforce padding lines
+      'unicorn/prevent-abbreviations': [
         'error',
+        { replacements: { env: false, config: false, src: false, dist: false, pkg: false } },
+      ], // CRITICAL: Force explicit names
+      'unicorn/prefer-top-level-await': 'off',
+      'unicorn/no-null': 'off',
+      'unicorn/no-useless-undefined': ['error', { checkArguments: false }],
+      'no-nested-ternary': 'off',
+      'unicorn/no-nested-ternary': 'error',
+
+      // --- General Quality (Strict Limits for AI) ---
+      'no-console': ['warn', { allow: ['warn', 'error', 'info', 'debug'] }], // Keep warn for dev flexibility
+      'no-debugger': 'error',
+      eqeqeq: ['error', 'always', { null: 'ignore' }],
+      curly: ['error', 'all'],
+      complexity: ['error', { max: 10 }], // CRITICAL: Low complexity limit as error
+      'max-lines': ['error', { max: 350, skipBlankLines: true, skipComments: true }], // CRITICAL: Strict file length as error
+      'max-lines-per-function': ['error', { max: 60, skipBlankLines: true, skipComments: true }], // CRITICAL: Strict function length as error
+      'max-depth': ['error', 4], // CRITICAL: Nesting depth as error
+      'max-params': ['error', 4], // More balanced param limit
+      'no-lonely-if': 'error',
+      'no-param-reassign': ['error', { props: false }],
+      'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],
+      'padding-line-between-statements': [
+        'error' /* ... (same padding rules) ... */,
         { blankLine: 'always', prev: '*', next: 'return' },
+        {
+          blankLine: 'always',
+          prev: '*',
+          next: ['if', 'for', 'while', 'switch', 'try', 'class', 'function'],
+        },
+        {
+          blankLine: 'always',
+          prev: ['if', 'for', 'while', 'switch', 'try', 'class', 'function'],
+          next: '*',
+        },
         { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
         { blankLine: 'any', prev: ['const', 'let', 'var'], next: ['const', 'let', 'var'] },
         { blankLine: 'always', prev: 'directive', next: '*' },
         { blankLine: 'any', prev: 'directive', next: 'directive' },
         { blankLine: 'always', prev: ['case', 'default'], next: '*' },
-      ], // End padding-line-between-statements
-      // --- Modern JS Features ---
+      ],
+      'prefer-const': 'error',
       '@typescript-eslint/prefer-optional-chain': 'error',
       '@typescript-eslint/prefer-nullish-coalescing': [
         'error',
         { ignorePrimitives: { string: true, number: true, boolean: true } },
-      ], // Allow `||` for primitives
+      ],
+      // Add SonarJS complexity rule explicitly if needed, otherwise rely on core 'complexity'
+      // 'sonarjs/cognitive-complexity': ['error', 15],
     },
   },
 
-  // 12. Test & Config File Relaxations
+  // 12. Test, Config & Script File Relaxations (Remains crucial)
   {
     files: [
+      /* ... (same extensive list of test/config/script files) ... */
       '**/*{.,_}{test,spec}.[jt]s?(x)',
       '**/__tests__/**',
       '**/tests/**',
       '**/specs/**',
       '**/test-utils/**',
-      '**/*.config.[jt]s?(x)',
-      '**/*.setup.[jt]s?(x)',
-      '**/.*rc.[jt]s',
+      '**/*.config.{js,cjs,mjs,ts,cts,mts}',
+      '**/*.setup.{js,cjs,mjs,ts,cts,mts}',
+      '**/.*rc.{js,cjs}',
       '**/scripts/**',
     ],
-    languageOptions: {
-      globals: { ...globals.jest, ...globals.node }, // Add Jest/Node globals for tests/configs
-    },
+    languageOptions: { globals: { ...globals.node, ...globals.jest, ...globals.vitest } },
     rules: {
-      // Relax rules for test/config files
+      /* ... (same extensive list of relaxed rules) ... */
       'import-x/no-extraneous-dependencies': 'off',
-      '@typescript-eslint/no-var-requires': 'off', // Allow require in CJS config files
+      '@typescript-eslint/no-var-requires': 'off',
+      '@typescript-eslint/no-unsafe-assignment': 'off',
+      '@typescript-eslint/no-unsafe-call': 'off',
+      '@typescript-eslint/no-unsafe-member-access': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/explicit-function-return-type': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      'functional/immutable-data': 'off',
       'functional/no-expression-statements': 'off',
       'functional/no-conditional-statements': 'off',
       'functional/no-try-statements': 'off',
@@ -319,17 +288,19 @@ export const sylph = [
       'sonarjs/cognitive-complexity': 'off',
       'max-lines-per-function': 'off',
       'max-lines': 'off',
+      complexity: 'off',
+      'max-depth': 'off',
       'no-console': 'off',
-      // 'unicorn/prefer-module': 'off', // Allow CJS in config files if necessary
     },
   },
 
   // 13. Ignore Patterns (Globally)
   {
     ignores: [
-      '**/node_modules/**',
+      /* ... (same comprehensive ignore list) ... */ '**/node_modules/**',
       '**/dist/**',
       '**/build/**',
+      'out/',
       '**/.turbo/**',
       '**/.cache/**',
       '**/.eslintcache/**',
@@ -340,14 +311,17 @@ export const sylph = [
       '**/pnpm-lock.yaml',
       '**/package-lock.json',
       '**/yarn.lock',
-      '**/bun.lock', // Ignore Bun lockfile (plain text format)
-      // Add any other specific directories or files to ignore
+      '**/bun.lockb',
       'CHANGELOG.md',
-      'LICENSE',
+      'LICENSE*',
       '*.log',
+      'logs/',
+      'temp/',
+      '.wrangler/',
+      '.vercel/',
+      '.netlify/',
     ],
   },
-]; // Remove satisfies
+];
 
-// Export the config directly for use in eslint.config.js
 export default sylph;
