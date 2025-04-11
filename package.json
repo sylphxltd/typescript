@@ -1,8 +1,8 @@
 {
-  "name": "eslint-config-sylph-monorepo",
-  "version": "0.0.0",
+  "name": "sylphlab-typescript",
+  "version": "1.0.0",
   "private": true,
-  "description": "Monorepo for SylphLab ESLint configurations (Base, React, Vue, RN)",
+  "description": "Strict, AI-optimized TypeScript monorepo: ESLint Flat Configs, tsconfig, Prettier, and guidelines for modern TypeScript projects.",
   "scripts": {
     "build": "turbo run build",
     "clean": "turbo run clean",
@@ -23,6 +23,17 @@
     "url": "https://github.com/sylphlab/typescript/issues"
   },
   "homepage": "https://github.com/sylphlab/typescript#readme",
+  "keywords": [
+    "typescript",
+    "eslint",
+    "eslint-config",
+    "flat config",
+    "prettier",
+    "strict",
+    "ai",
+    "sylphlab",
+    "monorepo"
+  ],
   "dependencies": {
     "@sylphlab/eslint-config-sylph": "workspace:*",
     "@sylphlab/eslint-config-sylph-react": "workspace:*",
