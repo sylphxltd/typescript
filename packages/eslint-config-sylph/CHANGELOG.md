@@ -1,5 +1,11 @@
 # @sylphlab/eslint-config-sylph
 
+## 3.2.6
+
+### Patch Changes
+
+- 83243e3: retry
+
 ## 3.2.5
 
 ### Patch Changes
