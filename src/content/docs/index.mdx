@@ -1,0 +1,42 @@
+---
+title: Sylph TypeScript Ecosystem
+description: Guidelines, configurations, and best practices for TypeScript projects at SylphLab.
+template: splash # Use Starlight's splash layout
+hero:
+  title: Sylph TypeScript Guidelines
+  tagline: Consistent, high-quality TypeScript development powered by shared configurations and best practices.
+  image:
+    # Optional: Add a relevant hero image later
+    # file: ../../assets/hero.png
+  actions:
+    - text: Get Started
+      link: /best-practices/core-principles/
+      icon: right-arrow
+      variant: primary
+    - text: View on GitHub
+      link: https://github.com/sylphlab/typescript
+      icon: external
+---
+
+import { Card, CardGrid } from '@astrojs/starlight/components';
+
+## Next steps
+
+<CardGrid stagger>
+	<Card title="Best Practices" icon="document">
+		Explore core development principles and recommended project structures.
+        [Read More](/best-practices/core-principles/)
+	</Card>
+	<Card title="Style Guide" icon="pencil">
+		Learn about code style, linting, formatting, and quality standards.
+        [Read More](/style-guide/style-quality/)
+	</Card>
+	<Card title="Tooling" icon="setting">
+		Discover recommended tooling for CI/CD, setup, and configuration.
+        [Read More](/tooling/setup-config/)
+	</Card>
+    <Card title="TypeScript Specifics" icon="puzzle">
+        Dive into guidelines specific to TypeScript development.
+        [Read More](/typescript/)
+    </Card>
+</CardGrid>

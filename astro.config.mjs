@@ -16,6 +16,7 @@ export default defineConfig({
       },
       // Sidebar configuration will be added in the next step
       sidebar: [
+        { label: 'Overview', link: '/' }, // Link to the new index.mdx homepage
         {
           label: 'Best Practices',
           items: [
