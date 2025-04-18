@@ -20,7 +20,7 @@ export const sylphStrict = [
     plugins: { functional: functionalPlugin },
     rules: {
       // Re-enable functional plugin rules removed from standard
-      ...functionalPlugin.configs.recommended.rules,
+      ...(functionalPlugin.configs?.['recommended']?.rules ?? {}), // Add check for configs itself
       'functional/no-mixed-types': 'off',
       'functional/functional-parameters': 'off',
       'functional/no-conditional-statements': 'off',
