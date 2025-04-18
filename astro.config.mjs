@@ -54,6 +54,6 @@ export default defineConfig({
     react() // Enable React components
   ],
   // Ensure site path is correct if deploying to subpath
-  // site: 'https://sylphlab.github.io/typescript/', // Example for GH Pages
-  // base: '/typescript/', // Example for GH Pages
+  site: 'https://sylphlab.github.io/typescript/', // Set for GH Pages deployment
+  base: '/typescript/', // Set for GH Pages deployment
 });
