@@ -11,7 +11,7 @@ on:
   push:
     branches:
       - main # Trigger on push to main branch
-  workflow_dispatch: # Allow manual trigger
+  # workflow_dispatch: # Allow manual trigger - Keep disabled for now unless needed
 jobs:
   release:
     name: Release
@@ -20,6 +20,9 @@ jobs:
       contents: write # Needed to create release commit/PR
       pull-requests: write # Needed to create release PR
       id-token: write # Needed for OIDC publishing
+
+    outputs: # Define output to signal if docs should be deployed
+      docs_built: ${{ steps.build_docs.outcome == 'success' }}
 
     steps:
       - name: Checkout Repo
@@ -41,8 +44,12 @@ jobs:
       - name: Install Dependencies
         run: bun install
 
-      - name: Run Build
-        run: bun run build
+      - name: Run Package Build
+        run: bun run build # Builds the packages
+
+      - name: Build Documentation Site
+        id: build_docs
+        run: bun run docs:build # Builds Astro site to dist/
 
       - name: Create Release Pull Request or Publish to npm
         id: changesets
@@ -59,3 +66,45 @@ jobs:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # Still needed for the publish command within 'release' script
           # Use NPM_CONFIG_PROVENANCE=true for OIDC/provenance if not using JS-DevTools/npm-publish
           # NPM_CONFIG_PROVENANCE: "true"
+
+  deploy-docs:
+    name: Deploy Docs to GitHub Pages
+    needs: release # Run after the release job
+    if: github.ref == 'refs/heads/main' && needs.release.outputs.docs_built == 'true' # Only deploy on main push if docs built successfully
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write # Needed to deploy to GitHub Pages
+      id-token: write # Needed for deployment authentication
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }} # URL provided by the deployment action
+
+    steps:
+      - name: Checkout repository # Need checkout again for deploy job
+        uses: actions/checkout@v4
+
+      # No need to install/build again if using artifact, but simpler to build here for now
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile # Need dependencies for Astro build
+
+      - name: Build Documentation Site
+        run: bun run docs:build # Build site to dist/
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5 # Pinned version
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3 # Pinned version
+        with:
+          # Astro builds to dist/ by default
+          path: ./dist
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4 # Pinned version
