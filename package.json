@@ -11,7 +11,7 @@
     "validate": "pnpm run check-format && turbo run validate",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "bun run build && bun install --frozen-lockfile && changeset publish",
+    "release": "pnpm run build && pnpm install --frozen-lockfile && changeset publish",
     "docs:dev": "pnpm --filter @sylphlab/typescript-docs dev",
     "docs:build": "pnpm --filter @sylphlab/typescript-docs build"
   },
