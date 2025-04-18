@@ -2,6 +2,15 @@
 
 This section provides standard workflows and configurations for Continuous Integration, Continuous Deployment (CI/CD), and containerization (Docker) for TypeScript projects.
 
+## 1.1. Release Process Note (IMPORTANT)
+
+**Manual publishing to NPM or creating GitHub releases is strictly forbidden.** The release process, including version bumping, changelog generation, publishing to registries (NPM, Docker Hub), and creating GitHub Releases, is **fully automated** by the CI/CD workflow defined in `.github/workflows/ci-release.yml` (triggered by pushing version tags like `v1.2.3`).
+
+- **DO NOT** run `changeset publish` or `bun run release` (or similar) manually.
+- **DO NOT** manually create releases on GitHub.
+- The correct workflow involves creating changeset files (`bun run changeset` or manual creation), committing them, and pushing. The CI pipeline handles the rest upon tagging.
+
+
 ## 1. CI/CD Workflow (GitHub Actions Example)
 
 This example workflow validates code, builds, publishes to NPM and Docker Hub (in parallel), and creates a GitHub Release upon tagging.
