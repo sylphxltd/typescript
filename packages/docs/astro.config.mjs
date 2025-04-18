@@ -3,7 +3,7 @@ import react from "@astrojs/react";
 import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
-export default defineConfig({
+export default defineConfig(({ command }) => ({ // Use function syntax and get command
   integrations: [
     starlight({
       title: 'Sylph TypeScript Ecosystem',
@@ -51,5 +51,5 @@ export default defineConfig({
   ],
   // Deploying to https://sylphlab.github.io/typescript/
   site: 'https://sylphlab.github.io/typescript/',
-  base: '/typescript/', // Re-enable base for GH Pages deployment
-});
+  base: command === 'build' ? '/typescript/' : '/', // Conditional base path
+})); // Close function syntax
