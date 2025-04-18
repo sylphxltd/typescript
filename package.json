@@ -49,9 +49,5 @@
     "eslint": "^9.25.0",
     "tsup": "^8.2.3"
   },
-  "workspaces": [
-    "packages/*",
-    "packages/docs"
-  ],
   "packageManager": "pnpm@10.8.0"
 }
