@@ -7,10 +7,11 @@ This section provides standard workflows and configurations for Continuous Integ
 This example workflow validates code, builds, publishes to NPM and Docker Hub (in parallel), and creates a GitHub Release upon tagging.
 
 **Key Corrections**:
+
 - Uses `dist` directory consistently for build artifacts.
 - Uses specific, pinned versions for all GitHub Actions.
 
-```yaml
+````yaml
 # .github/workflows/ci-release.yml
 name: CI, Publish & Release
 
@@ -284,3 +285,4 @@ EXPOSE 3000
 # Command to run the server using the built output in 'dist'
 # This assumes your entry point is dist/index.js
 CMD ["node", "dist/index.js"]
+````

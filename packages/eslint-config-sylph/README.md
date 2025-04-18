@@ -86,12 +86,7 @@ export default [
     },
   },
   {
-    ignores: [
-      'dist/',
-      'build/',
-      'coverage/',
-      'my-custom-ignored-folder/',
-    ],
+    ignores: ['dist/', 'build/', 'coverage/', 'my-custom-ignored-folder/'],
   },
 ];
 ```

@@ -43,8 +43,11 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
-    "turbo": "latest"
+    "turbo": "latest",
+    "eslint": "^9.x"
   },
   "packageManager": "bun@1.2.9",
-  "workspaces": ["packages/*"]
+  "workspaces": [
+    "packages/*"
+  ]
 }

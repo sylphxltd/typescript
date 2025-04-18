@@ -6,10 +6,10 @@ This package provides the ESLint Flat Config rules specifically tailored for Syl
 
 This configuration builds upon the [base philosophy](../base/README.md#core-philosophy--design-principles) with a focus on robust Vue 3 development:
 
-*   **Vue 3 Best Practices:** Enforces rules from `eslint-plugin-vue`'s recommended set (`plugin:vue/vue3-recommended`) to promote common patterns, prevent anti-patterns, and ensure consistency in Vue component definition, template syntax, and script setup usage.
-*   **TypeScript Integration:** Assumes usage of TypeScript within Vue components (`<script setup lang="ts">`) and leverages the base configuration's TypeScript rules.
-*   **Parser Configuration:** Utilizes `vue-eslint-parser` for parsing `.vue` files and `@typescript-eslint/parser` for the script blocks within them.
-*   **Strictness & Consistency:** Maintains the extreme strictness and focus on AI/human readability inherited from the base configuration, applying it to Vue-specific contexts.
+- **Vue 3 Best Practices:** Enforces rules from `eslint-plugin-vue`'s recommended set (`plugin:vue/vue3-recommended`) to promote common patterns, prevent anti-patterns, and ensure consistency in Vue component definition, template syntax, and script setup usage.
+- **TypeScript Integration:** Assumes usage of TypeScript within Vue components (`<script setup lang="ts">`) and leverages the base configuration's TypeScript rules.
+- **Parser Configuration:** Utilizes `vue-eslint-parser` for parsing `.vue` files and `@typescript-eslint/parser` for the script blocks within them.
+- **Strictness & Consistency:** Maintains the extreme strictness and focus on AI/human readability inherited from the base configuration, applying it to Vue-specific contexts.
 
 ## Installation
 
@@ -28,7 +28,7 @@ pnpm add -D @sylphlab/eslint-config-sylph-vue @sylphlab/eslint-config-sylph
 pnpm add -D eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-prettier eslint-plugin-unicorn eslint-plugin-vue vue-eslint-parser
 ```
 
-*(Ensure you have `eslint` and `typescript` installed in your project as well.)*
+_(Ensure you have `eslint` and `typescript` installed in your project as well.)_
 
 ## Usage
 
@@ -59,12 +59,12 @@ export default [
       'unicorn/prevent-abbreviations': ['error', { replacements: { props: false } }],
       // Example: Override a Vue rule
       'vue/no-v-html': 'off',
-    }
+    },
   },
   {
     // Example: Ignoring specific files/folders from linting
-    ignores: ['**/dist/**', '**/node_modules/**']
-  }
+    ignores: ['**/dist/**', '**/node_modules/**'],
+  },
 ];
 ```
 

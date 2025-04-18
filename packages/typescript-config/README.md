@@ -29,6 +29,7 @@ pnpm add --save-dev @sylphlab/typescript-config
 Extend the configuration in your project's `tsconfig.json`:
 
 ### Node.js Project
+
 ```json
 {
   "extends": "@sylphlab/typescript-config/node",
@@ -40,6 +41,7 @@ Extend the configuration in your project's `tsconfig.json`:
 ```
 
 ### React Project
+
 ```json
 {
   "extends": "@sylphlab/typescript-config/react",
@@ -51,6 +53,7 @@ Extend the configuration in your project's `tsconfig.json`:
 ```
 
 ### Vue Project
+
 ```json
 {
   "extends": "@sylphlab/typescript-config/vue",
@@ -62,6 +65,7 @@ Extend the configuration in your project's `tsconfig.json`:
 ```
 
 ### React Native Project
+
 ```json
 {
   "extends": "@sylphlab/typescript-config/react-native",

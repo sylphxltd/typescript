@@ -7,7 +7,7 @@ This section details the standard technology stack and configuration for TypeScr
 - **Runtime**: Node.js (**MUST use latest LTS version**)
 - **Language**: TypeScript (**MUST use latest stable version**)
 - **Package Manager**: pnpm (**latest version**). Use pnpm for its performance, disk space efficiency, and strictness. npm or Yarn can be used if specific project constraints require them.
-    - **Note on Build Scripts**: pnpm enhances security by default by preventing packages from running build scripts (like `postinstall`) automatically. If you see warnings like `Ignored build scripts: [package-name]`, and you trust the package (especially common build tools like `esbuild`), run `pnpm approve-builds` to allow necessary scripts to execute.
+  - **Note on Build Scripts**: pnpm enhances security by default by preventing packages from running build scripts (like `postinstall`) automatically. If you see warnings like `Ignored build scripts: [package-name]`, and you trust the package (especially common build tools like `esbuild`), run `pnpm approve-builds` to allow necessary scripts to execute.
 - **Module System**: ES Modules (set `"type": "module"` in `package.json` and use ES module syntax).
 
 ## 2. TypeScript Configuration
@@ -27,6 +27,7 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
    Choose the appropriate configuration based on your project type:
 
    **Node.js Projects**:
+
    ```json
    {
      "extends": "@sylphlab/typescript-config/node",
@@ -40,6 +41,7 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
    ```
 
    **Browser/DOM Projects**:
+
    ```json
    {
      "extends": "@sylphlab/typescript-config/dom",
@@ -53,6 +55,7 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
    ```
 
    **React Projects**:
+
    ```json
    {
      "extends": "@sylphlab/typescript-config/react",
@@ -66,6 +69,7 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
    ```
 
    **Vue Projects**:
+
    ```json
    {
      "extends": "@sylphlab/typescript-config/vue",
@@ -79,6 +83,7 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
    ```
 
    **React Native Projects**:
+
    ```json
    {
      "extends": "@sylphlab/typescript-config/react-native",
@@ -96,6 +101,7 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
 - All dependencies MUST use their latest stable versions.
 - Use GitHub's built-in Dependabot for automated dependency updates.
 - **Standard Dependabot Configuration** (`.github/dependabot.yml`):
+
   ```yaml
   # .github/dependabot.yml
   version: 2
@@ -113,11 +119,11 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
       rebase-strategy: 'auto'
       # Recommended: Auto-merge patch-level security updates if CI passes
       auto-merge:
-        dependency-type: "all"
-        update-types: ["patch"] # Only apply to patch updates
+        dependency-type: 'all'
+        update-types: ['patch'] # Only apply to patch updates
         allow:
-          - dependency-type: "all"
-            update-types: ["patch"]
+          - dependency-type: 'all'
+            update-types: ['patch']
             security-updates-only: true # Only security patches
 
     # GitHub Actions updates
@@ -132,8 +138,9 @@ SylphLab provides a reusable TypeScript configuration package with optimized set
       rebase-strategy: 'auto'
       # No auto-merge recommended for actions by default
   ```
+
 - **Handling Dependabot PRs**:
-    - **Prioritize Security Updates**: Address security patches promptly.
-    - **Check CI Status**: **Always** ensure all status checks pass before merging any Dependabot PR.
-    - **Review Changes**: Briefly review release notes, especially for minor/major updates.
-    - **Major Version Updates**: **Require careful manual review and testing.** Read the changelog thoroughly, update code for breaking changes, test locally, and ensure CI passes before merging. **Never auto-merge major updates.**
+  - **Prioritize Security Updates**: Address security patches promptly.
+  - **Check CI Status**: **Always** ensure all status checks pass before merging any Dependabot PR.
+  - **Review Changes**: Briefly review release notes, especially for minor/major updates.
+  - **Major Version Updates**: **Require careful manual review and testing.** Read the changelog thoroughly, update code for breaking changes, test locally, and ensure CI passes before merging. **Never auto-merge major updates.**

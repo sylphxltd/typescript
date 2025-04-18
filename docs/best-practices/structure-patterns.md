@@ -44,36 +44,38 @@ This section details the recommended project structure for TypeScript NPM packag
 ## 2. Advanced TypeScript Patterns (Encouraged)
 
 - **Immutability**:
-    - Use `readonly` modifiers for properties and `Readonly<T>` / `ReadonlyArray<T>` (`@typescript-eslint/prefer-readonly`).
-    - Leverage TypeScript's `const` assertions (`as const`) for literal types when creating immutable constants.
+  - Use `readonly` modifiers for properties and `Readonly<T>` / `ReadonlyArray<T>` (`@typescript-eslint/prefer-readonly`).
+  - Leverage TypeScript's `const` assertions (`as const`) for literal types when creating immutable constants.
 - **Type Safety**:
-    - Use branded types or nominal typing techniques for primitive type safety where applicable (e.g., distinguishing between different kinds of string IDs).
-    - Prefer discriminated unions for modeling state or variants over loose objects or class hierarchies.
+  - Use branded types or nominal typing techniques for primitive type safety where applicable (e.g., distinguishing between different kinds of string IDs).
+  - Prefer discriminated unions for modeling state or variants over loose objects or class hierarchies.
 - **Object Creation**:
-    - Implement the Builder pattern for complex object creation to ensure valid states.
-    - Use factory functions or static methods instead of complex constructors.
+  - Implement the Builder pattern for complex object creation to ensure valid states.
+  - Use factory functions or static methods instead of complex constructors.
 - **Operations on Types**:
-    - Apply the Visitor pattern for type-safe operations on discriminated unions.
-    - Leverage Mapped Types (`Pick`, `Omit`, `Partial`, `Required`, custom) for consistent type transformations.
-    - Use the `satisfies` operator for ensuring type compatibility without changing the inferred type.
+  - Apply the Visitor pattern for type-safe operations on discriminated unions.
+  - Leverage Mapped Types (`Pick`, `Omit`, `Partial`, `Required`, custom) for consistent type transformations.
+  - Use the `satisfies` operator for ensuring type compatibility without changing the inferred type.
 
 ## 3. Best Practices
 
 - **Error Handling**:
-    - Primarily use discriminated union result types (e.g., `{ success: true, data: T } | { success: false, error: E }`, potentially using helper libraries) for handling predictable errors, making failure an explicit part of the function's contract.
-    - Reserve throwing exceptions for truly exceptional, unrecoverable situations (e.g., programming errors, critical infrastructure failures). When throwing, use custom error classes extending `Error`.
-    - Always include context and potentially the original error (`cause`) when creating errors or error results.
-    - Validate API boundaries and external data rigorously using runtime validation libraries (like Zod, io-ts) that integrate with TypeScript types to ensure data integrity.
+
+  - Primarily use discriminated union result types (e.g., `{ success: true, data: T } | { success: false, error: E }`, potentially using helper libraries) for handling predictable errors, making failure an explicit part of the function's contract.
+  - Reserve throwing exceptions for truly exceptional, unrecoverable situations (e.g., programming errors, critical infrastructure failures). When throwing, use custom error classes extending `Error`.
+  - Always include context and potentially the original error (`cause`) when creating errors or error results.
+  - Validate API boundaries and external data rigorously using runtime validation libraries (like Zod, io-ts) that integrate with TypeScript types to ensure data integrity.
 
 - **Asynchronous Code**:
-    - Always prefer `async/await` for readability over raw `Promise.then/catch` chains.
-    - Ensure all Promises are handled (use `@typescript-eslint/no-floating-promises` lint rule).
-    - Use `Promise.all` / `Promise.allSettled` for concurrency.
-    - Avoid the `new Promise()` constructor anti-pattern; use `async` functions instead.
-    - Implement cancellation patterns (e.g., using `AbortController`) for long-running async operations where appropriate.
+
+  - Always prefer `async/await` for readability over raw `Promise.then/catch` chains.
+  - Ensure all Promises are handled (use `@typescript-eslint/no-floating-promises` lint rule).
+  - Use `Promise.all` / `Promise.allSettled` for concurrency.
+  - Avoid the `new Promise()` constructor anti-pattern; use `async` functions instead.
+  - Implement cancellation patterns (e.g., using `AbortController`) for long-running async operations where appropriate.
 
 - **Performance Optimizations**:
-    - Be mindful of object and array allocations within loops or frequently called functions.
-    - Use `Set` and `Map` for efficient lookups (O(1) average) compared to array methods like `find` or `includes` (O(n)).
-    - Employ lazy initialization for expensive resources or computations.
-    - Profile code using Node.js inspector or other tools to identify bottlenecks before optimizing prematurely.
+  - Be mindful of object and array allocations within loops or frequently called functions.
+  - Use `Set` and `Map` for efficient lookups (O(1) average) compared to array methods like `find` or `includes` (O(n)).
+  - Employ lazy initialization for expensive resources or computations.
+  - Profile code using Node.js inspector or other tools to identify bottlenecks before optimizing prematurely.

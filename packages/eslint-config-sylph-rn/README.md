@@ -6,9 +6,9 @@ This package provides the ESLint Flat Config rules specifically tailored for Syl
 
 This configuration builds upon the [React config philosophy](../react/README.md#core-philosophy--design-principles) with a focus on robust React Native development:
 
-*   **React Native Best Practices:** Enforces rules from `eslint-plugin-react-native` to promote common patterns specific to the React Native environment, such as avoiding inline styles (`react-native/no-inline-styles`), using platform-specific file extensions correctly (`react-native/split-platform-components`), and managing StyleSheet usage (`react-native/no-unused-styles`).
-*   **Platform Awareness:** Helps catch potential issues related to platform differences and encourages platform-agnostic or correctly separated code.
-*   **Inherited Strictness:** Maintains the extreme strictness, focus on Hooks, JSX A11y, and AI/human readability inherited from the base and React configurations.
+- **React Native Best Practices:** Enforces rules from `eslint-plugin-react-native` to promote common patterns specific to the React Native environment, such as avoiding inline styles (`react-native/no-inline-styles`), using platform-specific file extensions correctly (`react-native/split-platform-components`), and managing StyleSheet usage (`react-native/no-unused-styles`).
+- **Platform Awareness:** Helps catch potential issues related to platform differences and encourages platform-agnostic or correctly separated code.
+- **Inherited Strictness:** Maintains the extreme strictness, focus on Hooks, JSX A11y, and AI/human readability inherited from the base and React configurations.
 
 ## Installation
 
@@ -27,7 +27,7 @@ pnpm add -D @sylphlab/eslint-config-sylph-rn @sylphlab/eslint-config-sylph-react
 pnpm add -D eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-react-native eslint-plugin-unicorn prettier react react-native
 ```
 
-*(Ensure you have `eslint` and `typescript` installed in your project as well.)*
+_(Ensure you have `eslint` and `typescript` installed in your project as well.)_
 
 ## Usage
 
@@ -57,12 +57,12 @@ export default [
       'unicorn/prevent-abbreviations': ['error', { replacements: { props: false } }],
       // Example: Override a React Native rule
       'react-native/no-inline-styles': 'off', // Not recommended, but possible
-    }
+    },
   },
   {
     // Example: Ignoring specific files/folders from linting
-    ignores: ['**/dist/**', '**/node_modules/**', '**/ios/**', '**/android/**']
-  }
+    ignores: ['**/dist/**', '**/node_modules/**', '**/ios/**', '**/android/**'],
+  },
 ];
 ```
 

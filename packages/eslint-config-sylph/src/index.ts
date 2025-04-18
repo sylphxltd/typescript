@@ -3,7 +3,6 @@
 import eslintJs from '@eslint/js';
 import prettierConfig from 'eslint-config-prettier';
 import { createTypeScriptImportResolver } from 'eslint-import-resolver-typescript';
-import functionalPlugin from 'eslint-plugin-functional';
 import importPlugin from 'eslint-plugin-import-x';
 import prettierPlugin from 'eslint-plugin-prettier';
 import promisePlugin from 'eslint-plugin-promise';
@@ -101,30 +100,7 @@ export const sylph = [
     },
   },
 
-  // 5. Functional Programming Style Rules (Strict Immutability/No-Throw Focus)
-  {
-    plugins: { functional: functionalPlugin },
-    rules: {
-      ...functionalPlugin.configs.recommended.rules,
-      'functional/no-mixed-types': 'off',
-      'functional/functional-parameters': 'off',
-      'functional/no-conditional-statements': 'off',
-      'functional/no-expression-statements': 'off',
-      'functional/no-try-statements': 'warn', // Keep warn, `try` is sometimes necessary boundary
-      'functional/no-throw-statements': 'error', // CRITICAL: Force explicit error handling
-      'functional/prefer-property-signatures': 'off',
-      'functional/immutable-data': [
-        'error',
-        { ignoreClasses: true, ignoreIdentifierPattern: '^mutable|draft' },
-      ], // CRITICAL: Force immutability
-    },
-  },
-  {
-    files: ['prettier.config.cjs', '**/*.config.{js,cjs}', 'eslint.config.js'],
-    rules: { 'functional/immutable-data': 'off' },
-  },
-
-  // 6. Security Rules
+  // 5. Security Rules (Moved up from 6)
   securityPlugin.configs.recommended,
 
   // 7. SonarJS Rules (Bug Detection, Code Smells)
@@ -165,9 +141,9 @@ export const sylph = [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
-      '@typescript-eslint/explicit-function-return-type': ['error', { allowExpressions: true }],
-      '@typescript-eslint/explicit-module-boundary-types': ['error'],
-      '@typescript-eslint/no-explicit-any': ['error', { ignoreRestArgs: true }], // CRITICAL: No 'any' allowed easily
+      '@typescript-eslint/explicit-function-return-type': ['warn', { allowExpressions: true }], // Relaxed to warn
+      '@typescript-eslint/explicit-module-boundary-types': ['warn'], // Relaxed to warn
+      '@typescript-eslint/no-explicit-any': ['warn', { ignoreRestArgs: true }], // Relaxed to warn
       '@typescript-eslint/no-floating-promises': ['error', { ignoreVoid: true }],
       '@typescript-eslint/no-misused-promises': 'error',
       '@typescript-eslint/consistent-type-imports': [
@@ -202,9 +178,9 @@ export const sylph = [
         },
       ],
       'unicorn/prevent-abbreviations': [
-        'error',
+        'warn', // Relaxed to warn
         { replacements: { env: false, config: false, src: false, dist: false, pkg: false } },
-      ], // CRITICAL: Force explicit names
+      ],
       'unicorn/prefer-top-level-await': 'off',
       'unicorn/no-null': 'off',
       'unicorn/no-useless-undefined': ['error', { checkArguments: false }],
@@ -216,11 +192,11 @@ export const sylph = [
       'no-debugger': 'error',
       eqeqeq: ['error', 'always', { null: 'ignore' }],
       curly: ['error', 'all'],
-      complexity: ['error', { max: 10 }], // CRITICAL: Low complexity limit as error
-      'max-lines': ['error', { max: 350, skipBlankLines: true, skipComments: true }], // CRITICAL: Strict file length as error
-      'max-lines-per-function': ['error', { max: 60, skipBlankLines: true, skipComments: true }], // CRITICAL: Strict function length as error
-      'max-depth': ['error', 4], // CRITICAL: Nesting depth as error
-      'max-params': ['error', 4], // More balanced param limit
+      complexity: ['warn', { max: 20 }], // Relaxed to warn, increased limit
+      'max-lines': ['warn', { max: 500, skipBlankLines: true, skipComments: true }], // Relaxed to warn, increased limit
+      'max-lines-per-function': ['warn', { max: 100, skipBlankLines: true, skipComments: true }], // Relaxed to warn, increased limit
+      'max-depth': ['warn', 5], // Relaxed to warn, increased limit
+      'max-params': ['warn', 5], // Relaxed to warn, increased limit
       'no-lonely-if': 'error',
       'no-param-reassign': ['error', { props: false }],
       'no-restricted-syntax': ['error', 'ForInStatement', 'LabeledStatement', 'WithStatement'],

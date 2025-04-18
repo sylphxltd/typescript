@@ -23,9 +23,9 @@
   "scripts": {
     "build": "tsup",
     "clean": "rimraf dist .turbo",
-    "lint": "eslint . --cache --max-warnings=0",
-    "lint:fix": "eslint . --fix --cache",
-    "validate": "pnpm run lint && pnpm run build"
+    "lint": "bunx eslint . --cache --max-warnings=0",
+    "lint:fix": "bunx eslint . --fix --cache",
+    "validate": "bun run build"
   },
   "repository": {
     "type": "git",
@@ -58,7 +58,8 @@
     "@types/node": "^22.14.0",
     "jiti": "^2.4.2",
     "typescript": "^5.8.3",
-    "typescript-eslint": "^8.29.1"
+    "typescript-eslint": "^8.29.1",
+    "eslint": "^9.x"
   },
   "peerDependencies": {
     "@eslint/js": "^9.24.0",

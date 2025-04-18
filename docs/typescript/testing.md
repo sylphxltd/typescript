@@ -6,6 +6,7 @@ This section outlines the standards for testing and performance benchmarking in 
 
 - **Framework**: Vitest (modern, fast, Jest API compatible, good TypeScript support).
 - **Standard Configuration** (`vitest.config.ts`):
+
   ```typescript
   import { defineConfig } from 'vitest/config';
 
@@ -20,10 +21,10 @@ This section outlines the standards for testing and performance benchmarking in 
         reportsDirectory: './coverage',
         // Enforce high coverage. Adjust thresholds based on project needs, but aim high.
         thresholds: {
-          lines: 90,    // MUST be >= 90%
+          lines: 90, // MUST be >= 90%
           functions: 90, // MUST be >= 90%
-          branches: 90,  // MUST be >= 90%
-          statements: 90 // MUST be >= 90%
+          branches: 90, // MUST be >= 90%
+          statements: 90, // MUST be >= 90%
           // Consider using per-file thresholds for critical core logic if needed via configuration
         },
         include: ['src/**/*.ts'],
@@ -41,6 +42,7 @@ This section outlines the standards for testing and performance benchmarking in 
   ```
 
 - **Unit Test Example** (`src/utils/math.test.ts`):
+
   ```typescript
   import { describe, it, expect } from 'vitest';
   import { add } from './math'; // Assuming math.ts exports add
@@ -87,26 +89,27 @@ This section outlines the standards for testing and performance benchmarking in 
 
 - **Tool**: Codecov (preferred).
 - **Setup**:
-    - Configure coverage report upload in the GitHub Actions CI workflow (see `../tooling/ci-cd.md`).
-    - Ensure the target repository is enabled on Codecov.io.
-    - Obtain the `CODECOV_TOKEN` and add it as a secret to the GitHub repository.
+  - Configure coverage report upload in the GitHub Actions CI workflow (see `../tooling/ci-cd.md`).
+  - Ensure the target repository is enabled on Codecov.io.
+  - Obtain the `CODECOV_TOKEN` and add it as a secret to the GitHub repository.
 - **Badge**: Add the Codecov badge (provided after setup) to the `README.md`.
 
 ## 3. Test Analytics Integration (Codecov - Optional but Recommended)
 
 - Provides insights into test run times, failure rates, and flaky tests.
 - **Setup**:
-    1.  **Generate JUnit XML Report**: Modify the `test:cov` script in `package.json` to output a JUnit XML report:
-        ```json
-        "test:cov": "vitest run --coverage --reporter=junit --outputFile=test-report.junit.xml"
-        ```
-    2.  **Upload Test Results in CI**: Add the `codecov/test-results-action@v1` step to the GitHub Actions workflow *after* the test run step (see `../tooling/ci-cd.md`).
-    3.  **View Results**: Analyze results in the Codecov UI and potentially in PR comments.
+  1.  **Generate JUnit XML Report**: Modify the `test:cov` script in `package.json` to output a JUnit XML report:
+      ```json
+      "test:cov": "vitest run --coverage --reporter=junit --outputFile=test-report.junit.xml"
+      ```
+  2.  **Upload Test Results in CI**: Add the `codecov/test-results-action@v1` step to the GitHub Actions workflow _after_ the test run step (see `../tooling/ci-cd.md`).
+  3.  **View Results**: Analyze results in the Codecov UI and potentially in PR comments.
 
 ## 4. Performance Benchmarking (Vitest `bench`)
 
 - **Tool**: Vitest's built-in `bench` functionality.
 - **Benchmark Example** (`benchmark/core.bench.ts`):
+
   ```typescript
   import { bench, describe } from 'vitest';
   import { processData } from '../src/core'; // Example function
@@ -114,7 +117,8 @@ This section outlines the standards for testing and performance benchmarking in 
 
   describe('Core Function Performance', () => {
     // Prepare realistic test data
-    const createData = (size: number) => Array.from({ length: size }, (_, i) => ({ id: i, value: `value-${i}` }));
+    const createData = (size: number) =>
+      Array.from({ length: size }, (_, i) => ({ id: i, value: `value-${i}` }));
     const smallData = createData(100);
     const mediumData = createData(10_000);
     const largeData = createData(1_000_000);
@@ -137,4 +141,5 @@ This section outlines the standards for testing and performance benchmarking in 
     // });
   });
   ```
+
 - **Benchmark Workflow**: See `../tooling/ci-cd.md` for an example GitHub Actions workflow to run benchmarks periodically and handle results.

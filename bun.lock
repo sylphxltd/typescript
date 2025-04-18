@@ -12,12 +12,13 @@
       },
       "devDependencies": {
         "@changesets/cli": "^2.28.1",
+        "eslint": "^9.x",
         "turbo": "latest",
       },
     },
     "packages/eslint-config-sylph": {
       "name": "@sylphlab/eslint-config-sylph",
-      "version": "3.2.5",
+      "version": "3.3.0",
       "dependencies": {
         "globals": "^16.0.0",
       },
@@ -69,7 +70,7 @@
     },
     "packages/eslint-config-sylph-react": {
       "name": "@sylphlab/eslint-config-sylph-react",
-      "version": "5.0.3",
+      "version": "6.0.0",
       "devDependencies": {
         "@sylphlab/eslint-config-sylph": "workspace:*",
         "@sylphlab/typescript-config": "workspace:*",
@@ -80,7 +81,7 @@
       },
       "peerDependencies": {
         "@eslint/js": "^9.24.0",
-        "@sylphlab/eslint-config-sylph": "^3.2.3",
+        "@sylphlab/eslint-config-sylph": "^3.3.0",
         "@typescript-eslint/eslint-plugin": "^8.29.1",
         "@typescript-eslint/parser": "^8.29.1",
         "eslint": "^9.24.0",
@@ -106,13 +107,14 @@
     },
     "packages/eslint-config-sylph-rn": {
       "name": "@sylphlab/eslint-config-sylph-rn",
-      "version": "5.0.3",
+      "version": "6.0.0",
       "dependencies": {
         "@sylphlab/eslint-config-sylph-react": "workspace:*",
         "@sylphlab/typescript-config": "workspace:*",
       },
       "devDependencies": {
         "@types/node": "^22.14.0",
+        "eslint": "^9.x",
         "jiti": "^2.4.2",
         "typescript": "^5.8.3",
         "typescript-eslint": "^8.29.1",
@@ -145,9 +147,26 @@
         "typescript": "^5.8.3",
       },
     },
+    "packages/eslint-config-sylph-strict": {
+      "name": "@sylphlab/eslint-config-sylph-strict",
+      "version": "0.1.0",
+      "dependencies": {
+        "@sylphlab/eslint-config-sylph": "workspace:*",
+      },
+      "peerDependencies": {
+        "@eslint/js": "^9.x",
+        "eslint": "^9.x",
+        "eslint-plugin-functional": "^6.x",
+        "typescript": "^5.x",
+        "typescript-eslint": "^7.x",
+      },
+      "optionalPeers": [
+        "typescript",
+      ],
+    },
     "packages/eslint-config-sylph-vue": {
       "name": "@sylphlab/eslint-config-sylph-vue",
-      "version": "5.0.4",
+      "version": "6.0.0",
       "devDependencies": {
         "@sylphlab/eslint-config-sylph": "workspace:*",
         "@sylphlab/typescript-config": "workspace:*",
@@ -510,6 +529,8 @@
     "@sylphlab/eslint-config-sylph-react": ["@sylphlab/eslint-config-sylph-react@workspace:packages/eslint-config-sylph-react"],
 
     "@sylphlab/eslint-config-sylph-rn": ["@sylphlab/eslint-config-sylph-rn@workspace:packages/eslint-config-sylph-rn"],
+
+    "@sylphlab/eslint-config-sylph-strict": ["@sylphlab/eslint-config-sylph-strict@workspace:packages/eslint-config-sylph-strict"],
 
     "@sylphlab/eslint-config-sylph-vue": ["@sylphlab/eslint-config-sylph-vue@workspace:packages/eslint-config-sylph-vue"],
 

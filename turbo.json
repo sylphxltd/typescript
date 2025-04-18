@@ -5,10 +5,8 @@
       "dependsOn": ["^build"],
       "outputs": ["dist/**"]
     },
-    "lint": {
-    },
-    "lint:fix": {
-    },
+    "lint": {},
+    "lint:fix": {},
     "validate": {
       "dependsOn": ["build"]
     },
@@ -23,6 +21,9 @@
       "dependsOn": ["@sylphlab/eslint-config-sylph-react#build"]
     },
     "@sylphlab/eslint-config-sylph-vue#build": {
+      "dependsOn": ["@sylphlab/eslint-config-sylph#build"]
+    },
+    "@sylphlab/eslint-config-sylph-strict#build": {
       "dependsOn": ["@sylphlab/eslint-config-sylph#build"]
     }
   }

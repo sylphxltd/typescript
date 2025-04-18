@@ -6,10 +6,10 @@ This package provides the ESLint Flat Config rules specifically tailored for Syl
 
 This configuration builds upon the [base philosophy](../base/README.md#core-philosophy--design-principles) with a focus on robust React development:
 
-*   **React Best Practices:** Enforces rules from `eslint-plugin-react` to promote common patterns, prevent anti-patterns, and ensure consistency in component definition and JSX usage.
-*   **Hooks Rules:** Integrates `eslint-plugin-react-hooks` to enforce the Rules of Hooks (`react-hooks/rules-of-hooks`) and check for exhaustive dependencies (`react-hooks/exhaustive-deps`), preventing common bugs related to hook usage.
-*   **JSX Accessibility (A11y):** Includes `eslint-plugin-jsx-a11y` to catch potential accessibility issues directly within your JSX markup, promoting the development of inclusive web applications.
-*   **Strictness & Consistency:** Maintains the extreme strictness and focus on AI/human readability inherited from the base configuration.
+- **React Best Practices:** Enforces rules from `eslint-plugin-react` to promote common patterns, prevent anti-patterns, and ensure consistency in component definition and JSX usage.
+- **Hooks Rules:** Integrates `eslint-plugin-react-hooks` to enforce the Rules of Hooks (`react-hooks/rules-of-hooks`) and check for exhaustive dependencies (`react-hooks/exhaustive-deps`), preventing common bugs related to hook usage.
+- **JSX Accessibility (A11y):** Includes `eslint-plugin-jsx-a11y` to catch potential accessibility issues directly within your JSX markup, promoting the development of inclusive web applications.
+- **Strictness & Consistency:** Maintains the extreme strictness and focus on AI/human readability inherited from the base configuration.
 
 ## Installation
 
@@ -28,7 +28,7 @@ pnpm add -D @sylphlab/eslint-config-sylph-react @sylphlab/eslint-config-sylph
 pnpm add -D eslint typescript @typescript-eslint/eslint-plugin @typescript-eslint/parser eslint-config-prettier eslint-plugin-import eslint-plugin-jsx-a11y eslint-plugin-prettier eslint-plugin-react eslint-plugin-react-hooks eslint-plugin-unicorn prettier react
 ```
 
-*(Ensure you have `eslint` and `typescript` installed in your project as well.)*
+_(Ensure you have `eslint` and `typescript` installed in your project as well.)_
 
 ## Usage
 
@@ -59,12 +59,12 @@ export default [
       'unicorn/prevent-abbreviations': ['error', { replacements: { props: false } }],
       // Example: Next.js specific override (if not using Next.js plugin)
       // 'react/react-in-jsx-scope': 'off',
-    }
+    },
   },
   {
     // Example: Ignoring specific files/folders from linting
-    ignores: ['**/dist/**', '**/node_modules/**', '**/.next/**']
-  }
+    ignores: ['**/dist/**', '**/node_modules/**', '**/.next/**'],
+  },
 ];
 ```
 

@@ -1,5 +1,7 @@
 import baseConfig from '@sylphlab/eslint-config-sylph';
 
-export default [{
+export default [
+  {
     ...baseConfig,
-}];
+  },
+];

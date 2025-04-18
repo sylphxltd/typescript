@@ -7,6 +7,7 @@ This section covers the standards for documenting TypeScript projects, including
 - **Tool**: VitePress (recommended for its speed, developer experience, and Vue integration).
 - **Setup**: Follow the official VitePress documentation for setup.
 - **Standard Configuration** (`docs/.vitepress/config.mts`):
+
   ```typescript
   import { defineConfig } from 'vitepress';
 
@@ -87,6 +88,7 @@ This section covers the standards for documenting TypeScript projects, including
 - **Tool**: TypeDoc with `typedoc-plugin-markdown`.
 - **Purpose**: Generates Markdown files from TSDoc comments in the source code, suitable for integration into VitePress.
 - **Integration Script** (`scripts/generate-api-docs.mts`):
+
   ```javascript
   import { Application, TSConfigReader, TypeDocReader } from 'typedoc';
   import { writeFile, mkdir } from 'fs/promises';
@@ -124,9 +126,14 @@ This section covers the standards for documenting TypeScript projects, including
       // This provides a landing page for the /api/ route
       try {
         await mkdir(outputDir, { recursive: true });
-        await writeFile(path.join(outputDir, 'index.md'), '# API Reference\n\nBrowse the API documentation using the sidebar.', 'utf-8');
-      } catch (e) { /* Ignore if exists */ }
-
+        await writeFile(
+          path.join(outputDir, 'index.md'),
+          '# API Reference\n\nBrowse the API documentation using the sidebar.',
+          'utf-8',
+        );
+      } catch (e) {
+        /* Ignore if exists */
+      }
     } else {
       console.error('Failed to convert project.');
       process.exit(1);
@@ -138,4 +145,5 @@ This section covers the standards for documenting TypeScript projects, including
     process.exit(1);
   });
   ```
+
 - **NPM Script**: Ensure the `docs:api` script in `package.json` correctly executes this script (e.g., `node scripts/generate-api-docs.mts` or `pnpm exec node scripts/generate-api-docs.mts`). This script should be run as part of the `docs:build` process.

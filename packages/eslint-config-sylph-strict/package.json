@@ -1,0 +1,74 @@
+{
+  "name": "@sylphlab/eslint-config-sylph-strict",
+  "version": "0.1.0",
+  "description": "Strict ESLint Flat Configuration for SylphLab TypeScript Projects (Extends Standard)",
+  "author": "Kyle Tse <hi@kylet.se> (https://kylet.se)",
+  "license": "MIT",
+  "homepage": "https://github.com/sylphlab/typescript/tree/main/packages/eslint-config-sylph-strict#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sylphlab/typescript.git",
+    "directory": "packages/eslint-config-sylph-strict"
+  },
+  "bugs": {
+    "url": "https://github.com/sylphlab/typescript/issues"
+  },
+  "keywords": [
+    "eslint",
+    "eslintconfig",
+    "eslint-config",
+    "config",
+    "typescript",
+    "sylph",
+    "sylphlab",
+    "strict"
+  ],
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "clean": "rimraf dist",
+    "build": "tsup",
+    "dev": "tsup --watch",
+    "lint": "eslint . --cache --max-warnings=0",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sylphlab/eslint-config-sylph": "workspace:*"
+  },
+  "peerDependencies": {
+    "@eslint/js": "^9.x",
+    "eslint": "^9.x",
+    "eslint-plugin-functional": "^6.x",
+    "typescript": "^5.x",
+    "typescript-eslint": "^7.x"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
