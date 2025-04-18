@@ -31,16 +31,16 @@ jobs:
           # Fetch depth 0 is required for changeset version to correctly determine changed packages
           fetch-depth: 0
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4 # Keep action version pinned
+      - name: Setup pnpm # Move pnpm setup before Node setup
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 'lts/*' # Use latest LTS Node.js version
-          cache: 'pnpm' # Add pnpm caching
+          version: latest
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4 # Use pnpm setup action
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          version: latest # Use latest pnpm
+          node-version: 'lts/*'
+          cache: 'pnpm' # pnpm/action-setup handles caching, this is correct
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile # Use pnpm install
@@ -86,16 +86,16 @@ jobs:
         uses: actions/checkout@v4
 
       # Need Node and pnpm setup again in this job
+      - name: Setup pnpm # Move pnpm setup before Node setup
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
-          cache: 'pnpm'
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: latest
+          cache: 'pnpm' # pnpm/action-setup handles caching
 
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile # Use pnpm install
