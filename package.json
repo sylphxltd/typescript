@@ -12,8 +12,8 @@
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "bun run build && bun install --frozen-lockfile && changeset publish",
-    "docs:dev": "astro dev",
-    "docs:build": "astro build"
+    "docs:dev": "pnpm --filter @sylphlab/typescript-docs dev",
+    "docs:build": "pnpm --filter @sylphlab/typescript-docs build"
   },
   "repository": {
     "type": "git",
@@ -44,19 +44,12 @@
     "@sylphlab/typescript-config": "workspace:*"
   },
   "devDependencies": {
-    "@changesets/cli": "^2.28.1",
+    "@changesets/cli": "^2.29.2",
     "turbo": "latest",
-    "eslint": "^9.x",
-    "astro": "^4.15.2",
-    "@astrojs/starlight": "^0.26.1",
-    "@astrojs/react": "^3.6.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0"
+    "eslint": "^9.25.0"
   },
-  "packageManager": "bun@1.2.9",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "packages/docs"
   ]
 }
