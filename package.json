@@ -11,7 +11,9 @@
     "validate": "pnpm run check-format && turbo run validate",
     "changeset": "changeset",
     "version-packages": "changeset version",
-    "release": "bun run build && bun install --frozen-lockfile && changeset publish"
+    "release": "bun run build && bun install --frozen-lockfile && changeset publish",
+    "docs:dev": "astro dev",
+    "docs:build": "astro build"
   },
   "repository": {
     "type": "git",
@@ -44,7 +46,14 @@
   "devDependencies": {
     "@changesets/cli": "^2.28.1",
     "turbo": "latest",
-    "eslint": "^9.x"
+    "eslint": "^9.x",
+    "astro": "^4.15.2",
+    "@astrojs/starlight": "^0.26.1",
+    "@astrojs/react": "^3.6.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0"
   },
   "packageManager": "bun@1.2.9",
   "workspaces": [

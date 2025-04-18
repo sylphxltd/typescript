@@ -125,3 +125,6 @@ public/build/
 
 # TypeScript cache
 *.tsbuildinfo
+# Astro / Starlight
+dist/
+.astro/
