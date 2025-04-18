@@ -33,8 +33,7 @@ jobs:
 
       - name: Setup pnpm # Move pnpm setup before Node setup
         uses: pnpm/action-setup@v4
-        with:
-          version: latest
+        # Removed version: latest to avoid conflict with packageManager field
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -88,8 +87,7 @@ jobs:
       # Need Node and pnpm setup again in this job
       - name: Setup pnpm # Move pnpm setup before Node setup
         uses: pnpm/action-setup@v4
-        with:
-          version: latest
+        # Removed version: latest
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
