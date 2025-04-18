@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph-strict",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Strict ESLint Flat Configuration for SylphLab TypeScript Projects (Extends Standard)",
   "author": "Kyle Tse <hi@kylet.se> (https://kylet.se)",
   "license": "MIT",

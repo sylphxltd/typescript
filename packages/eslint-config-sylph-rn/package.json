@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph-rn",
-  "version": "6.0.0",
+  "version": "7.0.0",
   "description": "React Native ESLint Flat Config for SylphLab projects.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",

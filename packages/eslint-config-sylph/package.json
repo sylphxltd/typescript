@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/eslint-config-sylph",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "Strict, AI-optimized ESLint Flat Config for modern TypeScript projects (v9+, TS, Unicorn, Functional, Security, Sonar, Import, Promise, Regexp, Prettier). Core of all SylphLab TypeScript projects.",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
