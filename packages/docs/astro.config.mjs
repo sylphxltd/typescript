@@ -1,23 +1,42 @@
 import starlight from '@astrojs/starlight';
 import react from "@astrojs/react";
 import { defineConfig } from 'astro/config';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+// Determine base path based on command environment variable
+// Note: Astro passes command via process.env when using object syntax
+const isBuild = process.env.ASTRO_COMMAND === 'build';
+const base = isBuild ? '/typescript/' : '/';
+
+// Find workspace root relative to this config file
+const workspaceRoot = path.resolve(fileURLToPath(import.meta.url), '../../../');
 
 // https://astro.build/config
-export default defineConfig(({ command }) => ({ // Use function syntax and get command
-  srcDir: '.', // Explicitly set src directory relative to this config file
+export default defineConfig({ // Use standard object syntax
+  srcDir: './src',
+  // Add Vite config
+  vite: {
+    server: {
+      fs: {
+        // Allow serving files from the workspace root (needed for pnpm/monorepo)
+        allow: [workspaceRoot],
+      },
+    },
+  },
   integrations: [
     starlight({
       title: 'Sylph TypeScript Ecosystem',
-      accent: {
-        light: '#646cff', // VitePress-like blue for light mode
-        dark: '#646cff'   // VitePress-like blue for dark mode
-      },
+      // accent: { // Remove invalid 'accent' key again
+      //   light: '#646cff',
+      //   dark: '#646cff'
+      // },
       social: [ // Use array format as required by Starlight v0.33+
-        { icon: 'github', label: 'GitHub', href: 'https://github.com/sylphlab/typescript' }, // Use href instead of link
+        { icon: 'github', label: 'GitHub', href: 'https://github.com/sylphlab/typescript' },
       ],
       // Sidebar configuration based on content
       sidebar: [
-        { label: 'Overview', link: '/' }, // Assumes index.mdx exists at src/content/docs/
+        { label: 'Overview', link: '/' },
         {
           label: 'Best Practices',
           items: [
@@ -41,7 +60,7 @@ export default defineConfig(({ command }) => ({ // Use function syntax and get c
         {
           label: 'TypeScript Specifics',
           items: [
-            { label: 'Overview', link: 'typescript/' }, // Assumes typescript/index.md exists
+            { label: 'Overview', link: 'typescript/' },
             { label: 'Documentation', link: 'typescript/documentation' },
             { label: 'Testing', link: 'typescript/testing' },
           ]
@@ -52,5 +71,5 @@ export default defineConfig(({ command }) => ({ // Use function syntax and get c
   ],
   // Deploying to https://sylphlab.github.io/typescript/
   site: 'https://sylphlab.github.io/typescript/',
-  base: command === 'build' ? '/typescript/' : '/', // Conditional base path
-})); // Close function syntax
+  base: base, // Use determined base path
+}); // Close object syntax

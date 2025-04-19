@@ -1,14 +1,5 @@
 {
-  // Extend the base Astro tsconfig for type safety
   "extends": "astro/tsconfigs/strict",
-  "compilerOptions": {
-    // You can add project-specific options here if needed
-    "baseUrl": ".", // Important for resolving paths
-    "paths": {
-      // Define any path aliases if you use them
-      // "@components/*": ["src/components/*"]
-    }
-  },
-  "include": ["src/**/*", "*.mjs", "*.js"], // Include config files
-  "exclude": ["node_modules", "dist"]
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist"]
 }
