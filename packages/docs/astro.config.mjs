@@ -4,11 +4,6 @@ import { defineConfig } from 'astro/config';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-// Determine base path based on command environment variable
-// Note: Astro passes command via process.env when using object syntax
-const isBuild = process.env.ASTRO_COMMAND === 'build';
-const base = isBuild ? '/typescript/' : '/';
-
 // Find workspace root relative to this config file
 const workspaceRoot = path.resolve(fileURLToPath(import.meta.url), '../../../');
 
@@ -71,5 +66,5 @@ export default defineConfig({ // Use standard object syntax
   ],
   // Deploying to https://sylphlab.github.io/typescript/
   site: 'https://sylphlab.github.io/typescript/',
-  base: base, // Use determined base path
+  base: '/typescript/', // Always set base for GH Pages deployment
 }); // Close object syntax
