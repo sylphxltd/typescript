@@ -107,8 +107,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3 # Pinned version
         with:
-          # Astro builds to dist/ by default
-          path: ./dist
+          # Astro builds to dist/ inside the docs package
+          path: ./packages/docs/dist # Correct path to Astro build output
 
       - name: Deploy to GitHub Pages
         id: deployment

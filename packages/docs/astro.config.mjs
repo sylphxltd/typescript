@@ -4,6 +4,7 @@ import { defineConfig } from 'astro/config';
 
 // https://astro.build/config
 export default defineConfig(({ command }) => ({ // Use function syntax and get command
+  srcDir: '.', // Explicitly set src directory relative to this config file
   integrations: [
     starlight({
       title: 'Sylph TypeScript Ecosystem',
