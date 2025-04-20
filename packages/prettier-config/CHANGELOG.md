@@ -1,5 +1,11 @@
 # @sylphlab/prettier-config
 
+## 0.3.3
+
+### Patch Changes
+
+- ad82b98: fix dependency issue.
+
 ## 0.3.2
 
 ### Patch Changes

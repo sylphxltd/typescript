@@ -1,6 +1,6 @@
 {
   "name": "@sylphlab/prettier-config",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Shared Prettier configuration for SylphLab projects",
   "keywords": [
     "code-style",
