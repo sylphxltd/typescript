@@ -22,10 +22,9 @@ Due to the comprehensive nature of these guidelines, they have been split into t
 2.  **Style Guide**
 
     - [Code Style & Quality](../style-guide/style-quality.md)
-      - ESLint Configuration (Flat Config)
-      - Prettier Configuration
-      - Standard NPM Scripts (using `dist` output)
-      - Git Hooks (Husky + lint-staged)
+      - Biome Configuration (Standard & Strict)
+      - Standard NPM Scripts
+      - Git Hooks (Lefthook + commitlint)
 
 3.  **Tooling**
 
@@ -46,7 +45,7 @@ Due to the comprehensive nature of these guidelines, they have been split into t
       - Test Analytics Integration (Codecov)
       - Performance Benchmarking (Vitest `bench`)
     - [Documentation](documentation.md)
-      - Documentation Tool (VitePress)
+      - Documentation Tool (Astro Starlight)
       - API Documentation Generator (TypeDoc + typedoc-plugin-markdown)
       - Standard Configurations & Integration Script
 
