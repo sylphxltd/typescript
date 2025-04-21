@@ -5,6 +5,10 @@
   "keywords": ["biome", "biome-config", "config", "formatter", "linter", "sylphlab"],
   "license": "MIT",
   "type": "module",
+  "exports": {
+    ".": "./biome.json",
+    "./strict": "./biome.strict.json"
+  },
   "files": ["biome.json", "biome.config.js"],
   "peerDependencies": {
     "@biomejs/biome": ">=1.9.0"
