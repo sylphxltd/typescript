@@ -44,6 +44,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile # Use pnpm install
 
+      - name: Run Linting and Formatting Checks
+        run: pnpm run check # Use the root check script which runs biome recursively
+
       - name: Run Package Build
         run: pnpm run build # Use pnpm run
 

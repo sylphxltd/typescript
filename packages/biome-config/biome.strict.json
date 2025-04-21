@@ -1,0 +1,48 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "extends": ["./biome.json"],
+    "linter": {
+      "enabled": true,
+      "rules": {
+        "correctness": {
+          "useExhaustiveDependencies": "error"
+        },
+        "suspicious": {
+          "noExplicitAny": "error",
+          "noConsole": "error",
+          "noConsoleLog": "error",
+          "noImplicitAnyLet": "error"
+        },
+        "complexity": {
+          "noExcessiveCognitiveComplexity": "error",
+          "noForEach": "error"
+        },
+        "style": {
+          "useFilenamingConvention": "error",
+          "useFragmentSyntax": "error"
+        },
+        "performance": {
+          "noAccumulatingSpread": "error",
+          "noDelete": "error",
+          "noReExportAll": "error"
+        },
+        "a11y": {
+          "useAltText": "error",
+          "useButtonType": "error",
+          "noBlankTarget": "error"
+        }
+      }
+    },
+    "overrides": [
+      {
+        "include": ["**/*.d.ts"],
+        "linter": {
+          "rules": {
+            "suspicious": {
+              "noExplicitAny": "warn"
+            }
+          }
+        }
+      }
+    ]
+  }

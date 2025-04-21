@@ -1,0 +1,117 @@
+{
+    "$schema": "https://biomejs.dev/schemas/1.9.4/schema.json",
+    "organizeImports": {
+      "enabled": true
+    },
+    "formatter": {
+      "enabled": true,
+      "indentStyle": "space",
+      "indentWidth": 2,
+      "lineWidth": 100
+    },
+    "javascript": {
+      "formatter": {
+        "quoteStyle": "single",
+        "jsxQuoteStyle": "double",
+        "trailingCommas": "all",
+        "semicolons": "always",
+        "arrowParentheses": "always"
+      }
+    },
+    "linter": {
+      "enabled": true,
+      "rules": {
+        "recommended": true,
+        "correctness": {
+          "noUndeclaredVariables": "error",
+          "noUnusedVariables": "error",
+          "useExhaustiveDependencies": "warn"
+        },
+        "security": {
+          "noDangerouslySetInnerHtml": "error",
+          "noGlobalEval": "error"
+        },
+        "suspicious": {
+          "noArrayIndexKey": "error",
+          "noExplicitAny": "warn",
+          "noDoubleEquals": "error",
+          "noConsole": "warn",
+          "noConsoleLog": "warn",
+          "noImplicitAnyLet": "warn"
+        },
+        "style": {
+          "useConst": "error",
+          "useSelfClosingElements": "error",
+          "useFragmentSyntax": "warn",
+          "useFilenamingConvention": "warn"
+        },
+        "complexity": {
+          "noExcessiveCognitiveComplexity": "warn"
+        },
+        "performance": {
+          "noAccumulatingSpread": "warn"
+        },
+        "a11y": {
+          "useAltText": "warn",
+          "useButtonType": "warn",
+          "noBlankTarget": "warn"
+        }
+      }
+    },
+    "files": {
+      "ignore": [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/build/**",
+        "**/coverage/**",
+        "**/.turbo/**",
+        "**/.vitepress/cache/**",
+        "**/.vitepress/dist/**",
+        "**/.astro/**"
+      ]
+    },
+    "overrides": [
+      {
+        "include": [
+          "**/*.{test,spec}.{js,ts,jsx,tsx}",
+          "**/__tests__/**",
+          "**/tests/**",
+          "**/*.config.{js,cjs,mjs,ts,cts,mts}",
+          "**/.*rc.{js,cjs}",
+          "**/scripts/**"
+        ],
+        "linter": {
+          "rules": {
+            "suspicious": {
+              "noExplicitAny": "off",
+              "noConsole": "off",
+              "noConsoleLog": "off"
+            },
+            "complexity": {
+              "noExcessiveCognitiveComplexity": "off"
+            }
+          }
+        }
+      },
+      {
+        "include": ["**/*.{jsx,tsx}"],
+        "linter": {
+          "rules": {
+            "style": {
+              "useFilenamingConvention": "warn"
+            }
+          }
+        }
+      },
+      {
+        "include": ["**/*.d.ts"],
+        "linter": {
+          "rules": {
+            "suspicious": {
+              "noExplicitAny": "off"
+            }
+          }
+        }
+      }
+    ]
+  }

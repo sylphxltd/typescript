@@ -1,14 +1,15 @@
-import starlight from '@astrojs/starlight';
-import react from "@astrojs/react";
-import { defineConfig } from 'astro/config';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import react from '@astrojs/react';
+import starlight from '@astrojs/starlight';
+import { defineConfig } from 'astro/config';
 
 // Find workspace root relative to this config file
 const workspaceRoot = path.resolve(fileURLToPath(import.meta.url), '../../../');
 
 // https://astro.build/config
-export default defineConfig({ // Use standard object syntax
+export default defineConfig({
+  // Use standard object syntax
   srcDir: './src',
   // Add Vite config
   vite: {
@@ -26,7 +27,8 @@ export default defineConfig({ // Use standard object syntax
       //   light: '#646cff',
       //   dark: '#646cff'
       // },
-      social: [ // Use array format as required by Starlight v0.33+
+      social: [
+        // Use array format as required by Starlight v0.33+
         { icon: 'github', label: 'GitHub', href: 'https://github.com/sylphlab/typescript' },
       ],
       // Sidebar configuration based on content
@@ -37,20 +39,18 @@ export default defineConfig({ // Use standard object syntax
           items: [
             { label: 'Core Principles', link: 'best-practices/core-principles' },
             { label: 'Structure & Patterns', link: 'best-practices/structure-patterns' },
-          ]
+          ],
         },
         {
           label: 'Style Guide',
-          items: [
-            { label: 'Code Style & Quality', link: 'style-guide/style-quality' },
-          ]
+          items: [{ label: 'Code Style & Quality', link: 'style-guide/style-quality' }],
         },
         {
           label: 'Tooling',
           items: [
             { label: 'CI/CD & Containerization', link: 'tooling/ci-cd' },
             { label: 'Setup & Configuration', link: 'tooling/setup-config' },
-          ]
+          ],
         },
         {
           label: 'TypeScript Specifics',
@@ -58,8 +58,8 @@ export default defineConfig({ // Use standard object syntax
             { label: 'Overview', link: 'typescript/' },
             { label: 'Documentation', link: 'typescript/documentation' },
             { label: 'Testing', link: 'typescript/testing' },
-          ]
-        }
+          ],
+        },
       ],
     }),
     react(), // Enable React components

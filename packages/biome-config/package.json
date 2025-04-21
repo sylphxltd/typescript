@@ -1,0 +1,25 @@
+{
+  "name": "@sylphlab/biome-config",
+  "version": "0.1.0",
+  "description": "Shared Biome configuration for SylphLab projects",
+  "keywords": [
+    "biome",
+    "biome-config",
+    "config",
+    "formatter",
+    "linter",
+    "sylphlab"
+  ],
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "biome.json",
+    "biome.config.js"
+  ],
+  "peerDependencies": {
+    "@biomejs/biome": ">=1.9.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

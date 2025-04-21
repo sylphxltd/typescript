@@ -3,8 +3,8 @@
 [![CI Status](https://github.com/sylphlab/typescript/actions/workflows/ci-release.yml/badge.svg)](https://github.com/sylphlab/typescript/actions/workflows/ci-release.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-> **Strict, AI-optimized, and modern TypeScript configuration monorepo.**
-> Centralizes all SylphLab TypeScript standards, with a focus on extreme code quality, maintainability, and developer/AI efficiency.
+> **Strict, AI-optimized, and modern TypeScript tooling monorepo using Biome.**
+> Centralizes all SylphLab TypeScript standards (formatting, linting via Biome; tsconfig presets), with a focus on extreme code quality, maintainability, performance, and developer/AI efficiency.
 
 ---
 
@@ -12,24 +12,23 @@
 
 - **Monorepo for all SylphLab TypeScript configurations and guidelines**
 - **Includes:**
-  - [@sylphlab/eslint-config-sylph](./packages/eslint-config-sylph): Flat Config, strict, modern, AI/developer-optimized
-  - [@sylphlab/eslint-config-sylph-react](./packages/eslint-config-sylph-react): React/JSX/Hooks/A11y
-  - [@sylphlab/eslint-config-sylph-vue](./packages/eslint-config-sylph-vue): Vue 3
-  - [@sylphlab/eslint-config-sylph-rn](./packages/eslint-config-sylph-rn): React Native
-  - [@sylphlab/typescript-config](./packages/typescript-config): Strict, reusable tsconfig bases
-  - [@sylphlab/prettier-config](./packages/prettier-config): Prettier, import/order, package.json formatting
-- **Managed with:** Turborepo, bun workspaces
-- **Documentation:** [docs/](./docs/) (Best Practices, Style Guide, Tooling, TypeScript specifics)
+  - [@sylphlab/biome-config](./packages/biome-config): Base Biome configuration (formatting & linting).
+  - [@sylphlab/biome-config-react](./packages/biome-config-react): Extends base Biome config for React projects.
+  - [@sylphlab/biome-config-vue](./packages/biome-config-vue): Extends base Biome config for Vue projects.
+  - [@sylphlab/typescript-config](./packages/typescript-config): Strict, reusable tsconfig bases.
+  - *Deprecated:* `@sylphlab/eslint-config-*` and `@sylphlab/prettier-config` packages are being replaced by Biome.
+- **Managed with:** Turborepo, pnpm workspaces
+- **Documentation:** [@sylphlab/typescript-docs](./packages/docs/) (Built with Astro Starlight)
 
 ---
 
 ## Core Philosophy
 
-- **Extreme strictness:** All critical rules are errors. No compromise on quality.
-- **Modern tooling:** ESLint v9 Flat Config, TypeScript 5+, bun, Turborepo, ESM-first.
-- **AI & developer ergonomics:** Explicit typing, clear naming, strict structure, Prettier formatting.
-- **Automation:** Prettier, Husky, CI/CD, Dependabot.
-- **Performance & bug prevention:** Static analysis, functional/immutable patterns, security, complexity limits.
+- **Extreme strictness:** All critical lint rules are errors. No compromise on quality.
+- **Modern tooling:** Biome (Linting/Formatting), TypeScript 5+, pnpm, Turborepo, ESM-first.
+- **AI & developer ergonomics:** Explicit typing, clear naming, strict structure, consistent formatting via Biome.
+- **Automation:** Biome via Lefthook (pre-commit hook), CI/CD (GitHub Actions), Dependabot.
+- **Performance & bug prevention:** Fast tooling (Biome), static analysis, security rules, complexity limits.
 
 ---
 
@@ -38,7 +37,7 @@
 ### Install
 
 ```bash
-bun install
+pnpm install
 ```
 
 ### Explore Packages
@@ -49,28 +48,42 @@ bun install
 ### Run
 
 ```bash
-bun run turbo build
-bun run turbo lint
+pnpm run build  # Build packages if needed (e.g., docs site)
+pnpm run check  # Run Biome checks (lint + format check) across all packages
+pnpm run format # Apply Biome formatting fixes across all packages
 ```
 
 ---
 
-## Quick Start: ESLint Config
+## Quick Start: Biome Config
 
 ```bash
-bun add -d eslint typescript @sylphlab/eslint-config-sylph
-# Install peer dependencies manually if needed
+# Install Biome and the base config
+pnpm add -D @biomejs/biome @sylphlab/biome-config
+# Or for React projects:
+# pnpm add -D @biomejs/biome @sylphlab/biome-config-react
 ```
 
-Create `eslint.config.ts`:
+Create `biome.json` in your package root:
 
-```typescript
-import sylphConfig from '@sylphlab/eslint-config-sylph';
+```json
+{
+  // Use relative path to the installed shared config
+  "extends": ["./node_modules/@sylphlab/biome-config/biome.json"]
+  // Or for React:
+  // "extends": ["./node_modules/@sylphlab/biome-config-react/biome.json"]
+}
+```
+*(Note: The relative path `../biome-config/biome.json` works within the monorepo itself, but consuming projects outside the monorepo need the `./node_modules/...` path).*
 
-export default [
-  ...sylphConfig,
-  // project-specific overrides
-];
+Add scripts to your `package.json`:
+```json
+{
+  "scripts": {
+    "format": "biome format --write .",
+    "check": "biome check --write --unsafe ."
+  }
+}
 ```
 
 ---
@@ -78,7 +91,7 @@ export default [
 ## Quick Start: TypeScript Config
 
 ```bash
-bun add -d typescript @sylphlab/typescript-config
+pnpm add -d typescript @sylphlab/typescript-config
 ```
 
 `tsconfig.json`:
@@ -96,28 +109,14 @@ bun add -d typescript @sylphlab/typescript-config
 
 ---
 
-## Quick Start: Prettier Config
+## Documentation
 
-```bash
-bun add -d prettier @sylphlab/prettier-config
-```
-
-In `package.json`:
-
-```json
-{
-  "prettier": "@sylphlab/prettier-config"
-}
-```
+- The documentation site is built using Astro Starlight and located in the `packages/docs` directory.
+- Run `pnpm run docs:dev` to start the local development server.
 
 ---
 
-## Documentation
-
-- [Best Practices](./docs/best-practices/)
-- [Style Guide](./docs/style-guide/)
-- [Tooling](./docs/tooling/)
-- [TypeScript](./docs/typescript/)
+## Contributing
 
 ---
 
