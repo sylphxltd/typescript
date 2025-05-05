@@ -1,0 +1,13 @@
+{
+  "extends": "@sylphlab/typescript-config/node",
+  "compilerOptions": {
+    // We only use tsc for type checking, tsup handles the build
+    "noEmit": true,
+    // Allow importing JSON files (might be needed for specific operations)
+    "resolveJsonModule": true
+  },
+  // Include all source files for type checking
+  "include": ["src/**/*"],
+  // Exclude build output and node_modules
+  "exclude": ["node_modules", "dist"]
+}

@@ -1,0 +1,51 @@
+{
+  "name": "@sylphx/setup-mode",
+  "version": "0.1.0",
+  "description": "Updates Roo's custom_modes.json with the latest sylphx mode definition from GitHub.",
+  "type": "module",
+  "bin": {
+    "@sylphx/setup_mode": "./dist/index.js"
+  },
+  "main": "./dist/index.js",
+  "scripts": {
+    "format": "pnpx biome format --write .",
+    "check": "pnpx biome check --write --unsafe .",
+    "lint": "pnpm run check",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "build": "tsup",
+    "validate": "pnpm run check && pnpm run build && pnpm run test",
+    "start": "node ./dist/index.js"
+  },
+  "keywords": [
+    "roo",
+    "cline",
+    "sylphx",
+    "custom-mode",
+    "setup"
+  ],
+  "author": "Sylph AI (via Roo)",
+  "license": "MIT",
+  "dependencies": {
+    "fs-extra": "^11.2.0",
+    "node-fetch": "^3.3.2" 
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.8.0",
+    "@sylphlab/biome-config": "workspace:*",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.14.2",
+    "@types/node-fetch": "^2.6.11",
+    "tsup": "^8.1.0",
+    "vitest": "^1.6.0",
+    "@sylphlab/typescript-config": "workspace:*",
+    "typescript": "^5.4.5"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
