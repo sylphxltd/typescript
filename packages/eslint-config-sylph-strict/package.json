@@ -57,7 +57,7 @@
     "eslint": "^9.x",
     "eslint-plugin-functional": "^6.x",
     "typescript": "^5.x",
-    "typescript-eslint": "^7.x",
+    "typescript-eslint": "^7.x || ^8.0.0",
     "@types/node": "^18.11.18"
   },
   "peerDependenciesMeta": {
